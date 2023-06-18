@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1054385282980",
+    "firebase_url": "https://flutter-akademi-155fd-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "flutter-akademi-155fd",
+    "storage_bucket": "flutter-akademi-155fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1054385282980:android:69511a9f62e863e5be2b31",
+        "android_client_info": {
+          "package_name": "com.example.untitled4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1054385282980-72pfav41gvmglcnn4sj8orc4n08r5jf6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.untitled4",
+            "certificate_hash": "a95492bb0e7988ebab7dcad2bdee1d1479366ffe"
+          }
+        },
+        {
+          "client_id": "1054385282980-nuldpshcjanhm92dvmbmaadub8m4l4fh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3PN2zc2epeDUOeT2ApPoS2fmkM6D2Qe4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1054385282980-nuldpshcjanhm92dvmbmaadub8m4l4fh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
