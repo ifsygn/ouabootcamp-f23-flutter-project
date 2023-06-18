@@ -1,8 +1,6 @@
 # ouabootcamp-flutter-project
 
-### **Takım İsmi: OUA | F-23 ???**
-
-### **TAKIM LOGOSU : ???**
+### **Takım İsmi: OUA | F-23 **
 
 ### Ürün İle İlgili Bilgiler
 
