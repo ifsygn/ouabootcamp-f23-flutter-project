@@ -4,8 +4,6 @@
 
 ### **TAKIM LOGOSU : ???**
 
-!https://user-images.githubusercontent.com/48855691/167183679-48414e00-8073-4095-85d0-0f850d2b0e51.png
-
 ### Ürün İle İlgili Bilgiler
 
 ### **Takım Elemanları**
