@@ -109,3 +109,37 @@ Sprint boyunca her gün ilgili uygulamalarla Daily Scrum yapılmıştır.
 
 Daily Scrum toplantısı örnekleri Google Docs ile online olarak [README.md](http://README.md)’de tarafımızdan paylaşılmaktadır: 
 [Google Docs - 1.Sprint Daily Works and Meetings](https://docs.google.com/document/d/164pEHnNhWkhySnqlNO1x28JVJBLpkjMjdjipt7GYwSs/edit?usp=sharing)
+
+
+## Sprint Review Toplantısı
+
+- Fikir üzerinde çok zaman harcandı.
+- Sign Up / Sign In Page yapıldı.
+- Yazılan kodlar GitHub’ yüklenecek.
+- Splash Page eksik.
+- Cover Page eksik.
+- Drawer/Navigator Page eksik.
+- Product Backlog düzenlenecek.
+
+## Sprint Retrospective Toplantısı
+
+1.Sprint 2 haftalık sürecin değerlendirmesi
+
+Bir sonraki Sprint’te iş süreçlerini iyileştirmek için geçmiş Sprint’in incelendiği ve “nasıl daha iyi performans gösterebiliriz?” sorusuna cevap arayacağız. Toplantının amacı üretkenliği arttırmak adına bir sonraki Sprint’te mevcut Sprint’e göre bir iyileştirme sağlamak için alınması gereken aksiyonları belirlemek ve hangi aksiyonların öncelikli bir şekilde hemen hayata geçirilmeye çalışılacağına karar vermek
+
+- Kod’a daha fazla odaklanması
+- Toplantıları kısaltalım, azaltalım.
+
+### Takım olarak neleri iyi başardık, zor olan nelerin üstesinden geldik?
+
+### Ne tür sorunlar yaşadık?
+
+### Geliştirilmesi veya sonraki sprintlerde dikkat edilmesi gereken konular neler?
+
+## Product Backlog Refinement (Grooming) Toplantısı
+
+- PBI to EPIC
+    
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aef7e1c2-5d17-4898-8115-a6936919fded/Untitled.png)
+    
+- User Stories by Sprints
