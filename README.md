@@ -139,6 +139,8 @@ Bir sonraki Sprint’te iş süreçlerini iyileştirmek için geçmiş Sprint’
 ## Product Backlog Refinement (Grooming) Toplantısı
 
 - PBI to EPIC
+    [PBI to EPIC](https://file.notion.so/f/s/aef7e1c2-5d17-4898-8115-a6936919fded/Untitled.png?id=20213c3b-ea98-48d2-b2d6-a5288b0cd511&table=block&spaceId=81324e5d-4cc5-4bc8-8a26-f5fd63ebb1aa&expirationTimestamp=1687261856763&signature=Qqsi9bG7SZe7oPEPZvHrUkQr8jiI0oozuwtQQH9OyNk&downloadName=Untitled.png)
+    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aef7e1c2-5d17-4898-8115-a6936919fded/Untitled.png)
     
     ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/aef7e1c2-5d17-4898-8115-a6936919fded/Untitled.png)
     
