@@ -1,0 +1,39 @@
+name: untitled4
+description: A new Flutter project.
+
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.2 <3.0.0'
+
+
+dependencies:
+  flutter:
+
+    sdk: flutter
+
+
+  cupertino_icons: ^1.0.2
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.6.3
+  google_sign_in: ^5.4.2
+  provider: ^6.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  firebase_core: ^2.14.0
+
+
+  flutter_lints: ^2.0.0
+flutter:
+  uses-material-design: true
+  assets:
+
+    - assets/google_logo.png
+    - assets/password_icon.png
+    - assets/email_icon.png
+    - assets/paw_image.png
+    - assets/eye_password.png
