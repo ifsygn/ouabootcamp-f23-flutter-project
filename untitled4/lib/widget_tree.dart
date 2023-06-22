@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-import 'package:untitled4/loginpage/model/auth.dart';
 
-import 'package:untitled4/pages/home_page.dart';
-import 'package:untitled4/loginpage/view_viewmodel/login_register_page.dart';
-=======
-import 'package:untitled4/auth.dart';
 
-import 'package:untitled4/pages/home_page.dart';
-import 'package:untitled4/pages/login_register_page.dart';
->>>>>>> 476d46dbb8984dcf7dc0bcbc2c1b84836c1f6924
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
+import 'home_page.dart';
+import 'loginpage/model/auth.dart';
+import 'loginpage/view_viewmodel/login_register_page.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super (key: key);
@@ -27,11 +22,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         if (snapshot.hasData) {
           return HomePage();
         } else {
-<<<<<<< HEAD
           return  const LoginPage();
-=======
-          return const LoginPage();
->>>>>>> 476d46dbb8984dcf7dc0bcbc2c1b84836c1f6924
         }
       },
     );
