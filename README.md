@@ -141,3 +141,5 @@ Bir sonraki Sprint’te iş süreçlerini iyileştirmek için geçmiş Sprint’
 [PBI to EPIC to User Story](https://file.notion.so/f/s/dfbc3d62-f7a6-4bdd-9730-45e7e29a0418/Untitled.png?id=097f2fb1-e81c-4f5a-8f5c-d284d8a2cbea&table=block&spaceId=81324e5d-4cc5-4bc8-8a26-f5fd63ebb1aa&expirationTimestamp=1687503041690&signature=LrMBYwSCx6DHRS7MsjHRebhdoqXfa8xb4R91zqxem5g&downloadName=Untitled.png)
 
 [User Stories by Sprints](https://file.notion.so/f/s/347d0d6d-da74-4d9b-87f7-7f782cd8950b/Untitled.png?id=6cf2d57b-2c7a-4bd9-aa6a-e421f58712a8&table=block&spaceId=81324e5d-4cc5-4bc8-8a26-f5fd63ebb1aa&expirationTimestamp=1687503229314&signature=lfzNSJQmNsXROQRrTxqBEynPcc39qvd15mnWaJUWKpw&downloadName=Untitled.png)
+
+GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databases-db172cc59d80415597104cdc2ff0c90d)
