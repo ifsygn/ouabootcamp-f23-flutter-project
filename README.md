@@ -152,11 +152,17 @@ Eksiklerimizi öğrenip sistemimizi  güncelledik ve Agile Methodology ile Sprin
 
 ## Product Backlog Refinement (Grooming) Toplantısı
 
-[PBI to EPIC to User Story](https://file.notion.so/f/s/dfbc3d62-f7a6-4bdd-9730-45e7e29a0418/Untitled.png?id=097f2fb1-e81c-4f5a-8f5c-d284d8a2cbea&table=block&spaceId=81324e5d-4cc5-4bc8-8a26-f5fd63ebb1aa&expirationTimestamp=1687503041690&signature=LrMBYwSCx6DHRS7MsjHRebhdoqXfa8xb4R91zqxem5g&downloadName=Untitled.png)
+![PBI to EPIC to User Story](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/7802391f-4c4b-43f2-a210-57afb6aaa4c0)
 
-[User Stories by Sprints](https://file.notion.so/f/s/347d0d6d-da74-4d9b-87f7-7f782cd8950b/Untitled.png?id=6cf2d57b-2c7a-4bd9-aa6a-e421f58712a8&table=block&spaceId=81324e5d-4cc5-4bc8-8a26-f5fd63ebb1aa&expirationTimestamp=1687503229314&signature=lfzNSJQmNsXROQRrTxqBEynPcc39qvd15mnWaJUWKpw&downloadName=Untitled.png)
+![User Stories by Sprints](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/4ee98c77-bbb7-493b-9444-07bc612bcc8f)
+
+### Çevik Proje Yönetimimize Aşağıdan Ulaşabilirsiniz
+
+GÜNCEL: [Agile Methodology | Sprint | Scrum by ifsygn](https://ifsygn.notion.site/Agile-Methodology-Sprint-Scrum-by-ifsygn-5f9216afae204f0f86a51841b5289d58?pvs=4)
 
 GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databases-db172cc59d80415597104cdc2ff0c90d)
+
+
 
 ### Ürün Durumu: Ekran görüntüleri:
 ![Splash Screen](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/0553cd3d-3d82-4a43-9719-49a924983c37)
