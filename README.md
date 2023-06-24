@@ -142,7 +142,8 @@ Hepimizin dikkatinden kaçmış olması takım motivasyonunu olumsuz etkiledi.
 Fikrimizi geliştirmeye yönelik toplantı yaptık ve yeni bir motivasyonla fikri sahiplendik (KRİZ ÇÖZÜLDÜ).
 
 3.KRİZ: Proje yönetiminde Waterfall (Klasik) kullanmamız ilerlememizi olumsuz etkiledi. 
-Eksiklerimizi öğrenip sistemimizi  güncelledik ve Agile Methodology ile Sprint ve Scrum yönetimini uyguladık.
+Eksiklerimizi öğrenip sistemimizi  güncelledik ve Agile Methodology ile Sprint ve Scrum yönetimini uyguladık. (KRİZ ÇÖZÜLDÜ).
+
 [Agile Methodology | Sprint | Scrum by ifsygn](https://ifsygn.notion.site/Agile-Methodology-Sprint-Scrum-by-ifsygn-5f9216afae204f0f86a51841b5289d58?pvs=4)
 
 ### Geliştirilmesi veya sonraki sprintlerde dikkat edilmesi gereken konular neler?
