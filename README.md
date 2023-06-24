@@ -130,11 +130,24 @@ Bir sonraki Sprint’te iş süreçlerini iyileştirmek için geçmiş Sprint’
 - Kod’a daha fazla odaklanması
 - Toplantıları kısaltalım, azaltalım.
 
-### Takım olarak neleri iyi başardık, zor olan nelerin üstesinden geldik?
+### Ne tür sorunlar yaşadık? zor olan nelerin üstesinden geldik? Takım olarak neleri iyi başardık ?
 
-### Ne tür sorunlar yaşadık?
+1.KRİZ: Sprint 1'in ortasında 1 takım arkadaşımız takım değiştirdiğini söyledi ve 4 kişi kaldık. 
+Yalnız kalan kişilerle iletişime geçip, akademinin onayı olursa 5. olarak takımımıza gelmek isteyip istemediklerini sorduk.
+Akademinin yalnız kalan kişilere ve ekik kalan takımlara yardımcı olması sayesinde Elif Vişne'yi ekibimize katmış olduk.(KRİZ ÇÖZÜLDÜ).
+
+2.KRİZ: Sprint 1'in sonuna doğru Roadmap üzerinde çalışırken proje fikrimizin 2022_bootcamp' de dereceye giren bir takımla çok benzediğini iletti. 
+Hepimizin dikkatinden kaçmış olması takım motivasyonunu olumsuz etkiledi. 
+- Durumu Proje asistanımıza ilettik ve farklılıklar olduğu sürece yapabileciğimizi iletti
+Fikrimizi geliştirmeye yönelik toplantı yaptık ve yeni bir motivasyonla fikri sahiplendik (KRİZ ÇÖZÜLDÜ).
+
+3.KRİZ: Proje yönetiminde Waterfall (Klasik) kullanmamız ilerlememizi olumsuz etkiledi. 
+Eksiklerimizi öğrenip sistemimizi  güncelledik ve Agile Methodology ile Sprint ve Scrum yönetimini uyguladık.
+[Agile Methodology | Sprint | Scrum by ifsygn](https://ifsygn.notion.site/Agile-Methodology-Sprint-Scrum-by-ifsygn-5f9216afae204f0f86a51841b5289d58?pvs=4)
 
 ### Geliştirilmesi veya sonraki sprintlerde dikkat edilmesi gereken konular neler?
+- Akademinin duyurularını ve kaynaklarını tam anlamıyla dikkate almak gerekiyor.
+- Agile Yönetiminin faydalarından daha fazla yararlanmalıyız.
 
 ## Product Backlog Refinement (Grooming) Toplantısı
 
