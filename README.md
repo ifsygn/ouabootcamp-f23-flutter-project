@@ -6,13 +6,13 @@
 
 ### **Takım Elemanları**
 
-İsmail Furkan Saygın - Product Manager | Scrum Master | BackEnd Developer
+İsmail Furkan Saygın - Scrum Master | BackEnd Developer
 
-Aleyna Toprak - Product Owner | Designer | FrontEnd Developer
+Ardahan -  Product Owner | Designer
 
-Betül Ateş - Design Manager | Product Specialist | FrontEnd Developer
+Betül Ateş - Designer | FrontEnd Developer
 
-Ardahan - Software Lead | Product Specialist | Designer 
+Aleyna Toprak - Designer | FrontEnd Developer
 
 Elif Vişne - Full Stack Developer
 
