@@ -143,3 +143,15 @@ Bir sonraki Sprint’te iş süreçlerini iyileştirmek için geçmiş Sprint’
 [User Stories by Sprints](https://file.notion.so/f/s/347d0d6d-da74-4d9b-87f7-7f782cd8950b/Untitled.png?id=6cf2d57b-2c7a-4bd9-aa6a-e421f58712a8&table=block&spaceId=81324e5d-4cc5-4bc8-8a26-f5fd63ebb1aa&expirationTimestamp=1687503229314&signature=lfzNSJQmNsXROQRrTxqBEynPcc39qvd15mnWaJUWKpw&downloadName=Untitled.png)
 
 GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databases-db172cc59d80415597104cdc2ff0c90d)
+
+### Ürün Durumu: Ekran görüntüleri:
+![Splash Screen](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/0553cd3d-3d82-4a43-9719-49a924983c37)
+![Slidable Introduction Screen](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/bcd007ca-fd5e-4378-a115-79f256798b67)
+![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/64f5868c-6872-469e-8822-a23839b6d687)
+![Login](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e0d4a9e7-b5ad-4f3d-a1af-bf866333f315)
+![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/3cf615c4-264a-4277-a8ba-74c2aa994c12)
+![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/611ae480-76ff-4eaa-94cf-da896513746f)
+
+
+
+
