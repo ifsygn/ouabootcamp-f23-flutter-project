@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/cupertino.dart';
-
 import 'home_page.dart';
 import 'loginpage/model/auth.dart';
 import 'loginpage/view_viewmodel/login_page/login_register_page.dart';
@@ -22,7 +19,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         if (snapshot.hasData) {
           return HomePage();
         } else {
-          return  const LoginPage();
+          return const LoginPage();
         }
       },
     );
