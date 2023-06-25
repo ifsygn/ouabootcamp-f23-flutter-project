@@ -18,9 +18,9 @@ class HomePage extends StatelessWidget {
 
   Widget _userUid() {
 
-    return Text(user?.email !=null ? '$user?.email' : "anonymous");
+    return Text(user?.email ?? 'Anonymous');
+    //return Text(user?.email !=null ? '$user?.email' : "anonymous");
 
-    return Text(user?.email !=null ? 'User email' : "anonymous");
 
   }
 
