@@ -1,9 +1,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled4/loginpage/view_viewmodel/login_page/signup.dart';
+import 'package:untitled4/loginpage/view_viewmodel/signup.dart';
 
-import '../../model/auth.dart';
+import '../model/auth.dart';
 
 void main() => runApp(const MyApp());
 

@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'blogpage/home_page.dart';
+import 'intro/introduction_page.dart';
 import 'loginpage/model/auth.dart';
-import 'loginpage/view_viewmodel/login_page/login_register_page.dart';
+import 'loginpage/view_viewmodel/login_register_page.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super (key: key);
@@ -19,7 +20,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         if (snapshot.hasData) {
           return HomePage();
         } else {
-          return const LoginPage();
+          return IntroductionScreenWidget();
         }
       },
     );
