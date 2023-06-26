@@ -1,8 +1,5 @@
-
-
 import 'package:flutter/cupertino.dart';
-
-import 'home_page.dart';
+import 'blogpage/home_page.dart';
 import 'loginpage/model/auth.dart';
 import 'loginpage/view_viewmodel/login_page/login_register_page.dart';
 
