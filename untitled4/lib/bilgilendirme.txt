@@ -1,5 +1,0 @@
-1-Build alanında Widget girmek yerine Widget class
- oluşturarak yazmamız diğer arkadaşlarımızın anlaması için daha
- iyi olacaktır.
-
- 2-
