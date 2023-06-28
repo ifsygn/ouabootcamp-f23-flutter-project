@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:untitled4/loginpage/model/auth.dart';
 import 'package:flutter/material.dart';
-
+import '../core/service/authentication/authentication_service.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super (key: key);
@@ -17,16 +16,14 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _userUid() {
-
     return Text(user?.email ?? 'Anonymous');
     //return Text(user?.email !=null ? '$user?.email' : "anonymous");
-
-
   }
 
   Widget _signOutButton() {
     return ElevatedButton(
         onPressed: signOut,
+        // onPressed: Auth.signOut,
         child: const Text("Sign Out")
     );
   }

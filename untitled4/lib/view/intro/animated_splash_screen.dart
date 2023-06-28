@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:untitled4/widget_tree.dart';
+import 'package:untitled4/app/widget_tree.dart';
 import 'package:page_transition/page_transition.dart';
 
 class AnimatedSplashScreenWidget extends StatelessWidget {
