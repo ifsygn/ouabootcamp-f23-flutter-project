@@ -13,6 +13,8 @@ Future <void> main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+  FirebaseApp myApp = Firebase.app('MyApp');
+
   runApp(const MyApp());
 }
 

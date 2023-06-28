@@ -8,7 +8,7 @@ import '../../common/widget/login_password_textfield_stful.dart';
 import '../../common/widget/login_text.dart';
 import '../../common/widget/image_widget.dart';
 import '../../common/widget/ordivider_text.dart';
-import '../../core/service/authentication/authentication_service.dart';
+import '../../core/service/firebase_auth_service.dart';
 import 'auth_viewmodel.dart';
 import 'signup_view.dart';
 

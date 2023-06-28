@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../core/service/authentication/authentication_service.dart';
+import '../../core/service/firebase_auth_service.dart';
 
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
@@ -43,7 +43,7 @@ class GoogleSignInButton extends StatelessWidget {
 //signin
 Future<void> signInWithEmailAndPassword(BuildContext context) async {
   try {
-    await Auth().signInWithEmailAndPassaword(
+    await Auth().signInWithEmailAndPassword(
       email: _emailController.text,
       password: _passwordController.text,
     );

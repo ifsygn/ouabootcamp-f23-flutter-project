@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../core/service/authentication/authentication_service.dart';
+import '../core/service/firebase_auth_service.dart';
 import '../view/intro/introduction_page.dart';
 import 'home_page.dart';
 
