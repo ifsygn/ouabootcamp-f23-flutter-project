@@ -16,10 +16,12 @@ dependencies:
 
   #FIREBASE
   cloud_firestore: ^4.8.2
-  firebase_core: ^2.14.0
+  firebase_core:
   firebase_auth: ^4.6.3
   google_sign_in: ^5.4.2
   firebase_database: ^10.2.3
+  firebase_storage: ^11.2.4
+
   provider: ^6.0.5
   get_it: ^7.6.0
 
@@ -48,9 +50,19 @@ flutter:
     - assets/email_icon.png
     - assets/paw_image.png
     - assets/eye_password.png
+
+    #Introduction-Screen
     - assets/introduction_screen/img_1.png
     - assets/introduction_screen/img_2.png
     - assets/introduction_screen/img_3.png
+    #Splash-Screen
     - assets/splash_screen/splash.png
     - assets/splash_screen/paw_icon.png
+    #Splash-Screen
     - assets/gif/astronaut-cat.gif
+    -
+    - assets/storage/adopted-puppies.jpeg
+    - assets/storage/shelter-dog.jpg
+    - assets/storage/shelter-dog2.jpeg
+    - assets/storage/shelter-dog-humanHand.jpeg
+    - assets/storage/shelter-pup.jpeg

@@ -1,12 +1,10 @@
-import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'address.dart';
 
 
 //Data Model
 class Shelter {
-  final String id;
+  final String shelterID;
   String? name;
   String? type;
   String? state;
@@ -21,9 +19,10 @@ class Shelter {
   String? areaCode;
   String? phoneNumber;
   Address? address;
+  // Pet [] pets;
 
   Shelter({
-    required this.id,
+    required this.shelterID,
     required this.name,
     required this.city,
     this.location,
@@ -39,7 +38,7 @@ class Shelter {
     */
 
   Shelter.fromMap(Map snapshot,String id) :
-        id = id ?? '',
+        shelterID = id ?? '',
         name = snapshot['name'] ?? '',
         city = snapshot['city'] ?? '',
         location = snapshot['location'] ?? '';
@@ -68,7 +67,7 @@ class Shelter {
 
   //contain data read from the document
   Shelter.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
-      : id = doc.id,
+      : shelterID = doc.id,
         name = doc.data()!["name"],
         city = doc.data()!["city"],
         location = doc.data()!["location"],
