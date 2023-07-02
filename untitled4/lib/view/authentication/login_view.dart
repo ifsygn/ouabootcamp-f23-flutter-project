@@ -1,9 +1,14 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import '../../common/widget/background_gradient.dart';
+import '../../common/widget/card_widget.dart';
+import '../../common/widget/email_textfield.dart';
+import '../../common/widget/forgotpassword_button.dart';
+import '../../common/widget/image_widget.dart';
+import '../../common/widget/ordivider_text.dart';
 import '../../core/service/firebase_auth_service.dart';
-import 'login_viewmodel.dart';
+import 'auth_viewmodel.dart';
 
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
