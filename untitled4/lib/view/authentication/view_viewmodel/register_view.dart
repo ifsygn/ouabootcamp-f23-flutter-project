@@ -1,40 +1,45 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled4/loginpage/view_viewmodel/signup.dart';
-
 import '../model/auth.dart';
 
-void main() => runApp(const MyApp());
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LoginPage(),
+      home: SignupPage(),
     );
   }
 }
+
+
+String confirmPassword = '';
+String password = '';
+String appImage='';
+
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
-bool isPasswordVisible = false;
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+final _confirmPasswordController = TextEditingController();
+
+class SignupPage extends StatelessWidget {
+  const SignupPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    appImage="assets/paw_image.png";
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
         alignment: Alignment.topCenter,
         children: [
           const BackgroundGradient(),
-          const Positioned(
+           Positioned(
             top: 45.0,
             child: ImageWidget(
-              imagePath: 'assets/paw_image.png',
+              imagePath: appImage,
               width: 95.0,
               height: 65.0,
             ),
@@ -49,9 +54,19 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ),
-          const Positioned(
-            bottom: 15.0,
-            child: BottomButtons(),
+          Positioned(
+            top: 25,
+            left: 5,
+            child: IconButton(
+              padding: const EdgeInsets.all(18),
+              alignment: Alignment.centerLeft,
+              tooltip: 'Go back',
+              enableFeedback: true,
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
           ),
         ],
       ),
@@ -112,52 +127,8 @@ class CardWidget extends StatelessWidget {
     );
   }
 }
-class BottomButtons extends StatelessWidget {
-  const BottomButtons({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => SignupPage()));
-            // Yeni sayfada işlem yapılacak (ARDAHAN)
-          },
-          child: const Text(
-            'Üye ol',
-            style: TextStyle(
-              fontSize: 13.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            // Şifremi unuttum işlemleri  (ARDAHAN)
-          },
-          child: TextButton(
-            onPressed: () {
-              Auth().signInAnonymous();
-            },
-            child: const Text(
-              'Üye olmadan devam et?',
-              style: TextStyle(
-                fontSize: 13.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
 class LoginForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-
 
   LoginForm({super.key});
 
@@ -169,7 +140,7 @@ class LoginForm extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           const Text(
-            'ÜYE GİRİŞİ',
+            'ÜYE OLMA GİRİŞİ',
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -180,17 +151,40 @@ class LoginForm extends StatelessWidget {
           EmailTextField(controller: _emailController),
           const SizedBox(height: 8.0),
           PasswordTextField(controller: _passwordController),
-          const ForgotPasswordButton(),
+          const SizedBox(height: 8.0),
+          ConfirmTextField(confirmController: _confirmPasswordController),
+          const SizedBox(height: 20.0),
           ElevatedButton(
             onPressed: () {
-              signInWithEmailAndPassaword(context);
+              if (password == confirmPassword) {
+                createUserWithEmailAndPassword(context);
+                Navigator.of(context).pop();
+              }
+              else{
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      content: const Text('Şifre doğrulanamadı.'),
+                      actions: <Widget>[
+                        TextButton(
+                          child: const Text('Tamam'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              }
             },
             style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFCE8BF8)),
             child: Container(
               width: 170.0,
               height: 45.0,
               alignment: Alignment.center,
-              child: const Text('Giriş Yap', style: TextStyle(fontSize: 20.0, color: Colors.white)),
+              child: const Text('Üye Ol', style: TextStyle(fontSize: 20.0, color: Colors.white)),
             ),
           ),
           const SizedBox(height: 8.0),
@@ -268,6 +262,9 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         ),
         Expanded(
           child: TextFormField(
+            onChanged: (value ) {
+              password = value;
+            },
             controller: widget.controller,
             decoration: InputDecoration(
               labelText: 'Şifre',
@@ -292,30 +289,52 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     );
   }
 }
-class ForgotPasswordButton extends StatelessWidget {
-  const ForgotPasswordButton({super.key});
+class ConfirmTextField extends StatefulWidget {
+  final TextEditingController confirmController;
+
+  const ConfirmTextField({Key? key, required this.confirmController}) : super(key: key);
+
+  @override
+  _ConfirmTextFieldState createState() => _ConfirmTextFieldState();
+}
+class _ConfirmTextFieldState extends State<ConfirmTextField> {
+  bool isPasswordVisible = false;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        GestureDetector(
-          onTap: () {
-            // Şifremi unuttum işlemleri   (ARDAHAN)
-          },
-          child: TextButton(
-            onPressed: () {
-              forgotPassword(context);
+        const Padding(
+          padding: EdgeInsets.only(right: 8.0),
+          child: ImageWidget(
+            imagePath: 'assets/password_icon.png',
+            width: 28.0,
+            height: 28.0,
+          ),
+        ),
+        Expanded(
+          child: TextFormField(
+            onChanged: (value) {
+              confirmPassword = value;
             },
-            child: const Text(
-              'Şifremi unuttum?',
-              style: TextStyle(
-                fontSize: 13.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue,
+            controller: widget.confirmController,
+            decoration: InputDecoration(
+              labelText: 'Şifre Onayla',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(1.0),
+              ),
+              suffixIcon: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isPasswordVisible = !isPasswordVisible;
+                  });
+                },
+                child: Icon(
+                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                ),
               ),
             ),
+            obscureText: !isPasswordVisible,
           ),
         ),
       ],
@@ -351,7 +370,6 @@ class GoogleSignInButton extends StatelessWidget {
       child: TextButton.icon(
         onPressed: () {
           Auth().signInWithGoogle();
-          // Google ile kaydol işlemleri    (ARDAHAN)
         },
         icon: Image.asset(
           'assets/google_logo.png',
@@ -359,7 +377,7 @@ class GoogleSignInButton extends StatelessWidget {
           height: 35.0,
         ),
         label: const Text(
-          ' Google ile Giriş Yap ',
+          ' Google ile Üye Ol ',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -368,9 +386,9 @@ class GoogleSignInButton extends StatelessWidget {
     );
   }
 }
-Future<void> signInWithEmailAndPassaword(BuildContext context) async {
+Future<void> createUserWithEmailAndPassword(BuildContext context) async {
   try {
-    await Auth().signInWithEmailAndPassaword(
+    await Auth().createUserWithEmailAndPassword(
       email: _emailController.text,
       password: _passwordController.text,
     );
@@ -395,37 +413,3 @@ Future<void> signInWithEmailAndPassaword(BuildContext context) async {
     );
   }
 }
-Future<void> forgotPassword(BuildContext context) async{
-  try {
-    await Auth().verifyEmail(
-      email: _emailController.text,
-      password: _passwordController.text,
-    );
-    const snackBar = SnackBar(
-      content: Text('Password Reset Email Sent !'),
-    );
-
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
-  on FirebaseAuthException catch (e) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Error'),
-          content: Text(e.message.toString()),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-}
-

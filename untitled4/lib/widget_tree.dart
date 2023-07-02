@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
+import 'package:untitled4/view/authentication/model/auth.dart';
 import 'blogpage/home_page.dart';
-import 'intro/introduction_page.dart';
-import 'loginpage/model/auth.dart';
-import 'loginpage/view_viewmodel/login_register_page.dart';
+import 'intro/introduction_screen.dart';
+
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super (key: key);

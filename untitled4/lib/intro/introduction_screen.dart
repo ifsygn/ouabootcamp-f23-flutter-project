@@ -1,11 +1,14 @@
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import '../loginpage/view_viewmodel/login_register_page.dart';
+
+import '../view/authentication/view_viewmodel/login_view.dart';
 
 
 class IntroductionScreenWidget extends StatelessWidget {
   final introKey = GlobalKey<IntroductionScreenState>();
+
+  IntroductionScreenWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +39,13 @@ class IntroductionScreenWidget extends StatelessWidget {
       onDone: () {
         // Tanıtım sayfalarının tamamlandığı işlemleri buraya ekleyin
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => LoginPage()),
+          MaterialPageRoute(builder: (_) => const LoginPage()),
         );
       },
       onSkip: () {
         // Tanıtım sayfalarının atlandığı işlemleri buraya ekleyin
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => LoginPage()),
+          MaterialPageRoute(builder: (_) => const LoginPage()),
         );
       },
       showSkipButton: true,
