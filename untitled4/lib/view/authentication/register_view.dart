@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../model/auth.dart';
-
-
+import '../../core/service/firebase_auth_service.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -14,7 +12,6 @@ class RegisterView extends StatelessWidget {
     );
   }
 }
-
 
 String confirmPassword = '';
 String password = '';

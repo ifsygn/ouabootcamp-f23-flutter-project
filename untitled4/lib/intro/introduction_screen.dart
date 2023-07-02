@@ -2,7 +2,7 @@ import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../view/authentication/view_viewmodel/login_view.dart';
+import '../view/authentication/login_view.dart';
 
 
 class IntroductionScreenWidget extends StatelessWidget {
@@ -39,13 +39,13 @@ class IntroductionScreenWidget extends StatelessWidget {
       onDone: () {
         // Tanıtım sayfalarının tamamlandığı işlemleri buraya ekleyin
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const LoginPage()),
+          MaterialPageRoute(builder: (_) => const LoginView()),
         );
       },
       onSkip: () {
         // Tanıtım sayfalarının atlandığı işlemleri buraya ekleyin
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const LoginPage()),
+          MaterialPageRoute(builder: (_) => const LoginView()),
         );
       },
       showSkipButton: true,
