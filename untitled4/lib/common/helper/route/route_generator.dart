@@ -15,7 +15,7 @@ class RouterGenerator {
         */
 
       case RouteConstant.loginScreenRoute:
-        return MaterialPageRoute(builder: (_) => const LoginPage());
+        return MaterialPageRoute(builder: (_) => const LoginView());
 
       case RouteConstant.signupScreenRoute:
         return MaterialPageRoute(builder: (_) => const SignupPage());

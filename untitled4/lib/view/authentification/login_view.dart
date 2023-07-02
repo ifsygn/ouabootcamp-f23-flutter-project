@@ -23,14 +23,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LoginPage(),
+      home: LoginView(),
     );
   }
 }
 
 bool isPasswordVisible = false;
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginView extends StatelessWidget {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class LoginPage extends StatelessWidget {
           const BackgroundGradient(),
           const Positioned(
             top: 45.0,
-            child: const ImageWidget(
+            child: ImageWidget(
               imagePath: 'assets/paw_image.png',
               width: 95.0,
               height: 65.0,
@@ -140,3 +140,4 @@ class BottomButtons extends StatelessWidget { //common.widget.XXX.dart
     );
   }
 } //common.widget.XXX.dart
+

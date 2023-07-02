@@ -1,20 +1,15 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled4/app/widget_tree.dart';
 import 'package:firebase_core/firebase_core.dart';
-import '../core/service/firebase_options.dart';
-import '../view/intro/animated_splash_screen.dart';
+import 'core/service/firebase_options.dart';
+import 'view/intro/animated_splash_screen.dart';
 
 Future <void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
-
   //Firebase initialization
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    // options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  FirebaseApp myApp = Firebase.app('MyApp');
-
+  // FirebaseApp myApp = Firebase.app('MyApp');
   runApp(const MyApp());
 }
 

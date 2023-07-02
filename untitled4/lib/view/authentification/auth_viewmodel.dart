@@ -5,6 +5,7 @@ import '../../core/service/firebase_auth_service.dart';
 
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
+final _confirmPasswordController = TextEditingController();
 
 // GoogleSignInButton_View
 class GoogleSignInButton extends StatelessWidget {

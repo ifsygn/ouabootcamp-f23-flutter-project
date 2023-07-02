@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -13,7 +11,7 @@ class AnimatedSplashScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen( //https://pub.dev/packages/animated_splash_screen
       splash: Lottie.network('https://assets5.lottiefiles.com/packages/lf20_il43ezyd.json'),
-      //Lottie.file(File('assets/gif/astronaut-cat.gif')),
+      // splash: Lottie.file(File('assets/gif/astronaut-cat.gif')),
       
       /*Column(
           children: [
@@ -38,6 +36,8 @@ class AnimatedSplashScreenWidget extends StatelessWidget {
     );
   }
 }
+
+
 //icon image splash screen
 /*
 AnimatedSplashScreen( //https://pub.dev/packages/animated_splash_screen
