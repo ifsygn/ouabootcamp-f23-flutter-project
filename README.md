@@ -14,6 +14,23 @@ Aleyna Toprak - Designer | FrontEnd Developer
 
 Elif Vişne - Full Stack Developer
 
+### Önemli Tarihler
+1.SPRINT: 5 Haziran - 19 Haziran
+
+2.SPRINT: 19 Haziran - 3 Temmuz
+
+3.SPRINT: 3 Temmuz - 17 Temmuz
+
+Ürünlerin Teslim Tarihi: 18 Temmuz
+
+Ön Değerlendirme: 18 Temmuz - 24 Temmuz
+
+Demo Day: 26 Temmuz
+
+Mezuniyet Tören: 28 Temmuz
+
+---
+
 <table>
 <details align="left"> 
 <summary><h2>ÜRÜN</h2></summary>
