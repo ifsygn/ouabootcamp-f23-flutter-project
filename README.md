@@ -210,7 +210,8 @@ GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databas
 
 **Daily Scrum**: Daily Scrum toplantıları WhatsApp’ta planlanıp, Discord’da yapılmıştır.
 
-![Google Docs - 2.Sprint Daily Scrums and Meeting](https://docs.google.com/document/d/1ZFAcBfnqhweAyKXDXtTSrmKumbx_P_hKp4nTZtIEKT4/edit?usp=sharing)
+
+[Google Docs - 2.Sprint Daily Scrums and Meeting](https://docs.google.com/document/d/1ZFAcBfnqhweAyKXDXtTSrmKumbx_P_hKp4nTZtIEKT4/edit?usp=sharing)
 </details>
 
 <details align="left"> 
