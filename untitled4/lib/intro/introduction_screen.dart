@@ -17,24 +17,24 @@ class IntroductionScreenWidget extends StatelessWidget {
       pages: [
         PageViewModel(
           title: "Sayfa 1",
-          body: "Bu, tanıtım sayfasının açıklama metni.",
+          body: "Patili dostlarımız hakkında her şey...",
           image: Center(child: Lottie.network('https://assets5.lottiefiles.com/packages/lf20_il43ezyd.json', height: 250.0)),
         ),
         PageViewModel(
           title: "Sayfa 2",
-          body: "Bu, tanıtım sayfasının açıklama metni.",
-          image: Center(child: Image.asset('assets/introduction_screen/img_2.png', height: 200.0)),
+          body: "Sana yakın barınakları gör!",
+          image: Center(child: Lottie.network('https://assets5.lottiefiles.com/packages/lf20_FtWlyLkTHI.json', height: 200.0)),
         ),
-        PageViewModel(
+/*        PageViewModel(
           title: "Sayfa 3",
           body: "Bu, tanıtım sayfasının açıklama metni.",
-          image: Center(child: Image.asset('assets/introduction_screen/img_3.png', height: 200.0)),
+          image: Center(child: Lottie.network('https://assets9.lottiefiles.com/packages/lf20_syqnfe7c.json', height: 200.0)),
         ),
         PageViewModel(
           title: "Sayfa 4",
           body: "Bu, tanıtım sayfasının açıklama metni.",
           image: Center(child: Image.asset('assets/introduction_screen/img_1.png', height: 200.0)),
-        ),
+        ),*/
       ],
       onDone: () {
         // Tanıtım sayfalarının tamamlandığı işlemleri buraya ekleyin

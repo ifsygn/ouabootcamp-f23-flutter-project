@@ -7,7 +7,15 @@ import '../../common/widget/email_textfield.dart';
 import '../../common/widget/image_widget.dart';
 import '../../common/widget/ordivider_text.dart';
 import '../../core/service/firebase_auth_service.dart';
+import 'auth_viewmodel.dart';
 
+String confirmPassword = '';
+String password = '';
+String appImage='';
+
+final _emailController = TextEditingController();
+final _passwordController = TextEditingController();
+final _confirmPasswordController = TextEditingController();
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -34,7 +42,7 @@ class RegisterView extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: SingleChildScrollView(
                 child: CardWidget(
-                  child: LoginForm(),
+                  child: RegisterForm(),
                 ),
               ),
             ),
@@ -59,18 +67,10 @@ class RegisterView extends StatelessWidget {
   }
 }
 
-String confirmPassword = '';
-String password = '';
-String appImage='';
-
-final _emailController = TextEditingController();
-final _passwordController = TextEditingController();
-final _confirmPasswordController = TextEditingController();
-
-class LoginForm extends StatelessWidget {
+class RegisterForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
-  LoginForm({super.key});
+  RegisterForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +130,7 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 8.0),
           const OrDivider(),
           const SizedBox(height: 8.0),
-          const GoogleSignInButton(),
+          const GoogleSignInButton(text: " Google ile Üye Ol "),
         ],
       ),
     );
@@ -162,7 +162,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         ),
         Expanded(
           child: TextFormField(
-            onChanged: (value ) {
+            onChanged: (value) {
               password = value;
             },
             controller: widget.controller,
@@ -190,37 +190,6 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
   }
 }
 
-class GoogleSignInButton extends StatelessWidget {
-  const GoogleSignInButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 200.0,
-      height: 45.0,
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: TextButton.icon(
-        onPressed: () {
-          Auth().signInWithGoogle();
-        },
-        icon: Image.asset(
-          'assets/google_logo.png',
-          width: 35.0,
-          height: 35.0,
-        ),
-        label: const Text(
-          ' Google ile Üye Ol ',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
-  }
-}
 Future<void> createUserWithEmailAndPassword(BuildContext context) async {
   try {
     await Auth().createUserWithEmailAndPassword(

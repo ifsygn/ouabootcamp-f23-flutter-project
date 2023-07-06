@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import '../common/helper/route/route_constant.dart';
 import '../core/service/firebase_auth_service.dart';
 
 
@@ -24,9 +25,12 @@ class HomePage extends StatelessWidget {
 
   }
 
-  Widget _signOutButton() {
+  Widget _signOutButton(BuildContext context) {
     return ElevatedButton(
-        onPressed: signOut,
+        onPressed:() async {
+          signOut();
+          Navigator.pushNamed(context, RouteConstant.loginScreenRoute);
+        },
         child: const Text("Sign Out")
     );
   }
@@ -46,7 +50,7 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _userUid(),
-            _signOutButton(),
+            _signOutButton(context),
           ],
         ),
       ),

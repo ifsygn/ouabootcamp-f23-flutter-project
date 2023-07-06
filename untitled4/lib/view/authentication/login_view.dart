@@ -1,6 +1,7 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled4/common/helper/route/route_constant.dart';
 import '../../common/widget/background_gradient.dart';
 import '../../common/widget/card_widget.dart';
 import '../../common/widget/email_textfield.dart';
@@ -52,10 +53,8 @@ class LoginView extends StatelessWidget {
     );
   }
 }
-
 class LoginForm extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-
 
   LoginForm({super.key});
 
@@ -81,7 +80,7 @@ class LoginForm extends StatelessWidget {
           const ForgotPasswordButton(),
           ElevatedButton(
             onPressed: () {
-              signInWithEmailAndPassaword(context);
+              signInWithEmailAndPassword(context);
             },
             style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFFCE8BF8)),
             child: Container(
@@ -94,19 +93,21 @@ class LoginForm extends StatelessWidget {
           const SizedBox(height: 8.0),
           const OrDivider(),
           const SizedBox(height: 8.0),
-          const GoogleSignInButton(),
+          const GoogleSignInButton(text: " Google ile Giriş Yap "),
         ],
       ),
     );
   }
 }
 
-Future<void> signInWithEmailAndPassaword(BuildContext context) async {
+Future<void> signInWithEmailAndPassword(BuildContext context) async {
   try {
-    await Auth().signInWithEmailAndPassaword(
+
+    await Auth().signInWithEmailAndPassword(
       email: _emailController.text,
       password: _passwordController.text,
     );
+    Navigator.pushNamed(context, RouteConstant.homePageRoute);
   }
   on FirebaseAuthException catch (e) {
     showDialog(

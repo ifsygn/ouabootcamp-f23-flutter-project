@@ -1,6 +1,7 @@
 class RouteConstant {
 
   static const String introductionScreenRoute = '/';
+  static const String homePageRoute = '/home';
   static const String loginScreenRoute = '/loginPage';
   static const String signupScreenRoute = '/signupPage';
 /*

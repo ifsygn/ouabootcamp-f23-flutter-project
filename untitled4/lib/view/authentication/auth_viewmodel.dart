@@ -32,7 +32,7 @@ class BottomButtons extends StatelessWidget {
           },
           child: TextButton(
             onPressed: () {
-              Auth().signInAnonymous();
+              Auth().signInAnonymous(context);
             },
             child: const Text(
               'Üye olmadan devam et?',
@@ -48,6 +48,7 @@ class BottomButtons extends StatelessWidget {
     );
   }
 }
+
 class PasswordTextField extends StatefulWidget {
   final TextEditingController controller;
 
@@ -97,8 +98,11 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
     );
   }
 }
+
 class GoogleSignInButton extends StatelessWidget {
-  const GoogleSignInButton({super.key});
+
+  final String text;
+  const GoogleSignInButton({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -112,16 +116,15 @@ class GoogleSignInButton extends StatelessWidget {
       child: TextButton.icon(
         onPressed: () {
           Auth().signInWithGoogle();
-          // Google ile kaydol işlemleri    (ARDAHAN)
         },
         icon: Image.asset(
           'assets/google_logo.png',
           width: 35.0,
           height: 35.0,
         ),
-        label: const Text(
-          ' Google ile Giriş Yap ',
-          style: TextStyle(
+        label: Text(
+          text,
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),

@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:untitled4/common/helper/route/route_constant.dart';
+import '../../../blogpage/home_page.dart';
 import '../../../intro/introduction_screen.dart';
+import '../../../view/authentication/login_view.dart';
 
 class RouterGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -11,6 +13,11 @@ class RouterGenerator {
       case RouteConstant.introductionScreenRoute:
         return MaterialPageRoute(builder: (_) => IntroductionScreenWidget());
 
+      case RouteConstant.loginScreenRoute:
+        return MaterialPageRoute(builder: (_) => const LoginView());
+
+      case RouteConstant.homePageRoute:
+        return MaterialPageRoute(builder: (_) => HomePage());
     /*
       case RouteConstant.loginScreenRoute:
         return MaterialPageRoute(builder: (_) => const LoginView());

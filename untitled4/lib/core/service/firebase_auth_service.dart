@@ -1,12 +1,16 @@
 import "package:firebase_auth/firebase_auth.dart";
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter/material.dart';
+import 'package:untitled4/common/helper/route/route_constant.dart';
+
+
 class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   User? get currentUser => _firebaseAuth.currentUser;
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
-  Future<void> signInWithEmailAndPassaword({required String email,required String password,}) async {
+  Future<void> signInWithEmailAndPassword({required String email,required String password,}) async {
     await _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }
@@ -33,10 +37,16 @@ class Auth {
   Future<void> signOut() async{
     await _firebaseAuth.signOut();
   }
-  Future<void> signInAnonymous() async{
+  Future<void> signInAnonymous(BuildContext context) async {
     try {
-      final userCredential =  await FirebaseAuth.instance.signInAnonymously();
-      print("Signed in with temporary account.");
+      await FirebaseAuth.instance.signInAnonymously();
+
+      if (kDebugMode) {
+        print("Signed in with temporary account.");
+      }
+
+      Navigator.pushNamed(context, RouteConstant.homePageRoute);
+
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case "operation-not-allowed":
