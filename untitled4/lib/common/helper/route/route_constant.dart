@@ -4,9 +4,8 @@ class RouteConstant {
   static const String homePageRoute = '/home';
   static const String loginScreenRoute = '/loginPage';
   static const String signupScreenRoute = '/signupPage';
-/*
 
-
+  /*
   static const String homeScreenRoute = '/homePage';
   static const String onBoardScreenRoute = '/onBoard';
   static const String registerScreenRoute = '/registerPage';
@@ -21,6 +20,5 @@ class RouteConstant {
   static const String shelterScreenRoute = '/shelterPage';
   static const String myPetScreenRoute = '/myPetPage';
   static const String blogScreenRoute = '/blogPage';
-
-   */
+  */
 }

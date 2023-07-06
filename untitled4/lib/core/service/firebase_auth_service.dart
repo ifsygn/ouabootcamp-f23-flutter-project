@@ -34,9 +34,11 @@ class Auth {
   Future<void> verifyEmail ({required String email,required String password,}) async {
     await _firebaseAuth.sendPasswordResetEmail(email: email);
   }
+
   Future<void> signOut() async{
     await _firebaseAuth.signOut();
   }
+
   Future<void> signInAnonymous(BuildContext context) async {
     try {
       await FirebaseAuth.instance.signInAnonymously();
