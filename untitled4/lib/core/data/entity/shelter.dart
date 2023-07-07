@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'address.dart';
 
 
@@ -10,7 +11,7 @@ class Shelter {
   String? state;
   String? city;
   String? country;
-  String? location;
+  GeoPoint? coordinates;
   String? fullAddress;
   String? iBAN;
   String? about;
@@ -25,11 +26,10 @@ class Shelter {
     required this.shelterID,
     required this.name,
     required this.city,
-    this.location,
+    this.coordinates,
     this.type,
     this.phoneNumber,
   });
-
 
   /*
     fromMap(Map snapshot, String id):
@@ -39,9 +39,25 @@ class Shelter {
 
   Shelter.fromMap(Map snapshot,String id) :
         shelterID = id ?? '',
-        name = snapshot['name'] ?? '',
-        city = snapshot['city'] ?? '',
-        location = snapshot['location'] ?? '';
+        name = snapshot['name'] as String,
+        city = snapshot['city'] as String,
+        coordinates = snapshot['location'] as GeoPoint;
+
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "city": city,
+      "location": coordinates,
+    };
+  }
+
+  Shelter.fromJson(Map<String, Object?> json)
+      : this(
+    shelterID: json['shelterID']! as String,
+    name: json['name']! as String,
+    city: json['city']! as String,
+    coordinates: json['location']! as GeoPoint,
+  );
 
   /*
     toJson():
@@ -49,19 +65,11 @@ class Shelter {
     JSON format before we upload into Firebase.
     */
 
-  toJson() {
+  Map<String, Object?> toJson() {
     return {
-      "name": name,
-      "city": city,
-      "location": location,
-    };
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      "name": name,
-      "city": city,
-      "location": location,
+      'name': name,
+      'city': city,
+      'location': coordinates,
     };
   }
 
@@ -70,6 +78,6 @@ class Shelter {
       : shelterID = doc.id,
         name = doc.data()!["name"],
         city = doc.data()!["city"],
-        location = doc.data()!["location"],
+        coordinates = doc.data()!["location"],
         address = Address.fromMap(doc.data()!["address"]);
 }

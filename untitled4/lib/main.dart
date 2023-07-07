@@ -25,11 +25,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      onGenerateRoute: RouterGenerator.generateRoute,
+      home: const AnimatedSplashScreenWidget(),
       theme: ThemeData(
         primarySwatch: Colors.orange,
       ),
-      home: const AnimatedSplashScreenWidget(),
-      onGenerateRoute: RouterGenerator.generateRoute,
     );
   }
 }
