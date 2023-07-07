@@ -13,7 +13,21 @@ class ShelterItem extends StatelessWidget {
   final Shelter shelter;
   final DocumentReference<Shelter> reference;
 
-  /// Returns the shelter poster.
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4, top: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          photoURL,
+          Flexible(child: details),
+        ],
+      ),
+    );
+  }
+
+  /// Returns the shelter photo.
   Widget get photoURL {
     return SizedBox(
       width: 100,
@@ -29,7 +43,7 @@ class ShelterItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           name,
-          metadata,
+          locationData,
           distance,
         ],
       ),
@@ -71,7 +85,7 @@ class ShelterItem extends StatelessWidget {
   }
 
   /// Returns metadata about the shelter.
-  Widget get metadata {
+  Widget get locationData {
     return Padding(
       padding: const EdgeInsets.only(top: 8),
       child: Column(
@@ -113,18 +127,4 @@ class ShelterItem extends StatelessWidget {
       ),
     );
   }*/
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4, top: 4),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          photoURL,
-          Flexible(child: details),
-        ],
-      ),
-    );
-  }
 }

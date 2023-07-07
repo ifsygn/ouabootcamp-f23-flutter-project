@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:untitled4/common/helper/route/route_constant.dart';
+import 'package:untitled4/view/shelter/shelter_search.dart';
 import '../../../blogpage/home_page.dart';
 import '../../../intro/introduction_screen.dart';
 import '../../../view/authentication/login_view.dart';
@@ -18,6 +19,9 @@ class RouterGenerator {
 
       case RouteConstant.homePageRoute:
         return MaterialPageRoute(builder: (_) => HomePage());
+
+      case RouteConstant.shelterSearchPageRoute:
+        return MaterialPageRoute(builder: (_) => ShelterSearchPage());
     /*
       case RouteConstant.loginScreenRoute:
         return MaterialPageRoute(builder: (_) => const LoginView());

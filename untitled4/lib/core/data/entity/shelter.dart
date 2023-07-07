@@ -13,11 +13,9 @@ class Shelter {
   String? fullAddress;
   String? iBAN;
   String? about;
-  int? numRatings;
   String? photoURL;
   String? areaCode;
   String? phoneNumber;
-  Address? address;
   // Pet [] pets;
 
   Shelter({
@@ -28,6 +26,26 @@ class Shelter {
     this.type,
     this.phoneNumber,
   });
+
+  factory Shelter.fromFirestore(DocumentSnapshot doc) {
+    Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
+
+    String shelterID = data?['shelterID'] as String;
+    String name = data?['name'] as String;
+    String city = data?['city'] as String;
+    GeoPoint coordinates = data?['coordinates'] as GeoPoint;
+
+    return Shelter(shelterID: shelterID, name: name, city: city, coordinates: coordinates);
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'shelterID' : shelterID,
+      'name': name,
+      'city' : city,
+      'coordinates': coordinates,
+    };
+  }
 
   /*
     fromMap(Map snapshot, String id):
@@ -72,31 +90,10 @@ class Shelter {
     };
   }
 
-  factory Shelter.fromFirestore(DocumentSnapshot doc) {
-    Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
-
-    String shelterID = data?['shelterID'] as String;
-    String name = data?['name'] as String;
-    String city = data?['city'] as String;
-    GeoPoint coordinates = data?['coordinates'] as GeoPoint;
-
-    return Shelter(shelterID: shelterID, name: name, city: city, coordinates: coordinates);
-  }
-
-  Map<String, dynamic> toFirestore() {
-    return {
-      'shelterID' : shelterID,
-      'name': name,
-      'city' : city,
-      'coordinates': coordinates,
-    };
-  }
-
   //contain data read from the document
   Shelter.fromDocumentSnapshot(DocumentSnapshot<Map<String, dynamic>> doc)
       : shelterID = doc.id,
         name = doc.data()!["name"],
         city = doc.data()!["city"],
-        coordinates = doc.data()!["location"],
-        address = Address.fromMap(doc.data()!["address"]);
+        coordinates = doc.data()!["location"];
 }

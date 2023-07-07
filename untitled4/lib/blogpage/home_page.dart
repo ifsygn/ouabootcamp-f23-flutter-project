@@ -18,11 +18,8 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _userUid() {
-
     return Text(user?.email ?? 'Anonymous');
     //return Text(user?.email !=null ? '$user?.email' : "anonymous");
-
-
   }
 
   Widget _signOutButton(BuildContext context) {
@@ -50,6 +47,11 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             _userUid(),
+            ElevatedButton(
+                onPressed:() async {
+                  Navigator.pushNamed(context, RouteConstant.shelterSearchPageRoute);
+                },
+                child: const Text("Shelter Search Page")),
             _signOutButton(context),
           ],
         ),

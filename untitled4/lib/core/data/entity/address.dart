@@ -1,7 +1,8 @@
 class Address {
   final String street;
-  final String building;
   final String city;
+
+  String? building;
   String? state;
   String? country;
   String? fullAddress;
