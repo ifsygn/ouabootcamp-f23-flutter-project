@@ -7,14 +7,14 @@ class ShelterRepository {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   // Access the collection in the database using the collection's ID
-  late final CollectionReference _shelterCollection = firestore.collection('shelter');
+  late final CollectionReference _shelterCollection = firestore.collection('shelters');
   // Access the document in the collection using the shelter's ID
-  late final DocumentReference _shelterDocument = FirebaseFirestore.instance.collection('shelter').doc('shelter_id');
+  late final DocumentReference _shelterDocument = FirebaseFirestore.instance.collection('shelters').doc('shelter_id');
 
   /// A reference to the list of shelters.
   /// We are using `withConverter` to ensure that interactions with the collection
   /// are type-safe.
-  final shelterRef = FirebaseFirestore.instance.collection('shelter').withConverter<Shelter>(
+  final shelterRef = FirebaseFirestore.instance.collection('shelters').withConverter<Shelter>(
     fromFirestore: (snapshot, _) => Shelter.fromJson(snapshot.data()!),
     toFirestore: (shelter, _) => shelter.toJson(),
   );
@@ -217,5 +217,39 @@ class ShelterRepository {
   Stream<QuerySnapshot> streamShelterCollection() {
     return _shelterCollection
         .snapshots();
+  }
+}
+
+
+/// The different ways that we can filter/sort shelters.
+enum ShelterQuery {
+  year,
+  likesAsc,
+  likesDesc,
+  rated,
+  sciFi,
+  fantasy,
+}
+
+extension on Query<Shelter> {
+  /// Create a firebase query from a [ShelterQuery]
+  Query<Shelter> queryBy(ShelterQuery query) {
+    switch (query) {
+      case ShelterQuery.fantasy:
+        return where('genre', arrayContainsAny: ['fantasy']);
+
+      case ShelterQuery.sciFi:
+        return where('genre', arrayContainsAny: ['sci-fi']);
+
+      case ShelterQuery.likesAsc:
+      case ShelterQuery.likesDesc:
+        return orderBy('likes', descending: query == ShelterQuery.likesDesc);
+
+      case ShelterQuery.year:
+        return orderBy('year', descending: true);
+
+      case ShelterQuery.rated:
+        return orderBy('rated', descending: true);
+    }
   }
 }

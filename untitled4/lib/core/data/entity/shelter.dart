@@ -1,7 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'address.dart';
-
 
 //Data Model
 class Shelter {
@@ -16,7 +14,7 @@ class Shelter {
   String? iBAN;
   String? about;
   int? numRatings;
-  String? photo;
+  String? photoURL;
   String? areaCode;
   String? phoneNumber;
   Address? address;
@@ -38,10 +36,11 @@ class Shelter {
     */
 
   Shelter.fromMap(Map snapshot,String id) :
-        shelterID = id ?? '',
+        shelterID = id,
         name = snapshot['name'] as String,
         city = snapshot['city'] as String,
         coordinates = snapshot['location'] as GeoPoint;
+
 
   Map<String, dynamic> toMap() {
     return {
@@ -70,6 +69,26 @@ class Shelter {
       'name': name,
       'city': city,
       'location': coordinates,
+    };
+  }
+
+  factory Shelter.fromFirestore(DocumentSnapshot doc) {
+    Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
+
+    String shelterID = data?['shelterID'] as String;
+    String name = data?['name'] as String;
+    String city = data?['city'] as String;
+    GeoPoint coordinates = data?['coordinates'] as GeoPoint;
+
+    return Shelter(shelterID: shelterID, name: name, city: city, coordinates: coordinates);
+  }
+
+  Map<String, dynamic> toFirestore() {
+    return {
+      'shelterID' : shelterID,
+      'name': name,
+      'city' : city,
+      'coordinates': coordinates,
     };
   }
 

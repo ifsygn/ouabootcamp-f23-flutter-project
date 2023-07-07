@@ -29,6 +29,9 @@ dependencies:
   introduction_screen: ^3.1.9
   lottie: ^2.4.0
 
+  #LOCATION
+  geolocator: ^9.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
