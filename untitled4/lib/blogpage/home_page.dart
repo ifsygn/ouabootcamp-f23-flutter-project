@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled4/common/widget/appbarwidget.dart';
+import 'package:untitled4/common/widget/drawerpage.dart';
 import '../common/helper/route/route_constant.dart';
 import '../core/service/firebase_auth_service.dart';
 
@@ -35,9 +37,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: _title(),
+      appBar: const appBarWidget(
+          title: 'Ana Sayfa'
       ),
+      drawer: NavDrawer(),
       body: Container(
         height: double.infinity,
         width: double.infinity,
