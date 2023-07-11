@@ -17,7 +17,8 @@ class ShelterRepository {
   /// A reference to the list of shelters.
   /// We are using `withConverter` to ensure that interactions with the collection
   /// are type-safe.
-  final shelterRef = FirebaseFirestore.instance.collection('shelters').withConverter<Shelter>(
+  final shelterRef = FirebaseFirestore.instance.collection('shelters')
+      .withConverter<Shelter>(
     fromFirestore: (snapshot, _) => Shelter.fromJson(snapshot.data()!),
     toFirestore: (shelter, _) => shelter.toJson(),
   );
@@ -86,7 +87,7 @@ class ShelterRepository {
       final coordinates = data['coordinates'] as GeoPoint;
       final city = data['city'] as String? ?? "";
       final phoneNumber = data['phoneNumber'] as String? ?? "";
-      final type = data['type'] as String? ?? "";
+      final type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
       final fullAddress = data['fullAddress'] as String? ?? "";
       final photoURL = data['photoURL'] as String? ?? "";
 
@@ -120,7 +121,7 @@ class ShelterRepository {
       final name = data['name'] as String? ?? "";
       final coordinates = data['coordinates'] as GeoPoint;
       final phoneNumber = data['phoneNumber'] as String? ?? "";
-      final type = data['type'] as String? ?? "";
+      final type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
 
       final shelter = Shelter(
         shelterID: doc.id,
@@ -175,7 +176,7 @@ class ShelterRepository {
       final coordinates = data['coordinates'] as GeoPoint;
       final phoneNumber = data['phoneNumber'] as String? ?? "";
       final city = data['city'] as String? ?? "";
-      final type = data['type'] as String? ?? "";
+      final type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
 
       final shelter = Shelter(
         shelterID: doc.id,
@@ -224,39 +225,5 @@ class ShelterRepository {
   Stream<QuerySnapshot> streamShelterCollection() {
     return _shelterCollection
         .snapshots();
-  }
-}
-
-
-/// The different ways that we can filter/sort shelters.
-enum ShelterQuery {
-  year,
-  likesAsc,
-  likesDesc,
-  rated,
-  sciFi,
-  fantasy,
-}
-
-extension on Query<Shelter> {
-  /// Create a firebase query from a [ShelterQuery]
-  Query<Shelter> queryBy(ShelterQuery query) {
-    switch (query) {
-      case ShelterQuery.fantasy:
-        return where('genre', arrayContainsAny: ['fantasy']);
-
-      case ShelterQuery.sciFi:
-        return where('genre', arrayContainsAny: ['sci-fi']);
-
-      case ShelterQuery.likesAsc:
-      case ShelterQuery.likesDesc:
-        return orderBy('likes', descending: query == ShelterQuery.likesDesc);
-
-      case ShelterQuery.year:
-        return orderBy('year', descending: true);
-
-      case ShelterQuery.rated:
-        return orderBy('rated', descending: true);
-    }
   }
 }

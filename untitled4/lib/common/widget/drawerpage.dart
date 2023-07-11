@@ -1,24 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:untitled4/view/shelter/shelter_search_view.dart';
 import '../../core/service/firebase_auth_service.dart';
+import '../../view/shelter/shelter_search_view.dart';
 import 'appbarwidget.dart';
-
-
-void main()
-{
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter',
-      home: MyHomePage(),
-    );
-  }
-}
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -146,7 +129,7 @@ class NavDrawerWidget extends StatelessWidget {
             {
               Navigator.of(context).pop();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const BarinaklarView()));
+                  builder: (BuildContext context) => const ShelterSearchView()));
             },
           ),),
         const Divider(

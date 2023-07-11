@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'address.dart';
 
 //Data Model
 class Shelter {
   final String shelterID;
   String? name;
-  String? type;
+  // String? type;
+  List<String>? type;
   String? state;
   String? city;
   String? country;
@@ -57,7 +57,7 @@ class Shelter {
     String country = data?['country'] as String;
     String phoneNumber = data?['phoneNumber'] as String;
     String areaCode = data?['areaCode'] as String;
-    String type = data?['type'] as String;
+    List<String> type = data?['type'] as List<String>;
     String fullAddress = data?['fullAddress'] as String;
     String photoURL = data?['photoURL'] as String;
     String iBAN = data?['iBAN'] as String;
@@ -67,6 +67,14 @@ class Shelter {
         shelterID: shelterID,
         name: name,
         city: city,
+        state: state,
+        country: country,
+        phoneNumber: phoneNumber,
+        areaCode: areaCode,
+        type: type,
+        fullAddress: fullAddress,
+        photoURL: photoURL,
+        iBAN: iBAN,
         coordinates: coordinates);
   }
 
@@ -116,7 +124,7 @@ class Shelter {
     country: json['country'] as String,
     phoneNumber: json['phoneNumber'] as String,
     areaCode: json['areaCode'] as String,
-    type: json['type'] as String,
+    type: json['type'] as List<String>,
     fullAddress: json['fullAddress'] as String,
     photoURL: json['photoURL'] as String,
     iBAN: json['iBAN'] as String,

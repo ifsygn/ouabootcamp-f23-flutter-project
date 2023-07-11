@@ -4,11 +4,23 @@ import '../../common/widget/appbarwidget.dart';
 import '../../common/widget/logowidget.dart';
 import '../../common/widget/drawerpage.dart';
 import '../../core/data/entity/shelter.dart';
+import '../items/shelter_item.dart';
 
 final ShelterRepository shelterRepository = ShelterRepository();
 
-class BarinaklarView extends StatelessWidget {
-  const BarinaklarView({Key? key}) : super(key: key);
+Future<List<Shelter>> getShelters() async {
+  // Burada veritabanından barınakları çeken bir işlem gerçekleştirilir.
+  // Bu örnekte mock bir veritabanı kullanarak sabit verileri dönüyorum.
+
+  await Future.delayed(const Duration(seconds: 1)); // Gerçek veritabanı isteğini simüle etmek için gecikme
+
+  var shelters = shelterRepository.getShelters();
+
+  return shelters;
+}
+
+class ShelterSearchView extends StatelessWidget {
+  const ShelterSearchView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +28,7 @@ class BarinaklarView extends StatelessWidget {
       appBar: const appBarWidget(
         title: 'Barınaklar',
       ),
-      drawer: const CustomDrawer(),
+      drawer: NavDrawer(),
       body: Column(
         children: [
           const Positioned(child: logoWidget(),),
@@ -51,28 +63,14 @@ class BarinaklarView extends StatelessWidget {
           ),
           Expanded(
             child: FutureBuilder<List<Shelter>>(
-              future: fetchBarinaklarFromDatabase(),
+              future: getShelters(),
               // Veritabanından barınakları çeken asenkron fonksiyon
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
-                      return ListTile(
-                        leading: Image.network(snapshot.data![index].photoURL ?? ''),
-                        title: Text(snapshot.data![index].name ?? ''),
-                        subtitle: const Text("distance"),
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  ShelterDetailView(
-                                      shelter: snapshot.data![index]),
-                            ),
-                          );
-                        },
-                      );
+                      return ShelterItem(shelter: snapshot.data![index]);
                     },
                   );
                 } else if (snapshot.hasError) {
@@ -86,36 +84,6 @@ class BarinaklarView extends StatelessWidget {
       ),
     );
   }
-}
-
-class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Drawer(
-      child: NavDrawerWidget(),
-    );
-  }
-}
-
-/*class Barinak {
-  final String ad;
-  final String resimUrl;
-  final String adres;
-
-  Barinak({required this.ad, required this.resimUrl, required this.adres});
-}*/
-
-Future<List<Shelter>> fetchBarinaklarFromDatabase() async {
-  // Burada veritabanından barınakları çeken bir işlem gerçekleştirilir.
-  // Bu örnekte mock bir veritabanı kullanarak sabit verileri dönüyorum.
-
-  await Future.delayed(const Duration(seconds: 3)); // Gerçek veritabanı isteğini simüle etmek için gecikme
-
-  var shelters = shelterRepository.getShelters();
-
-  return shelters;
 }
 
 class ShelterDetailView extends StatelessWidget {

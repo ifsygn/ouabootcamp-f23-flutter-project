@@ -1,37 +1,33 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-
 import '../../core/data/entity/shelter.dart';
 import '../../core/data/repository/user_repository.dart';
+import '../shelter/shelter_search_view.dart';
 
 /// A single shelter row.
 class ShelterItem extends StatelessWidget {
-  const ShelterItem(this.shelter, this.reference, {super.key});
 
   final Shelter shelter;
-  final DocumentReference<Shelter> reference;
+
+  const ShelterItem({Key? key, required this.shelter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 4, top: 4),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          photoURL,
-          Flexible(child: details),
-        ],
-      ),
-    );
-  }
-
-  /// Returns the shelter photo.
-  Widget get photoURL {
-    return SizedBox(
-      width: 100,
-      child: Image.network(shelter.photoURL!),
+    return ListTile(
+      leading: photoURL,
+      // leading: Image.network(shelter.photoURL ?? ''),
+      title: name,
+      subtitle: const Text("evet distance"),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                ShelterDetailView(
+                    shelter: shelter),
+          ),
+        );
+      },
     );
   }
 
@@ -50,20 +46,41 @@ class ShelterItem extends StatelessWidget {
     );
   }
 
+  /// Returns the shelter photo.
+  Widget get photoURL {
+    return SizedBox(
+      width: 100,
+      child: Image.network(shelter.photoURL!),
+    );
+  }
+
+  ///Returns
+  Future<Widget> get distanceShelterFromUser async {
+
+    Position userPosition = await UserRepository().getLocation();
+    // print('Kullanıcının konumu: ${userPosition.latitude}, ${userPosition.longitude}');
+
+    double distance = calculateDistance(userPosition,
+        shelter.coordinates!.latitude,
+        shelter.coordinates!.longitude) as double;
+
+    String roundedDistance = distance.toStringAsFixed(1);
+    return Text('Mesafe: $roundedDistance');
+  }
+
   ///Returns distance between Shelter and User.
   get distance async {
-    Position userPosition = await UserRepository().getLocation();
-    print('Kullanıcının konumu: ${userPosition.latitude}, ${userPosition.longitude}');
 
-    return calculateDistance(userPosition,
-        shelter.coordinates!.latitude,
-        shelter.coordinates!.longitude);
+
+
+
   }
 
   Future<double> calculateDistance(
       Position userPosition,
       double shelterLatitude,
       double shelterLongitude) async {
+
     double distanceInMeters = Geolocator.distanceBetween(
       userPosition.latitude,
       userPosition.longitude,
@@ -127,4 +144,22 @@ class ShelterItem extends StatelessWidget {
       ),
     );
   }*/
+
+
+/*
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4, top: 4),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          photoURL,
+          Flexible(child: details),
+        ],
+      ),
+    );
+  }
+*/
 }
+
