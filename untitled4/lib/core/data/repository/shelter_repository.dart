@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled4/core/data/entity/shelter.dart';
 
+
 class ShelterRepository {
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -9,7 +10,9 @@ class ShelterRepository {
   // Access the collection in the database using the collection's ID
   late final CollectionReference _shelterCollection = firestore.collection('shelters');
   // Access the document in the collection using the shelter's ID
-  late final DocumentReference _shelterDocument = FirebaseFirestore.instance.collection('shelters').doc('shelter_id');
+  late final DocumentReference _shelterDocument = FirebaseFirestore.instance
+      .collection('shelters')
+      .doc('shelter_id');
 
   /// A reference to the list of shelters.
   /// We are using `withConverter` to ensure that interactions with the collection
@@ -18,7 +21,6 @@ class ShelterRepository {
     fromFirestore: (snapshot, _) => Shelter.fromJson(snapshot.data()!),
     toFirestore: (shelter, _) => shelter.toJson(),
   );
-
 
   Future<void> addShelter({
     required String name,
@@ -69,6 +71,7 @@ class ShelterRepository {
         .catchError((e) => print(e));
   }
 
+  ///Get Shelter Collection as a List from Firebase
   Future<List<Shelter>> getShelters() async {
     // "shelterCollection"dan sorgu atılır ve sonuç beklenir
     final querySnapshot = await _shelterCollection.get();
@@ -81,18 +84,22 @@ class ShelterRepository {
       // Veri alanları kontrol edilir ve null güvenliği sağlanır
       final name = data['name'] as String? ?? "";
       final coordinates = data['coordinates'] as GeoPoint;
-      final phoneNumber = data['phoneNumber'] as String? ?? "";
       final city = data['city'] as String? ?? "";
+      final phoneNumber = data['phoneNumber'] as String? ?? "";
       final type = data['type'] as String? ?? "";
+      final fullAddress = data['fullAddress'] as String? ?? "";
+      final photoURL = data['photoURL'] as String? ?? "";
 
       // Shelter nesnesi oluşturulur
       final shelter = Shelter(
         shelterID: doc.id,
         name: name,
-        coordinates: coordinates,
-        phoneNumber: phoneNumber,
         city: city,
+        coordinates: coordinates,
         type: type,
+        phoneNumber: phoneNumber,
+        fullAddress: fullAddress,
+        photoURL: photoURL,
       );
 
       // Oluşturulan Shelter nesnesi listeye eklenir

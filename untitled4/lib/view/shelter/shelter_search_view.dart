@@ -1,23 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:untitled4/core/data/repository/shelter_repository.dart';
 import '../../common/widget/appbarwidget.dart';
 import '../../common/widget/logowidget.dart';
 import '../../common/widget/drawerpage.dart';
+import '../../core/data/entity/shelter.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Barınaklar Uygulaması',
-      home: BarinaklarView(),
-    );
-  }
-}
+final ShelterRepository shelterRepository = ShelterRepository();
 
 class BarinaklarView extends StatelessWidget {
   const BarinaklarView({Key? key}) : super(key: key);
@@ -29,8 +17,7 @@ class BarinaklarView extends StatelessWidget {
         title: 'Barınaklar',
       ),
       drawer: const CustomDrawer(),
-      body:
-      Column(
+      body: Column(
         children: [
           const Positioned(child: logoWidget(),),
           Padding(
@@ -63,7 +50,7 @@ class BarinaklarView extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: FutureBuilder<List<Barinak>>(
+            child: FutureBuilder<List<Shelter>>(
               future: fetchBarinaklarFromDatabase(),
               // Veritabanından barınakları çeken asenkron fonksiyon
               builder: (context, snapshot) {
@@ -72,15 +59,16 @@ class BarinaklarView extends StatelessWidget {
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: Image.network(snapshot.data![index].resimUrl),
-                        title: Text(snapshot.data![index].ad),
+                        leading: Image.network(snapshot.data![index].photoURL ?? ''),
+                        title: Text(snapshot.data![index].name ?? ''),
+                        subtitle: const Text("distance"),
                         onTap: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  BarinakDetayView(
-                                      barinak: snapshot.data![index]),
+                                  ShelterDetailView(
+                                      shelter: snapshot.data![index]),
                             ),
                           );
                         },
@@ -111,38 +99,40 @@ class CustomDrawer extends StatelessWidget {
   }
 }
 
-class Barinak {
+/*class Barinak {
   final String ad;
   final String resimUrl;
   final String adres;
 
   Barinak({required this.ad, required this.resimUrl, required this.adres});
-}
+}*/
 
-List<Barinak> barinaklar = [];
-
-Future<List<Barinak>> fetchBarinaklarFromDatabase() async {
+Future<List<Shelter>> fetchBarinaklarFromDatabase() async {
   // Burada veritabanından barınakları çeken bir işlem gerçekleştirilir.
   // Bu örnekte mock bir veritabanı kullanarak sabit verileri dönüyorum.
+
   await Future.delayed(const Duration(seconds: 3)); // Gerçek veritabanı isteğini simüle etmek için gecikme
-  return barinaklar;
+
+  var shelters = shelterRepository.getShelters();
+
+  return shelters;
 }
 
-class BarinakDetayView extends StatelessWidget {
-  final Barinak barinak;
+class ShelterDetailView extends StatelessWidget {
+  final Shelter shelter;
 
-  const BarinakDetayView({Key? key, required this.barinak}) : super(key: key);
+  const ShelterDetailView({Key? key, required this.shelter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(barinak.ad),
+        title: Text(shelter.name ?? 'Barınak İsmi: Örnek Barınak'),
       ),
       body: Column(
         children: [
-          Image.network(barinak.resimUrl),
-          Text(barinak.adres),
+          Image.network(shelter.photoURL ?? 'https://picsum.photos/200'),
+          Text(shelter.fullAddress ?? 'Adres: Hata'),
           // Diğer ayrıntılar
         ],
       ),

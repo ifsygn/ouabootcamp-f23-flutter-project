@@ -260,6 +260,7 @@ class NavDrawerWidget extends StatelessWidget {
             leading: IconButton(
               icon: const Icon(Icons.logout),
               onPressed: () {
+
               },
             ),
             onTap: ()
