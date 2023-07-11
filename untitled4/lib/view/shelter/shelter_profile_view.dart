@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -286,8 +285,6 @@ class AnimalCard extends StatelessWidget {
     );
   }
 }
-
-
 
 /*
 Bu kod, Flutter framework'ü kullanılarak bir mobil uygulama geliştirmek için kullanılan bir yapıya sahiptir. Kodda hem frontend hem de backend kısmı bulunmaktadır. İşlevleri aşağıda ayrıntılı olarak açıklanmıştır:

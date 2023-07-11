@@ -33,7 +33,7 @@ class Shelter {
     this.iBAN,
   });
 
-  Shelter.extended({
+/*  Shelter.extended({
     required this.shelterID,
     required this.name,
     required this.city,
@@ -45,7 +45,7 @@ class Shelter {
     this.phoneNumber,
     this.fullAddress,
     this.photoURL,
-  });
+  });*/
 
   factory Shelter.fromFirestore(DocumentSnapshot doc) {
     Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
@@ -99,6 +99,7 @@ class Shelter {
     When data is fetched from Firebase, it is in JSON format.
     this method allows us to map data from JSON format to our Product format.
     */
+/*
 
   Shelter.fromMap(Map snapshot,String id) :
         shelterID = id,
@@ -106,6 +107,7 @@ class Shelter {
         city = snapshot['city'] as String,
         coordinates = snapshot['location'] as GeoPoint;
 
+*/
 
   Map<String, dynamic> toMap() {
     return {

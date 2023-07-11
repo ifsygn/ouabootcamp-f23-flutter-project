@@ -23,6 +23,8 @@ class ShelterRepository {
     toFirestore: (shelter, _) => shelter.toJson(),
   );
 
+/*
+
   Future<void> addShelter({
     required String name,
     required String city,
@@ -39,6 +41,7 @@ class ShelterRepository {
         .whenComplete(() => print("Shelter ADDED to the database"))
         .catchError((e) => print(e));
   }
+*/
 
 /*
 

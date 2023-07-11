@@ -19,8 +19,8 @@ Future<List<Shelter>> getShelters() async {
   return shelters;
 }
 
-class ShelterSearchView extends StatelessWidget {
-  const ShelterSearchView({Key? key}) : super(key: key);
+class ShelterSearchPage extends StatelessWidget {
+  const ShelterSearchPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,59 +29,81 @@ class ShelterSearchView extends StatelessWidget {
         title: 'Barınaklar',
       ),
       drawer: NavDrawer(),
-      body: Column(
-        children: [
-          const Positioned(child: logoWidget(),),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Container(
-              height: 40,
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width * 0.7,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: const Row(
-                children: [
-                  SizedBox(width: 8.0),
-                  Icon(Icons.search),
-                  SizedBox(width: 8.0),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Barınak Arama',
-                      ),
+      body: const ShelterSearchView(),
+    );
+  }
+}
+
+class ShelterSearchView extends StatelessWidget {
+  const ShelterSearchView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const Positioned(child: logoWidget(),),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Container(
+            height: 40,
+            width: MediaQuery
+                .of(context)
+                .size
+                .width * 0.7,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            child: const Row(
+              children: [
+                SizedBox(width: 8.0),
+                Icon(Icons.search),
+                SizedBox(width: 8.0),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Barınak Arama',
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-          Expanded(
-            child: FutureBuilder<List<Shelter>>(
-              future: getShelters(),
-              // Veritabanından barınakları çeken asenkron fonksiyon
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      return ShelterItem(shelter: snapshot.data![index]);
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-                return const Center(child: CircularProgressIndicator());
-              },
-            ),
-          ),
-        ],
-      ),
+        ),
+        const Expanded(
+          child: ShelterList(),
+        ),
+      ],
+    );
+  }
+}
+
+class ShelterList extends StatelessWidget {
+  const ShelterList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Shelter>>(
+      future: getShelters(),
+      // Veritabanından barınakları çeken asenkron fonksiyon
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              return ShelterItem(shelter: snapshot.data![index]);
+            },
+          );
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
     );
   }
 }

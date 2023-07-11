@@ -21,7 +21,7 @@ class RouterGenerator {
         return MaterialPageRoute(builder: (_) => HomePage());
 
       case RouteConstant.shelterSearchRoute:
-        return MaterialPageRoute(builder: (_) => ShelterSearchView());
+        return MaterialPageRoute(builder: (_) => ShelterSearchPage());
     /*
       case RouteConstant.loginScreenRoute:
         return MaterialPageRoute(builder: (_) => const LoginView());
@@ -34,7 +34,6 @@ class RouterGenerator {
 
       case RouteConstant.registerScreenRoute:
         return MaterialPageRoute(builder: (_) => const RegisterPage());
-
 
       case RouteConstant.homeScreenRoute:
         return MaterialPageRoute(builder: (_) => const DrawerPage());

@@ -129,7 +129,7 @@ class NavDrawerWidget extends StatelessWidget {
             {
               Navigator.of(context).pop();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const ShelterSearchView()));
+                  builder: (BuildContext context) => const ShelterSearchPage()));
             },
           ),),
         const Divider(
