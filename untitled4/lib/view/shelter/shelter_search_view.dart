@@ -43,7 +43,7 @@ class ShelterSearchView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Positioned(child: logoWidget(),),
+        const logoWidget(),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Container(

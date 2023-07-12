@@ -26,14 +26,14 @@ dependencies:
 
   #SCREEN WIDGETS
   animated_splash_screen: ^1.3.0
-  introduction_screen: ^3.1.9
-  lottie: ^2.4.0
   carousel_slider: ^4.0.0
 
   #LOCATION
   geolocator: ^9.0.2
   google_nav_bar: ^5.0.2
   url_launcher: ^6.0.3
+  introduction_screen: ^3.1.10
+  lottie: ^2.4.0
 
 
 dev_dependencies:

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -162,26 +165,49 @@ class _ShelterPageContentState extends State<ShelterPageContent> {
               );
             }),
           ),
-          Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.grey[400]?.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Column(
-              children: [
-                const Text(
-                  'Barınak Bilgisi',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[400]?.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Column(
+                    children: [
+                      const Text(
+                        'Barınak Bilgisi',
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 20),
+                      Text(
+                        widget.shelterInfo,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 20),
-                Text(
-                  widget.shelterInfo,
-                  style: const TextStyle(fontSize: 16),
+              ),
+              Expanded(
+                flex: 1,
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  child: const DonateWidget(
+                    iban: '''
+                    Ziraat Bankası IBAN
+                    
+TR33 0000 0000 0000 0000 0000 00''',
+                    style: TextStyle(fontSize: 14),
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+          const SizedBox(height: 20),
+          ShelterAddressWidget(),
+          const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.all(16),
             child: const Text(
@@ -210,7 +236,7 @@ class _ShelterPageContentState extends State<ShelterPageContent> {
                   // Köpek butonuna basıldığında yapılacak işlemler
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: const Color(0xFFCE8BF8),
+                  backgroundColor: const Color(0xFFCE8BF8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(50),
                   ),
@@ -286,31 +312,103 @@ class AnimalCard extends StatelessWidget {
   }
 }
 
-/*
-Bu kod, Flutter framework'ü kullanılarak bir mobil uygulama geliştirmek için kullanılan bir yapıya sahiptir. Kodda hem frontend hem de backend kısmı bulunmaktadır. İşlevleri aşağıda ayrıntılı olarak açıklanmıştır:
+class ShelterAddressWidget extends StatelessWidget {
+  final String barinakAdresi =
+      "Ankara Üniversitesi Veteriner Fakültesi Hayvan Hastanesi";
+  final Uri mapsUrl = Uri.parse("https://www.google.com/maps/place/Ankara+%C3%9Cniversitesi+Veteriner+Fak%C3%BCltesi+Hayvan+Hastanesi/@39.9584876,32.8035677,13z/data=!4m10!1m2!2m1!1shayvan+hastanesi!3m6!1s0x14d34dd7a255b867:0x1fdaa407f88713dc!8m2!3d39.9584845!4d32.8636238!15sChBoYXl2YW4gaGFzdGFuZXNpWhIiEGhheXZhbiBoYXN0YW5lc2mSAQ9hbmltYWxfaG9zcGl0YWyaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTjRjRmszYlc5M1JSQULgAQA!16s%2Fg%2F11g71by0sw?entry=ttu");
 
-İmportlar: flutter/material.dart paketi içindeki sınıfları kullanabilmek için import ifadesi kullanılır.
+  ShelterAddressWidget({super.key});
 
-main() Fonksiyonu: Uygulamanın başlangıç noktasıdır. runApp() fonksiyonu, MyApp widget'ını başlatır.
+  void launchMapsUrl() async {
+    if (!await launchUrl(mapsUrl)) {
+      throw Exception('Could not launch $mapsUrl');
+      //await launch(mapsUrl);
+    } else {
+      throw 'Yüklenemedi $mapsUrl';
+    }
+  }
 
-MyApp Sınıfı: StatelessWidget sınıfından türetilmiştir ve uygulamanın ana widget'ıdır. MaterialApp widget'ını döndürür.
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: launchMapsUrl,
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/map.png',
+            width: 85,
+            height: 24,
+          ),
+          const Text(
+            "Türkiye, Ankara",
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
-MaterialApp Widget'ı: MaterialApp, temel uygulama bileşenlerini oluşturur ve konfigüre eder. Ana sayfa olarak ShelterPage widget'ını kullanır.
+class DonateWidget extends StatelessWidget {
+  final String iban;
 
-BackgroundImageWidget Sınıfı: Arka plan resmi eklemek için kullanılan bir widget'tır. child parametresi olarak alınan başka bir widget'ı içerir.
+  const DonateWidget({Key? key, required this.iban, required TextStyle style}) : super(key: key);
 
-ShelterPage Sınıfı: Stateful widget sınıfından türetilmiştir ve barınak sayfasını oluşturur. Barınak adı, barınak bilgileri, barınak görüntüleri, hayvan adları ve hayvan yaşları gibi değişkenleri içerir. initState() fonksiyonu, veritabanından gerekli bilgileri çekmek için kullanılabilir. build() fonksiyonu ise sayfanın içeriğini oluşturur.
+  void _copyToClipboard(BuildContext context, String text) {
+    Clipboard.setData(ClipboardData(text: text));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('IBAN panoya kopyalandı')),
+    );
+  }
 
-ShelterPageContent Sınıfı: Barınak sayfasının içeriğini oluşturan bir widget'tır. Arka plan resmini içeren BackgroundImageWidget widget'ını kullanır. Şelter adını, bilgilerini, resimlerini, hayvan adlarını ve hayvan yaşlarını parametre olarak alır.
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: () => _copyToClipboard(context, iban),
+          child: Image.asset(
+            'assets/donate.png',
+            width: 35,
+            height: 35,
+          ),
+        ),
+        const SizedBox(height: 10),
+        GestureDetector(
+          onTap: () => _copyToClipboard(context, iban),
+          child: Text(
+            iban,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 8,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
 
-BackButtonWidget Sınıfı: Sayfanın sol üst köşesinde geri dönüş düğmesini oluşturan bir widget'tır. IconButton kullanır.
 
-AnimalCard Sınıfı: Hayvan kartlarını oluşturan bir widget'tır. Hayvan resmi, adı ve yaşını parametre olarak alır ve ListTile widget'ını kullanarak bilgileri görüntüler.
 
-Bu kod parçacığı, bir barınak sayfasını göstermek için kullanılan bir Flutter uygulamasının frontend kısmını içerir.
-Arka plan resmi, geri dönüş düğmesi, barınak adı, barınak bilgileri, barınak görüntüleri, hayvan adları ve hayvan yaşları gibi bileşenleri içeren bir kullanıcı arayüzü oluşturur.
-Backend kısmı, veritabanından gerekli bilgileri çekmek ve düğmelere basıldığında yapılacak işlemleri gerçekleştirmek için geliştirilmelidir
-Veritabanından bilgileri çekmek için initState() fonksiyonu kullanılabilir ve düğmelere basıldığında yapılacak işlemler ilgili düğme on pressed fonksiyonlarına eklenmelidir.
-Ancak, bu kod parçacığı içerisinde veritabanı bağlantısı veya düğmelere basıldığında gerçekleştirilecek işlemlere dair herhangi bir kod bulunmamaktadır. Bu nedenle, backend kısmı eksik kalmıştır.
-Tam bir uygulama geliştirmek için backend tarafının da oluşturulması ve ilgili veritabanı işlemlerinin gerçekleştirilmesi gerekmektedir.
- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
