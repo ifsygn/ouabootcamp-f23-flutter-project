@@ -311,4 +311,3 @@ extension on Query<Shelter> {
     }
   }
 }
-
