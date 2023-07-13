@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
                 onPressed:() async {
                   Navigator.pushNamed(context, RouteConstant.shelterSearchRoute);
                 },
-                child: const Text("Shelter Search Page")),
+                child: const  Text("Shelter Search Page")),
             _signOutButton(context),
           ],
         ),

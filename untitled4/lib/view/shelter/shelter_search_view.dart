@@ -121,7 +121,7 @@ class ShelterDetailView extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.network(shelter.photoURL ?? 'https://picsum.photos/200'),
+          Image.network(shelter.photoURL?[0] ?? 'https://picsum.photos/200'),
           Text(shelter.fullAddress ?? 'Adres: Hata'),
           // Diğer ayrıntılar
         ],

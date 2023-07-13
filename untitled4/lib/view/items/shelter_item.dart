@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:untitled4/view/shelter/shelter_profile_view.dart';
 import '../../core/data/entity/shelter.dart';
 import '../../core/data/repository/user_repository.dart';
 import '../shelter/shelter_search_view.dart';
 
 /// A single shelter row.
 class ShelterItem extends StatelessWidget {
-
   final Shelter shelter;
 
-  const ShelterItem({Key? key, required this.shelter}) : super(key: key);
+  const ShelterItem({
+    Key? key,
+    required this.shelter
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class ShelterItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) =>
-                ShelterDetailView(
+                ShelterProfilePage(
                     shelter: shelter),
           ),
         );
@@ -50,7 +53,7 @@ class ShelterItem extends StatelessWidget {
   Widget get photoURL {
     return SizedBox(
       width: 100,
-      child: Image.network(shelter.photoURL!),
+      child: Image.network(shelter.photoURL![0]),
     );
   }
 

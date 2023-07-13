@@ -3,16 +3,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:untitled4/core/data/entity/shelter.dart';
 
+import '../entity/pet.dart';
+
 class ShelterRepository {
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  // Access the collection in the database using the collection's ID
+  /// Access the collection in the database using the collection's ID
   late final CollectionReference _shelterCollection = firestore.collection('shelters');
-  // Access the document in the collection using the shelter's ID
-  late final DocumentReference _shelterDocument = FirebaseFirestore.instance
-      .collection('shelters')
-      .doc('shelter_id');
+  /// Access the document in the collection using the shelter's ID
+  // late final DocumentReference _shelterDocument = _shelterCollection.doc('shelter_id');
 
   /// A reference to the list of shelters.
   /// We are using `withConverter` to ensure that interactions with the collection
@@ -21,6 +21,21 @@ class ShelterRepository {
       .withConverter<Shelter>(
     fromFirestore: (snapshot, _) => Shelter.fromJson(snapshot.data()!),
     toFirestore: (shelter, _) => shelter.toJson(),
+  );
+
+
+  /// Access the collection in the database using the collection's ID
+  late final CollectionReference _petCollection = firestore.collection('pets');
+  /// Access the document in the collection using the shelter's ID
+  // late final DocumentReference _petDocument = _petCollection.doc('pet_id');
+
+  /// A reference to the list of pets.
+  /// We are using `withConverter` to ensure that interactions with the collection
+  /// are type-safe.
+  final petRef = FirebaseFirestore.instance.collection('pets')
+      .withConverter<Pet>(
+    fromFirestore: (snapshot, _) => Pet.fromJson(snapshot.data()!),
+    toFirestore: (pet, _) => pet.toJson(),
   );
 
 /*
@@ -119,7 +134,9 @@ class ShelterRepository {
     required String docId,
   }) async {
 
-    await _shelterDocument.delete()
+    DocumentReference shelterDocument = _shelterCollection.doc(docId);
+
+    await shelterDocument.delete()
         .whenComplete(() => print('Shelter DELETED from the database'))
         .catchError((e) => print(e));
   }
@@ -136,23 +153,39 @@ class ShelterRepository {
 
       // Veri alanları kontrol edilir ve null güvenliği sağlanır
       final name = data['name'] as String? ?? "";
-      final coordinates = data['coordinates'] as GeoPoint;
-      final city = data['city'] as String? ?? "";
-      final phoneNumber = data['phoneNumber'] as String? ?? "";
       final type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
+      final state = data['state'] as String? ?? "";
+      final city = data['city'] as String? ?? "";
+      final country = data['country'] as String? ?? "";
+      final coordinates = data['coordinates'] as GeoPoint;
+      final areaCode = data['areaCode'] as String? ?? "";
+      final phoneNumber = data['phoneNumber'] as String? ?? "";
       final fullAddress = data['fullAddress'] as String? ?? "";
-      final photoURL = data['photoURL'] as String? ?? "";
+      final responsibleName = data['responsibleName'] as String? ?? "";
+      final iBAN = data['iBAN'] as String? ?? "";
+      final about = data['about'] as String? ?? "";
+      final photoURL = (data['photoURL'] as List<dynamic>?)?.cast<String>() ?? [];
+      // final photoURL = data['photoURL'] as List<String>? ?? [];
+      final petIDs = (data['petIDs'] as List<dynamic>?)?.cast<String>() ?? [];
+      // final petRefs = data['petRefs'] as List<Pet>? ?? [];
 
       // Shelter nesnesi oluşturulur
       final shelter = Shelter(
-        shelterID: doc.id,
+        id: doc.id,
         name: name,
-        city: city,
-        coordinates: coordinates,
         type: type,
+        state: state,
+        city: city,
+        country: country,
+        coordinates: coordinates,
+        areaCode: areaCode,
         phoneNumber: phoneNumber,
         fullAddress: fullAddress,
+        responsibleName: responsibleName,
+        iBAN: iBAN,
+        about: about,
         photoURL: photoURL,
+        petIDs: petIDs,
       );
 
       // Oluşturulan Shelter nesnesi listeye eklenir
@@ -176,7 +209,7 @@ class ShelterRepository {
       final type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
 
       final shelter = Shelter(
-        shelterID: doc.id,
+        id: doc.id,
         name: name,
         coordinates: coordinates,
         phoneNumber: phoneNumber,
@@ -209,7 +242,7 @@ class ShelterRepository {
 
       // Create a Shelter object using the retrieved data
       final Shelter shelter = Shelter(
-        shelterID: data['id'] as String,
+        id: data['id'] as String,
         name: data['name'] as String,
         city: data['city'] as String,
         // Add other properties accordingly
@@ -236,7 +269,7 @@ class ShelterRepository {
       final type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
 
       final shelter = Shelter(
-        shelterID: doc.id,
+        id: doc.id,
         name: name,
         coordinates: coordinates,
         phoneNumber: phoneNumber,
@@ -262,6 +295,7 @@ class ShelterRepository {
         .update(shelter.toMap());
   }*/
 
+/*
   Future<void> updateShelter(Shelter shelter) async {
     try {
       // Update the document with the new data from the Shelter object
@@ -274,11 +308,14 @@ class ShelterRepository {
     }
   }
 
+  */
   Stream<QuerySnapshot> streamShelterCollection() {
     return _shelterCollection
         .snapshots();
   }
 }
+
+/*
 
 enum ShelterQuery {
   city,
@@ -311,3 +348,5 @@ extension on Query<Shelter> {
     }
   }
 }
+
+*/

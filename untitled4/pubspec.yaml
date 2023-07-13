@@ -34,6 +34,7 @@ dependencies:
   url_launcher: ^6.0.3
   introduction_screen: ^3.1.10
   lottie: ^2.4.0
+  page_transition: ^2.0.9
 
 
 dev_dependencies:
