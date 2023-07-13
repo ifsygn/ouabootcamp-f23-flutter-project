@@ -11,6 +11,7 @@ class Shelter {
   String? country;
   GeoPoint? coordinates;
   String? fullAddress;
+  String? responsibleName;
   String? iBAN;
   String? about;
   String? photoURL;
@@ -29,6 +30,7 @@ class Shelter {
     this.areaCode,
     this.phoneNumber,
     this.fullAddress,
+    this.responsibleName,
     this.photoURL,
     this.iBAN,
   });
@@ -59,6 +61,7 @@ class Shelter {
     String areaCode = data?['areaCode'] as String;
     List<String> type = data?['type'] as List<String>;
     String fullAddress = data?['fullAddress'] as String;
+    String responsibleName = data?['responsibleName'] as String;
     String photoURL = data?['photoURL'] as String;
     String iBAN = data?['iBAN'] as String;
     GeoPoint coordinates = data?['coordinates'] as GeoPoint;
@@ -73,6 +76,7 @@ class Shelter {
         areaCode: areaCode,
         type: type,
         fullAddress: fullAddress,
+        responsibleName: responsibleName,
         photoURL: photoURL,
         iBAN: iBAN,
         coordinates: coordinates);
@@ -89,6 +93,7 @@ class Shelter {
       'areaCode' : areaCode,
       'type' : type,
       'fullAddress' : fullAddress,
+      'responsibleName' : responsibleName,
       'photoURL' : photoURL,
       'coordinates': coordinates,
     };
@@ -128,6 +133,7 @@ class Shelter {
     areaCode: json['areaCode'] as String,
     type: json['type'] as List<String>,
     fullAddress: json['fullAddress'] as String,
+    responsibleName: json['responsibleName'] as String,
     photoURL: json['photoURL'] as String,
     iBAN: json['iBAN'] as String,
     coordinates: json['location']! as GeoPoint,
@@ -150,6 +156,7 @@ class Shelter {
       'areaCode': areaCode,
       'type': type,
       'fullAddress': fullAddress,
+      'responsibleName': responsibleName,
       'photoURL': photoURL,
       'iBAN': iBAN,
       'coordinates': coordinates,

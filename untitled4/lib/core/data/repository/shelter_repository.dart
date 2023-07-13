@@ -1,7 +1,7 @@
 // Import the firebase_core and cloud_firestore plugin
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/services.dart';
 import 'package:untitled4/core/data/entity/shelter.dart';
-
 
 class ShelterRepository {
 
@@ -58,9 +58,58 @@ class ShelterRepository {
   }
 */
 
+  Future<void> addSheltersFromTextFile(String filePath) async {
+    String fileData = await rootBundle.loadString(filePath);
+    List<String> lines = fileData.split('\n');
+    List<Map<String, dynamic>> shelters = [];
+
+    String name = '';
+    String fullAddress = '';
+    String phoneNumber = '';
+
+    for (int i = 0; i < lines.length; i++) {
+      String line = lines[i].trim();
+
+      if (line.isNotEmpty) {
+        if (line.startsWith('name: ')) {
+          name = line.substring(6);
+        } else if (line.startsWith('fullAddress: ')) {
+          fullAddress = line.substring(13);
+        } else if (line.startsWith('phoneNumber: ')) {
+          phoneNumber = line.substring(13);
+
+          Map<String, dynamic> shelterData = {
+            'name': name,
+            'fullAddress': fullAddress,
+            'phoneNumber': phoneNumber,
+          };
+
+          shelters.add(shelterData);
+
+          // Reset variables for the next shelter
+          name = '';
+          fullAddress = '';
+          phoneNumber = '';
+        }
+      }
+    }
+
+    shelters.forEach((shelter) async {
+      await _shelterCollection.add(shelter);
+    });
+  }
+
   Future<void> addShelterByJson(Shelter shelter) async {
     try {
       await _shelterCollection.add(shelter.toJson());
+    } catch (e) {
+      // Hata durumunda gerekli işlemler yapılabilir, örneğin hata mesajını göstermek veya loglamak
+    }
+  }
+
+  Future<void> addSheltersByJsonText(Map<String, Object?> shelterJson) async {
+    try {
+      await _shelterCollection.add(shelterJson);
     } catch (e) {
       // Hata durumunda gerekli işlemler yapılabilir, örneğin hata mesajını göstermek veya loglamak
     }
@@ -141,6 +190,11 @@ class ShelterRepository {
     return shelters;
   }
 
+  Future<QuerySnapshot> getShelterCollection() {
+    return _shelterCollection
+        .get();
+  }
+
   Future<Shelter> getShelterById(String id) async {
     try {
       final DocumentSnapshot snapshot = await _shelterCollection.doc(id).get();
@@ -202,11 +256,6 @@ class ShelterRepository {
         .delete();
   }
 
-  Future<QuerySnapshot> getShelterCollection() {
-    return _shelterCollection
-        .get();
-  }
-
 /*  updateShelter(Shelter shelter) async {
     await shelterCollection
         .doc(shelter.id)
@@ -230,3 +279,36 @@ class ShelterRepository {
         .snapshots();
   }
 }
+
+enum ShelterQuery {
+  city,
+  likesAsc,
+  likesDesc,
+  distance,
+  petHotel,
+  shelter,
+}
+
+extension on Query<Shelter> {
+  /// Create a firebase query from a [ShelterQuery]
+  Query<Shelter> queryBy(ShelterQuery query) {
+    switch (query) {
+      case ShelterQuery.shelter:
+        return where('type', arrayContainsAny: ['shelter']);
+
+      case ShelterQuery.petHotel:
+        return where('type', arrayContainsAny: ['petHotel']);
+
+      case ShelterQuery.likesAsc:
+      case ShelterQuery.likesDesc:
+        return orderBy('likes', descending: query == ShelterQuery.likesDesc);
+
+      case ShelterQuery.city:
+        return orderBy('city', descending: false);
+
+      case ShelterQuery.distance:
+        return orderBy('distance', descending: false);
+    }
+  }
+}
+

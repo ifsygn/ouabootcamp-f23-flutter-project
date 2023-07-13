@@ -52,6 +52,11 @@ class HomePage extends StatelessWidget {
             _userUid(),
             ElevatedButton(
                 onPressed:() async {
+            Navigator.pushNamed(context, RouteConstant.shelterSearchRoute);
+            },
+                child: const Text("Add Shelter from txt File")),
+            ElevatedButton(
+                onPressed:() async {
                   Navigator.pushNamed(context, RouteConstant.shelterSearchRoute);
                 },
                 child: const Text("Shelter Search Page")),

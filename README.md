@@ -29,7 +29,7 @@ Bu platformu Barınaklar, Hayvan Sahipleri, Veterinerler, Bakımevleri, Hayvan o
 ### **Soba Uygulamasının Gelir Modeli**
 
 Hayvan dostlarının ihtiyaçlarına yönelik her türlü bilgi, hizmet ve ürüne tek bir uygulama ile ulaşılabilecek bir portal hayal ederek yola çıktık. 
-
+c
 Sosyal sorumluluk alanına giren bu uygulamanın gelir modelini bağış, hizmet ve ürün satışı olarak planladık.
 
 ### **Ürün Özellikleri**
