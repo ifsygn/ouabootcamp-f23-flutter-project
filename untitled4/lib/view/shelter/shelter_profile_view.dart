@@ -12,8 +12,6 @@ import '../items/pet_item.dart';
 
 final ShelterRepository shelterRepository = ShelterRepository();
 final PetRepository petRepository = PetRepository();
-List<Pet> petsOfShelter = [];
-
 
 class ShelterProfilePage extends StatefulWidget {
   final Shelter shelter;
@@ -30,22 +28,16 @@ class ShelterProfilePage extends StatefulWidget {
 
 class _ShelterProfilePageState extends State<ShelterProfilePage> {
   final Shelter shelter;
-  // late final List<Pet> petsOfShelter;
+  List<Pet> petsOfShelter = [];
   _ShelterProfilePageState(this.shelter);
 
   int currentPageIndex = 0;
 
   @override
   void initState() {
-    super.initState();
     // Veritabanından gerekli bilgileri çekmek için bir işlem yapabilirsiniz.
     // Değişkenleri güncelleyin.
-    fetchAnimalData();
-  }
-
-  void fetchAnimalData() async {
-    petsOfShelter = await petRepository.getPetsOfShelter(shelter) ?? [];
-    setState(() {});
+    super.initState();
   }
 
 
@@ -178,7 +170,9 @@ TR33 0000 0000 0000 0000 0000 00''',
                 ),
               ],
             ),
-            PetList(petsOfShelter: petsOfShelter),
+            Expanded(
+              child: PetList(shelterID: widget.shelter.id),
+            ),
           ],
         ),
       ),
@@ -187,23 +181,34 @@ TR33 0000 0000 0000 0000 0000 00''',
 }
 
 class PetList extends StatelessWidget {
-  const PetList({
-    super.key,
-    required this.petsOfShelter,
-  });
+  final String shelterID;
 
-  final List<Pet> petsOfShelter;
+  const PetList({
+    Key? key,
+    required this.shelterID,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: petsOfShelter.length,
-        itemBuilder: (context, index) {
-          return PetItem(pet: petsOfShelter[index]);
+    return FutureBuilder<List<Pet>>(
+      // Veritabanından barınaklardaki hayvanları çeken asenkron fonksiyon
+      future: petRepository.getPetsOfShelter(shelterID),
+      builder: ( context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasError) {
+          return Text('Bir hata oluştu: ${snapshot.error}');
+        } else {
+          List<Pet> pets = snapshot.data ?? [];
+          return ListView.builder(
+            shrinkWrap: true,
+            itemCount: pets.length,
+            itemBuilder: (context, index) {
+              return PetItem(pet: pets[index]);
+            },
+          );
         }
-      ),
+      },
     );
   }
 }

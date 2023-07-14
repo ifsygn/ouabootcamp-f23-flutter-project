@@ -14,11 +14,11 @@ class Pet {
   Pet({
     required this.petID,
     this.ownerID,
-    required this.name,
-    required this.species,
+    this.name,
+    this.species,
     this.folk,
-    required this.age,
-    required this.photoURL,
+    this.age,
+    this.photoURL,
     this.info,
   });
 
@@ -54,17 +54,18 @@ class Pet {
   }
 
 
-  factory Pet.fromFirestore(DocumentSnapshot doc) {
-    Map<String, dynamic>? data = doc.data() as Map<String, dynamic>?;
+  factory Pet.fromSnapshot(DocumentSnapshot snapshot) {
 
-    String petID = data?['petID'] as String;
-    String ownerID = data?['ownerID'] as String;
-    String name = data?['name'] as String;
-    List<String> species = data?['species'] as List<String>;
-    String folk = data?['folk'] as String;
-    int age = data?['age'] as int;
-    String photoURL = data?['photoURL'] as String;
-    String info = data?['info'] as String;
+    Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+
+    String petID = snapshot.id;
+    String ownerID = data['ownerID'] as String;
+    String name = data['name'] as String;
+    List<String> species = (data['species'] as List<dynamic>?)?.cast<String>() ?? [];
+    String folk = data['folk'] as String;
+    int age = data['age'] as int;
+    String photoURL = data['photoURL'] as String;
+    String info = data['info'] as String;
 
     return Pet(
       petID: petID,
@@ -78,7 +79,7 @@ class Pet {
       );
   }
 
-  Map<String, dynamic> toFirestore() {
+  Map<String, dynamic> toSnapshot() {
     return {
       'petID' : petID,
       'ownerID' : ownerID,

@@ -197,24 +197,15 @@ class PetRepository {
   }
 
   ///Shelter'daki evcil hayvan listesini al
-  Future<List<Pet>?> getPetsOfShelter(Shelter shelter) async {
-    try {
-
-      String shelterID = shelter.id;
-
-      QuerySnapshot querySnapshot = await _petCollection
+  Future<List<Pet>> getPetsOfShelter(String shelterID) async {
+      final querySnapshot = await _petCollection
           .where('ownerID', isEqualTo: shelterID)
           .get();
 
-      List<Pet> pets = [];
-      for (DocumentSnapshot doc in querySnapshot.docs) {
-        pets.add(Pet.fromFirestore(doc));
-      }
+      final pets = querySnapshot.docs
+          .map((doc) => Pet.fromSnapshot(doc))
+          .toList();
 
       return pets;
-    } catch (e) {
-      print('Bir hata oluştu: $e');
-      return null;
-    }
   }
 }

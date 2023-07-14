@@ -4,9 +4,9 @@ import 'owner.dart';
 
 //Data Model
 class Shelter extends Owner {
-  final List<String>? type;
-  final String? responsibleName;
-  final String? iBAN;
+  List<String>? type;
+  String? responsibleName;
+  String? iBAN;
 
   Shelter({
     required String id,
@@ -86,10 +86,12 @@ class Shelter extends Owner {
 
   @override
   factory Shelter.fromSnapshot(DocumentSnapshot snapshot) {
+
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
+
     String id = snapshot.id;
     String name = data['name'] as String;
-    List<String>? type = data['type'] as List<String>;
+    List<String> type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
     String? state = data['state'] as String;
     String? city = data['city'] as String;
     String? country = data['country'] as String;
@@ -100,8 +102,8 @@ class Shelter extends Owner {
     String? responsibleName = data['responsibleName'] as String;
     String? iBAN = data['iBAN'] as String;
     String? about = data['about'] as String;
-    List<String>? photoURL = data['photoURL'] as List<String>;
-    List<String>? petIDs = data['petIDs'] as List<String>;
+    List<String> photoURL = (data['photoURL'] as List<dynamic>?)?.cast<String>() ?? [];
+    List<String> petIDs = (data['petIDs'] as List<dynamic>?)?.cast<String>() ?? [];
 
     return Shelter(
       id: id,

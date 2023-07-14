@@ -141,48 +141,9 @@ class ShelterRepository {
     final querySnapshot = await _shelterCollection.get();
 
     // Belge listesi oluşturulur ve her belge için döngü yapılır
-    final shelters = querySnapshot.docs.map((doc) {
-      // Belge verileri "data" değişkenine atanır
-      final data = doc.data() as Map<String, dynamic>;
-
-      // Veri alanları kontrol edilir ve null güvenliği sağlanır
-      final name = data['name'] as String? ?? "";
-      final type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
-      final state = data['state'] as String? ?? "";
-      final city = data['city'] as String? ?? "";
-      final country = data['country'] as String? ?? "";
-      final coordinates = data['coordinates'] as GeoPoint;
-      final areaCode = data['areaCode'] as String? ?? "";
-      final phoneNumber = data['phoneNumber'] as String? ?? "";
-      final fullAddress = data['fullAddress'] as String? ?? "";
-      final responsibleName = data['responsibleName'] as String? ?? "";
-      final iBAN = data['iBAN'] as String? ?? "";
-      final about = data['about'] as String? ?? "";
-      final photoURL = (data['photoURL'] as List<dynamic>?)?.cast<String>() ?? [];
-      final petIDs = (data['petIDs'] as List<dynamic>?)?.cast<String>() ?? [];
-
-      // Shelter nesnesi oluşturulur
-      final shelter = Shelter(
-        id: doc.id,
-        name: name,
-        type: type,
-        state: state,
-        city: city,
-        country: country,
-        coordinates: coordinates,
-        areaCode: areaCode,
-        phoneNumber: phoneNumber,
-        fullAddress: fullAddress,
-        responsibleName: responsibleName,
-        iBAN: iBAN,
-        about: about,
-        photoURL: photoURL,
-        petIDs: petIDs,
-      );
-
-      // Oluşturulan Shelter nesnesi listeye eklenir
-      return shelter;
-    }).toList();
+    final shelters = querySnapshot.docs
+        .map((doc) => Shelter.fromSnapshot(doc))
+        .toList();
 
     // Barınak listesi geri döndürülür
     return shelters;
