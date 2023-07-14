@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:untitled4/core/data/entity/pet.dart';
 
 //Data Model
-class Owner{
+abstract class Owner{
   String id;
   String? name;
   String? state;
@@ -15,6 +14,7 @@ class Owner{
   String? about;
   List<String>? photoURL;
   List<String>? petIDs;
+
 
   Owner({
     required this.id,
@@ -30,7 +30,8 @@ class Owner{
     this.photoURL,
     this.petIDs,
   });
-  
+
+  /*
   Owner.fromJson(Map<String, Object?> json)
       : this(
     id: json['id']! as String,
@@ -47,11 +48,11 @@ class Owner{
     petIDs: json['petIDs'] as List<String>,
   );
 
-  /*
+  *//*
     toJson():
     The toJson() does the opposite which is to map the data back into
     JSON format before we upload into Firebase.
-    */
+    *//*
 
   Map<String, Object?> toJson() {
     return {
@@ -70,6 +71,14 @@ class Owner{
     };
   }
 
+    */
+
+  factory Owner.fromSnapshot(DocumentSnapshot snapshot) {
+    // TODO: implement Owner.fromSnapshot
+    throw UnimplementedError();
+  }
+
+  /*
   factory Owner.fromSnapshot(DocumentSnapshot snapshot) {
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     String id = snapshot.id;
@@ -100,4 +109,6 @@ class Owner{
       petIDs: petIDs,
     );
   }
+
+*/
 }

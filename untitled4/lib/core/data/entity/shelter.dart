@@ -1,58 +1,43 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:untitled4/core/data/entity/pet.dart';
 
 import 'owner.dart';
 
 //Data Model
-class Shelter extends Owner{
-  final String id;
-  String? name;
-  List<String>? type;
-  String? state;
-  String? city;
-  String? country;
-  GeoPoint? coordinates;
-  String? areaCode;
-  String? phoneNumber;
-  String? fullAddress;
-  String? responsibleName;
-  String? iBAN;
-  String? about;
-  List<String>? photoURL;
-  List<String>? petIDs;
+class Shelter extends Owner {
+  final List<String>? type;
+  final String? responsibleName;
+  final String? iBAN;
 
   Shelter({
-    required this.id,
-    required this.name,
+    required String id,
+    required String? name,
     this.type,
-    this.state,
-    required this.city,
-    this.country,
-    this.coordinates,
-    this.areaCode,
-    this.phoneNumber,
-    this.fullAddress,
+    String? state,
+    required String city,
+    String? country,
+    GeoPoint? coordinates,
+    String? areaCode,
+    String? phoneNumber,
+    String? fullAddress,
     this.responsibleName,
     this.iBAN,
-    this.about,
-    this.photoURL,
-    this.petIDs,
-  }) : super(id: '');
-
-/*  Shelter.extended({
-    required this.id,
-    required this.name,
-    required this.city,
-    this.country,
-    this.state,
-    this.coordinates,
-    this.type,
-    this.areaCode,
-    this.phoneNumber,
-    this.fullAddress,
-    this.photoURL,
-  });*/
-
+    String? about,
+    List<String>? photoURL,
+    List<String>? petIDs,
+  }) : super(
+    id: id,
+    name: name,
+    state: state,
+    city: city,
+    country: country,
+    coordinates: coordinates,
+    areaCode: areaCode,
+    phoneNumber: phoneNumber,
+    fullAddress: fullAddress,
+    about: about,
+    photoURL: photoURL,
+    petIDs: petIDs,
+  );
 
   Shelter.fromJson(Map<String, Object?> json)
       : this(
@@ -99,6 +84,7 @@ class Shelter extends Owner{
     };
   }
 
+  @override
   factory Shelter.fromSnapshot(DocumentSnapshot snapshot) {
     Map<String, dynamic> data = snapshot.data() as Map<String, dynamic>;
     String id = snapshot.id;
@@ -186,7 +172,6 @@ class Shelter extends Owner{
       'coordinates': coordinates,
     };
   }
-
   */
 
 
@@ -202,10 +187,9 @@ class Shelter extends Owner{
         name = snapshot['name'] as String,
         city = snapshot['city'] as String,
         coordinates = snapshot['location'] as GeoPoint;
-
 */
-/*
 
+/*
   Map<String, dynamic> toMap() {
     return {
       "name": name,

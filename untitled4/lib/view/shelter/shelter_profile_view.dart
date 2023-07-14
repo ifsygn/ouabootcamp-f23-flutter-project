@@ -30,7 +30,7 @@ class ShelterProfilePage extends StatefulWidget {
 
 class _ShelterProfilePageState extends State<ShelterProfilePage> {
   final Shelter shelter;
-  late final List<Pet> petsOfShelter;
+  // late final List<Pet> petsOfShelter;
   _ShelterProfilePageState(this.shelter);
 
   int currentPageIndex = 0;
@@ -178,29 +178,31 @@ TR33 0000 0000 0000 0000 0000 00''',
                 ),
               ],
             ),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-/*                itemCount: petRefs.length,
-                itemBuilder: (context, index) {
-                  return PetItem(pet: petRefs[index]);
-                }*/
-                itemCount: petsOfShelter.length,
-                itemBuilder: (context, index) {
-                  return PetItem(pet: petsOfShelter[index]);
-                }
-
-                /*{
-                  return PetItem(widget.animalImages[index]
-                    image: widget.animalImages[index],
-                    name: widget.animalNames[index],
-                    years: widget.animalYears[index],
-                  );
-                },*/
-              ),
-            ),
+            PetList(petsOfShelter: petsOfShelter),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PetList extends StatelessWidget {
+  const PetList({
+    super.key,
+    required this.petsOfShelter,
+  });
+
+  final List<Pet> petsOfShelter;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: petsOfShelter.length,
+        itemBuilder: (context, index) {
+          return PetItem(pet: petsOfShelter[index]);
+        }
       ),
     );
   }

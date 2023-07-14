@@ -199,8 +199,11 @@ class PetRepository {
   ///Shelter'daki evcil hayvan listesini al
   Future<List<Pet>?> getPetsOfShelter(Shelter shelter) async {
     try {
+
+      String shelterID = shelter.id;
+
       QuerySnapshot querySnapshot = await _petCollection
-          .where('ownerID', isEqualTo: shelter.id)
+          .where('ownerID', isEqualTo: shelterID)
           .get();
 
       List<Pet> pets = [];

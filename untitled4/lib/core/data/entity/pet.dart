@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:untitled4/core/data/entity/shelter.dart';
 
 //Data Model
 class Pet {
@@ -47,6 +46,7 @@ class Pet {
       "ownerID": ownerID,
       "name": name,
       "species": species,
+      "folk": folk,
       "age": age,
       "photoURL": photoURL,
       "info": info,
@@ -61,6 +61,7 @@ class Pet {
     String ownerID = data?['ownerID'] as String;
     String name = data?['name'] as String;
     List<String> species = data?['species'] as List<String>;
+    String folk = data?['folk'] as String;
     int age = data?['age'] as int;
     String photoURL = data?['photoURL'] as String;
     String info = data?['info'] as String;
@@ -70,6 +71,7 @@ class Pet {
       ownerID: ownerID,
       name: name,
       species: species,
+      folk: folk,
       age: age,
       photoURL: photoURL,
       info: info,
@@ -82,6 +84,7 @@ class Pet {
       'ownerID' : ownerID,
       'name': name,
       'species' : species,
+      'folk' : folk,
       'age' : age,
       'photoURL' : photoURL,
       'info' : info,

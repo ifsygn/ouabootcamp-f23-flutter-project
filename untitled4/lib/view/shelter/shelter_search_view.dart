@@ -73,7 +73,7 @@ class ShelterSearchView extends StatelessWidget {
             ),
           ),
         ),
-        const Expanded(
+        const  Expanded(
           child: ShelterList(),
         ),
       ],
@@ -89,8 +89,8 @@ class ShelterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Shelter>>(
-      future: getShelters(),
       // Veritabanından barınakları çeken asenkron fonksiyon
+      future: getShelters(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(

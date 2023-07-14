@@ -23,12 +23,6 @@ class ShelterRepository {
     toFirestore: (shelter, _) => shelter.toJson(),
   );
 
-
-  /// Access the collection in the database using the collection's ID
-  late final CollectionReference _petCollection = firestore.collection('pets');
-  /// Access the document in the collection using the shelter's ID
-  // late final DocumentReference _petDocument = _petCollection.doc('pet_id');
-
   /// A reference to the list of pets.
   /// We are using `withConverter` to ensure that interactions with the collection
   /// are type-safe.
@@ -165,9 +159,7 @@ class ShelterRepository {
       final iBAN = data['iBAN'] as String? ?? "";
       final about = data['about'] as String? ?? "";
       final photoURL = (data['photoURL'] as List<dynamic>?)?.cast<String>() ?? [];
-      // final photoURL = data['photoURL'] as List<String>? ?? [];
       final petIDs = (data['petIDs'] as List<dynamic>?)?.cast<String>() ?? [];
-      // final petRefs = data['petRefs'] as List<Pet>? ?? [];
 
       // Shelter nesnesi oluşturulur
       final shelter = Shelter(
@@ -196,6 +188,7 @@ class ShelterRepository {
     return shelters;
   }
 
+  /*
   Future<List<Shelter>> getSheltersByCity(String city) async {
     final querySnapshot = await _shelterCollection.where('city', isEqualTo: city)
         .get();
@@ -222,12 +215,17 @@ class ShelterRepository {
 
     return shelters;
   }
+  */
 
+
+  /*
   Future<QuerySnapshot> getShelterCollection() {
     return _shelterCollection
         .get();
   }
+  */
 
+  /*
   Future<Shelter> getShelterById(String id) async {
     try {
       final DocumentSnapshot snapshot = await _shelterCollection.doc(id).get();
@@ -255,7 +253,11 @@ class ShelterRepository {
       throw Exception("Something went wrong: $e");
     }
   }
+  */
 
+
+
+  /*
   Future<List<Shelter>> getSheltersByName(String name) async {
     final querySnapshot = await _shelterCollection.where('name', isEqualTo: name)
         .get();
@@ -282,20 +284,24 @@ class ShelterRepository {
 
     return shelters;
   }
+  */
 
+  /*
   Future<void> removeShelterById(String id) {
     return _shelterCollection
         .doc(id)
         .delete();
   }
+  */
 
-/*  updateShelter(Shelter shelter) async {
+  /*
+  updateShelter(Shelter shelter) async {
     await shelterCollection
         .doc(shelter.id)
         .update(shelter.toMap());
   }*/
 
-/*
+  /*
   Future<void> updateShelter(Shelter shelter) async {
     try {
       // Update the document with the new data from the Shelter object
@@ -307,14 +313,16 @@ class ShelterRepository {
       throw Exception('Failed to update shelter: $e');
     }
   }
-
   */
+
+
+  /*
   Stream<QuerySnapshot> streamShelterCollection() {
     return _shelterCollection
         .snapshots();
   }
+   */
 }
-
 /*
 
 enum ShelterQuery {
