@@ -14,10 +14,12 @@ class Auth {
     await _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }
+
   Future<void> createUserWithEmailAndPassword({required String email,required String password,}) async {
     await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
   }
+
   signInWithGoogle() async{
     final GoogleSignInAccount? googleUser= await GoogleSignIn(
       scopes: <String>["email"]).signIn();
@@ -31,6 +33,7 @@ class Auth {
 
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
+
   Future<void> verifyEmail ({required String email,required String password,}) async {
     await _firebaseAuth.sendPasswordResetEmail(email: email);
   }

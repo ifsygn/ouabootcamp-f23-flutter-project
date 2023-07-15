@@ -285,7 +285,6 @@ class Hayvanlarim extends StatelessWidget {
 
 class Kaydedilenler extends StatelessWidget {
   static const String routeName = '/Kaydedilenler';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

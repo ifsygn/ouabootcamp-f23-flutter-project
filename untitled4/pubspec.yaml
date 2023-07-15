@@ -13,6 +13,7 @@ dependencies:
 
   #UI
   cupertino_icons: ^1.0.2
+  image_picker: ^0.8.4+4
 
   #FIREBASE
   cloud_firestore: ^4.8.2
@@ -22,20 +23,22 @@ dependencies:
   #  firebase_database: ^10.2.3
   #  firebase_storage: ^11.2.4
 
+  #HELPER-MANAGEMENT
   provider: ^6.0.1
 
   #SCREEN WIDGETS
   animated_splash_screen: ^1.3.0
   carousel_slider: ^4.0.0
+  introduction_screen: ^3.1.10
+  lottie: ^2.4.0
+  page_transition: ^2.0.9
 
   #LOCATION
   geolocator: ^9.0.2
   google_nav_bar: ^5.0.2
   url_launcher: ^6.0.3
-  introduction_screen: ^3.1.10
-  lottie: ^2.4.0
-  page_transition: ^2.0.9
 
+  #####################
 
 dev_dependencies:
   flutter_test:
@@ -47,7 +50,7 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-
+    - images/
     - assets/
     - assets/google_logo.png
     - assets/password_icon.png

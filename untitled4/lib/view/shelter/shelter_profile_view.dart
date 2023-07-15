@@ -44,6 +44,7 @@ class _ShelterProfilePageState extends State<ShelterProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavigationDrawer(children: [],),
       body: BackgroundImageWidget(
         child: Column(
           children: [
@@ -58,10 +59,10 @@ class _ShelterProfilePageState extends State<ShelterProfilePage> {
                 enableInfiniteScroll: false,
                 viewportFraction: 1.0,
                 enlargeCenterPage: true,
-                onPageChanged: (index, _) {
+                onPageChanged: (index, _) {/*
                   setState(() {
                     currentPageIndex = index;
-                  });
+                  });*/
                 },
               ),
               items: (shelter.photoURL ?? []).map((image) {
