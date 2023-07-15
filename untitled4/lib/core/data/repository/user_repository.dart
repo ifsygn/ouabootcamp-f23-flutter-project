@@ -33,4 +33,6 @@ class UserRepository {
     // Konum bilgilerini alın
     return await Geolocator.getCurrentPosition();
   }
+
+  
 }

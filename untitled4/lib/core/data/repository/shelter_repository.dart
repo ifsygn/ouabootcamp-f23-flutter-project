@@ -179,12 +179,10 @@ class ShelterRepository {
   */
 
 
-  /*
   Future<QuerySnapshot> getShelterCollection() {
     return _shelterCollection
         .get();
   }
-  */
 
   /*
   Future<Shelter> getShelterById(String id) async {

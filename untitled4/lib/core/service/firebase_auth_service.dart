@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import "package:firebase_auth/firebase_auth.dart";
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -7,6 +8,8 @@ import 'package:untitled4/common/helper/route/route_constant.dart';
 
 class Auth {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final CollectionReference _userCollection = FirebaseFirestore.instance.collection('users');
+
   User? get currentUser => _firebaseAuth.currentUser;
   Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 
@@ -18,6 +21,8 @@ class Auth {
   Future<void> createUserWithEmailAndPassword({required String email,required String password,}) async {
     await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
+
+
   }
 
   signInWithGoogle() async{
