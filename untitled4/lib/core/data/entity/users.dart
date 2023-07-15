@@ -2,26 +2,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled4/core/data/entity/owner.dart';
 
 class Users extends Owner {
-  final String surName;
-  final String userName;
   final String email;
-  final DateTime birthDate;
+  final String password;
+  String? surName;
+  String? userName;
+  DateTime? birthDate;
 
   Users({
     required String id,
-    required String name,
+    required this.email,
+    required this.password,
+    String? name,
+    String? surName,
+    String? userName,
+    DateTime? birthDate,
+    String? city,
     String? state,
-    required String city,
     String? country,
     GeoPoint? coordinates,
     String? areaCode,
     String? phoneNumber,
     String? fullAddress,
-    required this.surName,
-    required this.userName,
-    required this.email,
-    required this.birthDate,
-    required String about,
+    String? about,
     List<String>? photoURL,
     List<String>? petIDs,
   }) : super(
@@ -42,19 +44,20 @@ class Users extends Owner {
   Users.fromJson(Map<String, Object?> json)
       : this(
     id: json['id']! as String,
-    name: json['name']! as String,
+    email: json['email']! as String,
+    password: json['password']! as String,
+    name: json['name']! as String?,
     state: json['state'] as String?,
-    city: json['city']! as String,
+    city: json['city']! as String?,
     country: json['country'] as String?,
     coordinates: json['coordinates']! as GeoPoint?,
     areaCode: json['areaCode'] as String?,
     phoneNumber: json['phoneNumber'] as String?,
     fullAddress: json['fullAddress'] as String?,
-    surName: json['surName']! as String,
-    userName: json['userName']! as String,
-    email: json['email']! as String,
+    surName: json['surName']! as String?,
+    userName: json['userName']! as String?,
     birthDate: DateTime.parse(json['birthDate']! as String),
-    about: json['about']! as String,
+    about: json['about']! as String?,
     photoURL: (json['photoURL'] as List<dynamic>?)?.cast<String>(),
     petIDs: (json['petIDs'] as List<dynamic>?)?.cast<String>(),
   );
@@ -62,6 +65,8 @@ class Users extends Owner {
   Map<String, Object?> toJson() {
     return {
       'id': id,
+      'email': email,
+      'password' : password,
       'name': name,
       'state': state,
       'city': city,
@@ -72,8 +77,7 @@ class Users extends Owner {
       'fullAddress': fullAddress,
       'surName': surName,
       'userName': userName,
-      'email': email,
-      'birthDate': birthDate.toIso8601String(),
+      'birthDate': birthDate,
       'about': about,
       'photoURL': photoURL,
       'petIDs': petIDs,
@@ -85,19 +89,20 @@ class Users extends Owner {
 
     return Users(
       id: snapshot.id,
-      name: data['name'] as String,
+      email: data['email'] as String,
+      password: data['password'] as String,
+      name: data['name'] as String?,
       state: data['state'] as String?,
-      city: data['city'] as String,
+      city: data['city'] as String?,
       country: data['country'] as String?,
       coordinates: data['coordinates'] as GeoPoint?,
       areaCode: data['areaCode'] as String?,
       phoneNumber: data['phoneNumber'] as String?,
       fullAddress: data['fullAddress'] as String?,
-      surName: data['surName'] as String,
-      userName: data['userName'] as String,
-      email: data['email'] as String,
+      surName: data['surName'] as String?,
+      userName: data['userName'] as String?,
       birthDate: DateTime.parse(data['birthDate'] as String),
-      about: data['about'] as String,
+      about: data['about'] as String?,
       photoURL: (data['photoURL'] as List<dynamic>?)?.cast<String>(),
       petIDs: (data['petIDs'] as List<dynamic>?)?.cast<String>(),
     );
