@@ -25,7 +25,7 @@ class Shelter extends Owner {
     List<String>? petIDs,
   }) : super(
     id: id,
-    name: name,
+    name: name ?? "Örnek Barınak",
     state: state,
     city: city,
     country: country,
@@ -34,8 +34,11 @@ class Shelter extends Owner {
     phoneNumber: phoneNumber,
     fullAddress: fullAddress,
     about: about,
-    photoURL: photoURL,
-    petIDs: petIDs,
+    photoURL: photoURL ?? ["https://loremflickr.com/320/240/shelter,cat,dog/all",
+      "https://loremflickr.com/320/240/shelter,cat,dog/all",
+      "https://loremflickr.com/320/240/shelter,cat,dog/all",
+      "https://loremflickr.com/320/240/shelter,cat,dog/all"],
+    petIDs: petIDs ?? ["1","2","3","4","5"],
   );
 
   Shelter.fromJson(Map<String, Object?> json)

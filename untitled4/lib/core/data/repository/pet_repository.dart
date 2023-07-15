@@ -1,15 +1,9 @@
-
-
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:untitled4/core/data/entity/shelter.dart';
-
 import '../entity/owner.dart';
 import '../entity/pet.dart';
 
 class PetRepository {
-
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -40,7 +34,6 @@ class PetRepository {
     fromFirestore: (snapshot, _) => Pet.fromJson(snapshot.data()!),
     toFirestore: (pet, _) => pet.toJson(),
   );
-
 
   /// Evcil hayvan belgesini ekleyen fonksiyon
   Future<void> addPetByNameAndUpdateShelter(String petName, String species, DocumentReference shelterRef) async {

@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../entity/pet.dart';
+import '../entity/random/random_user.dart';
+import '../entity/random/random_user_ninja.dart';
 import '../entity/shelter.dart';
 import '../entity/users.dart';
 
@@ -85,4 +87,44 @@ class UserRepository {
     return snapshot.exists;
   }
 
+  Future<void> addUserByAuth({required String userID ,required String email, required String password}) async {
+
+    Users user = Users(id: userID, email: email, password: password);
+
+    // Kullanıcının bilgileri, 'users' koleksiyonuna kaydedilir.
+    _usersCollection.doc(userID)
+        .withConverter<Users>(fromFirestore: (snapshot, _) => Users.fromJson(snapshot.data()!),
+        toFirestore: (user, _) => user.toJson())
+        .set(user)
+        .onError((e, _) => print("Error writing document: $e"));
+  }
+
+  Future<void> addRandomUser() async {
+
+      // Create a RandomUser object.
+      var user = await RandomUser.getRandomUser();
+
+      // Create a Users object from the RandomUser object.
+      var users = Users(
+        id: user.id,
+        password: user.password,
+        email: user.email,
+        name: user.name,
+        phoneNumber: user.phone,
+      );
+
+      // Get a JSON representation of the Users object.
+      // var json = users.toJson();
+
+      // Print the JSON representation of the Users object.
+      // print(json);
+
+
+    // Kullanıcının bilgileri, 'users' koleksiyonuna kaydedilir.
+    _usersCollection.doc(user.id)
+        .withConverter<Users>(fromFirestore: (snapshot, _) => Users.fromJson(snapshot.data()!),
+        toFirestore: (users, _) => users.toJson())
+        .set(users)
+        .onError((e, _) => print("Error writing document: $e"));
+  }
 }

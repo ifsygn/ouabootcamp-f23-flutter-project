@@ -17,10 +17,12 @@ class Pet {
     this.name,
     this.species,
     this.folk,
-    this.age,
-    this.photoURL,
+    int? age,
+    String? photoURL,
     this.info,
-  });
+  }): age = age ?? 1,
+        photoURL = photoURL ?? "https://loremflickr.com/320/240/human,face/all";
+
 
   Pet.fromJson(Map<String, Object?> json)
       : this(

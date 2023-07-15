@@ -37,8 +37,8 @@ class Users extends Owner {
     phoneNumber: phoneNumber,
     fullAddress: fullAddress,
     about: about,
-    photoURL: photoURL,
-    petIDs: petIDs,
+    photoURL: photoURL ?? ["https://loremflickr.com/320/240/human,face/all"],
+    petIDs: petIDs ?? ["1",],
   );
 
   Users.fromJson(Map<String, Object?> json)

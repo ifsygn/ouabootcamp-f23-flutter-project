@@ -30,8 +30,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String currentAccountPicture = "";
-  String accountEmail = "";
+  String userPhotoURL = "";
+  String userEmail = "";
   bool isDarkMode = false;
   @override
   void initState() {
@@ -45,9 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
     // Veri tabanından kullanıcı bilgilerini çekme işlemleri burada gerçekleştirilir.
     // Bu örnekte sabit değerler kullanarak simüle ediyoruz.
     setState(() {
-      currentAccountPicture =
+      userPhotoURL =
       "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250";
-      accountEmail = "aleyna.toprak5461@gmail.com";
+      userEmail = "aleyna.toprak5461@gmail.com";
     });
   }
 
@@ -65,8 +65,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(child: Text("Ana Sayfa")),
       ),
       drawer: NavigationDrawer(
-        currentAccountPicture: currentAccountPicture,
-        accountEmail: accountEmail,
+        userPhotoURL: userPhotoURL,
+        userEmail: userEmail,
         isDarkMode: isDarkMode,
         onDarkModeToggle: toggleDarkMode,
       ),
@@ -75,13 +75,13 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class NavigationDrawer extends StatelessWidget {
-  final String currentAccountPicture;
-  final String accountEmail;
+  final String userPhotoURL;
+  final String userEmail;
   final bool isDarkMode;
   final ValueChanged<bool> onDarkModeToggle;
   const NavigationDrawer({
-    required this.currentAccountPicture,
-    required this.accountEmail,
+    required this.userPhotoURL,
+    required this.userEmail,
     required this.isDarkMode,
     required this.onDarkModeToggle,
     Key? key,
@@ -102,10 +102,10 @@ class NavigationDrawer extends StatelessWidget {
                         color: Colors.white,
                       ),
                       currentAccountPicture: CircleAvatar(
-                        backgroundImage: NetworkImage(currentAccountPicture),
+                        backgroundImage: NetworkImage(userPhotoURL),
                       ),
                       accountEmail: Text(
-                        accountEmail,
+                        userEmail,
                         style:
                         const TextStyle(fontSize: 12, color: Colors.black),
                       ),
