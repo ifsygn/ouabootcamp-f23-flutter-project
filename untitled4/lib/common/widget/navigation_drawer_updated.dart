@@ -1,11 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled4/core/data/repository/user_repository.dart';
+import 'package:untitled4/view/shelter/shelter_route_page.dart';
 import '../../core/data/entity/users.dart';
 
 UserRepository userRepository = UserRepository();
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 User? get currentUser => _firebaseAuth.currentUser;
+
+/// ---------------------------------------------------------------------------
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +32,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/// ---------------------------------------------------------------------------
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -143,10 +148,8 @@ class NavigationDrawer extends StatelessWidget {
                       const Icon(Icons.home, color: Colors.grey, size: 20),
                       onTap: () {
                         Navigator.of(context).pop();
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                            const MyHomePage(),
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) =>const MyHomePage(),
                           ),
                         );
                       },
@@ -163,10 +166,8 @@ class NavigationDrawer extends StatelessWidget {
                           color: Colors.grey, size: 20),
                       onTap: () {
                         Navigator.of(context).pop();
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                            const Barinaklar(),
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (BuildContext context) =>const ShelterRoutePage(),
                           ),
                         );
                       },
@@ -205,7 +206,7 @@ class NavigationDrawer extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const Hayvanlar(),
+                            const FavoritedPets(),
                           ),
                         );
                       },
@@ -225,7 +226,7 @@ class NavigationDrawer extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const Hayvanlarim(),
+                            const MyPet(),
                           ),
                         );
                       },
@@ -381,8 +382,8 @@ class Blog extends StatelessWidget {
   }
 }
 
-class Hayvanlar extends StatelessWidget {
-  const Hayvanlar({super.key});
+class FavoritedPets extends StatelessWidget {
+  const FavoritedPets({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -394,8 +395,8 @@ class Hayvanlar extends StatelessWidget {
   }
 }
 
-class Hayvanlarim extends StatelessWidget {
-  const Hayvanlarim({super.key});
+class MyPet extends StatelessWidget {
+  const MyPet({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

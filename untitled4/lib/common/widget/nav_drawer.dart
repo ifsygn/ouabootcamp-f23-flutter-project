@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../core/service/firebase_auth_service.dart';
-import '../../view/shelter/shelter_search_view.dart';
+import '../../view/shelter/shelter_route_page.dart';
 import 'appbarwidget.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -35,9 +35,11 @@ class NavDrawer extends StatelessWidget {
 }
 
 class NavDrawerWidget extends StatelessWidget {
+
   Future<void> signOut() async {
     await Auth().signOut();
   }
+
   const NavDrawerWidget({
     super.key,
   });
@@ -56,8 +58,6 @@ class NavDrawerWidget extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-
-
                   child: Icon(Icons.account_circle, color: Colors.grey,size: 40,),
                   flex: 2,
 
@@ -101,9 +101,12 @@ class NavDrawerWidget extends StatelessWidget {
             {
               Navigator.of(context).pop();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => MyHomePage()));
+                  builder: (BuildContext context) => MyHomePage()
+                )
+              );
             },
-          ),),
+          ),
+        ),
 
         const Divider(
           color: Colors.grey,
@@ -123,13 +126,11 @@ class NavDrawerWidget extends StatelessWidget {
               },
             ),
 
-
-
             onTap: ()
             {
               Navigator.of(context).pop();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => const ShelterSearchPage()));
+                  builder: (BuildContext context) => const ShelterRoutePage()));
             },
           ),),
         const Divider(
