@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:untitled4/view/blog/home_page.dart';
 import '../../core/service/firebase_auth_service.dart';
 import '../../view/shelter/shelter_route_page.dart';
 import 'appbarwidget.dart';
@@ -56,7 +57,7 @@ class NavDrawerWidget extends StatelessWidget {
 
           child: Center(
             child: Row(
-              children: [
+              children: const [
                 Expanded(
                   child: Icon(Icons.account_circle, color: Colors.grey,size: 40,),
                   flex: 2,
@@ -101,7 +102,7 @@ class NavDrawerWidget extends StatelessWidget {
             {
               Navigator.of(context).pop();
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => MyHomePage()
+                  builder: (BuildContext context) => const HomePage()
                 )
               );
             },

@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:untitled4/blogpage/home_page.dart';
+import 'package:untitled4/view/blog/home_page.dart';
 import 'package:untitled4/view/shelter/shelter_search_view.dart';
 import '../../core/service/firebase_auth_service.dart';
 
@@ -28,7 +27,7 @@ class _ShelterRoutePageState extends State<ShelterRoutePage> {
         copyToClipboard(context, "Anonim olarak sadece Bloglar görünür.");
 
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => HomePage()));
+            builder: (BuildContext context) => const HomePage()));
       });
     }
   }
@@ -49,7 +48,7 @@ class _ShelterRoutePageState extends State<ShelterRoutePage> {
           _showSnackBar = false;
         });
       });
-      return HomePage();
+      return const HomePage();
     } else {
       return const ShelterSearchPage();
     }

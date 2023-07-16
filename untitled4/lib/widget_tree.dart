@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:untitled4/core/service/firebase_auth_service.dart';
-import 'blogpage/home_page.dart';
+import 'package:untitled4/view/blog/home_page.dart';
 import 'intro/introduction_screen.dart';
 
 
@@ -18,7 +18,7 @@ class _WidgetTreeState extends State<WidgetTree> {
       stream: Auth().authStateChanges,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return HomePage();
+          return const HomePage();
         } else {
           return IntroductionScreenWidget();
         }
