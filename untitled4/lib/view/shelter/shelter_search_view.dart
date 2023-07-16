@@ -56,7 +56,7 @@ class ShelterSearchView extends StatelessWidget {
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(8.0),
             ),
-            child: const Row(
+            child:  Row(
               children: [
                 SizedBox(width: 8.0),
                 Icon(Icons.search),
