@@ -37,7 +37,6 @@ class Auth {
     userRepository.addUserByAuth(userID: userID, email: email, password: password);
   }
 
-
   signInWithGoogle() async{
     final GoogleSignInAccount? googleUser= await GoogleSignIn(
       scopes: <String>["email"]).signIn();
