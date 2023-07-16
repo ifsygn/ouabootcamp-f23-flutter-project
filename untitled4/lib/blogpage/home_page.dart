@@ -1,90 +1,32 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled4/common/widget/appbarwidget.dart';
-import 'package:untitled4/common/widget/nav_drawer.dart';
-import 'package:untitled4/core/data/entity/random/random_data_api.dart';
-import 'package:untitled4/core/data/repository/shelter_repository.dart';
-import 'package:untitled4/core/data/repository/user_repository.dart';
-import '../common/helper/route/route_constant.dart';
+import 'package:flutter/services.dart';
+
 import '../core/service/firebase_auth_service.dart';
+import 'admin_page.dart';
+import 'blog_first_page.dart';
 
-UserRepository userRepository = UserRepository();
-ShelterRepository shelterRepository = ShelterRepository();
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super (key: key);
 
-  final User? user = Auth().currentUser;
 
-  Future<void> signOut() async {
-    await Auth().signOut();
-  }
-
-  Widget _title() {
-    return const Text("Firebase Auth");
-  }
-
-  Widget _userUid() {
-    return Text(user?.email ?? 'Anonymous');
-    //return Text(user?.email !=null ? '$user?.email' : "anonymous");
-  }
-
-  Widget _signOutButton(BuildContext context) {
-    return ElevatedButton(
-        onPressed:() async {
-          signOut();
-          Navigator.pushNamed(context, RouteConstant.loginScreenRoute);
-        },
-        child: const Text("Sign Out")
-    );
-  }
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super (key: key);
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+class _HomePageState extends State<HomePage> {
+  final User? user = Auth().currentUser;
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const appBarWidget(
-          title: 'Ana Sayfa'
-      ),
-      drawer: NavDrawer(),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            _userUid(),
-            ElevatedButton(
-                onPressed:() async {
-                  // userRepository.addRandomData();
-                  RandomDataApi.getRandomUser();
-                },
-                child: const Text("Add Random User")),
-            ElevatedButton(
-                onPressed:() async {
-                  RandomDataApi.getRandomShelter();
-                },
-                child: const Text("Add Random Shelter")),
-            ElevatedButton(
-                onPressed:() async {
-                  RandomDataApi.getRandomPet();
-                },
-                child: const Text("Add Random Pet")),
-            ElevatedButton(
-                onPressed:() async {
-
-            },
-                child: const Text("Add Shelter from txt File")),
-            ElevatedButton(
-                onPressed:() async {
-                  Navigator.pushNamed(context, RouteConstant.shelterSearchRoute);
-                },
-                child: const  Text("Shelter Search Page")),
-            _signOutButton(context),
-          ],
-        ),
-      ),
-    );
+    if (user?.email == 'admin@admin.com') {
+      return const AdminPage(title: "",);
+    }
+    else if(user!.isAnonymous){
+      return const BlogAnaSayfa(title: "",);
+    }
+    else {
+      return const BlogAnaSayfa(title: "",);
+    }
   }
 }

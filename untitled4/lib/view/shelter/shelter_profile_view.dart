@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:untitled4/common/widget/nav_drawer.dart';
 import 'package:untitled4/core/data/repository/pet_repository.dart';
 import '../../common/widget/back_button_widget.dart';
 import '../../common/widget/background_image_widget.dart';
@@ -44,7 +45,7 @@ class _ShelterProfilePageState extends State<ShelterProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavigationDrawer(children: [],),
+      drawer: NavDrawer(),
       body: BackgroundImageWidget(
         child: Column(
           children: [

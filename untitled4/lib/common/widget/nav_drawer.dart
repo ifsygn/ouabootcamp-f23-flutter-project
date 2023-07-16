@@ -48,7 +48,7 @@ class NavDrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        const DrawerHeader(
+         DrawerHeader(
           decoration: BoxDecoration(
             color: Colors.white,
 
