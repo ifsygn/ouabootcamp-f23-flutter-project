@@ -301,10 +301,13 @@ GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databas
 <summary><h2>3. Sprint Notları</h2></summary>
 <!-- H2 Yazıları burada -->
 
-- Bu Sprint’te FrontEnd ve BackEnd eksiklerimizi kapatarak çalışan bir proje vermeyi hedefledik. 
-- 1. ve 2. Sprint’ten aldığımız dersler sayesinde ve GitHub'u daha efektif kullanmamız sayesinde 5 farklı kişi olarak 5 ayrı koldan geliştirmeyi başarabildik. 
-Agile Yönetim Sisteminin bu esneklik ve hedefe yönelik avantajlarını ekip olarak özümsedik.
-- **Sprint içinde tamamlanması tahmin edilen puan**: 250 puan
+- Bu Sprint’te FrontEnd ve BackEnd eksiklerimizi kapatarak çalışan bir proje vermeyi hedefledik.
+
+- 1.Sprint ve 2.Sprint’ten aldığımız dersler sayesinde ve GitHub'u daha efektif kullanmamız sayesinde 5 farklı kişi olarak 5 ayrı koldan geliştirmeyi başarabildik.
+
+- Agile Yönetim Sisteminin bu esneklik ve hedefe yönelik avantajlarını ekip olarak özümsedik.
+
+**Sprint içinde tamamlanması tahmin edilen puan**: 250 puan
 
 **Backlog düzeni ve Story seçimleri**:
 
@@ -324,9 +327,11 @@ Agile Yönetim Sisteminin bu esneklik ve hedefe yönelik avantajlarını ekip ol
 <summary><h3>3. Sprint Review Meeting Notes</h3></summary>
 <!-- H3 Yazıları burada -->
 
-**Alınan kararlar**: Bu sprintte uygulamanın splash, intro, signin-up işlemleri yapıldı. Blog ve shelter sayfalarına başlangıçlar yapıldı. Uygulama kullanıcı gözüyle incelendiğinde UX deneyimi ve UI'da yapılacak değişiklikler/düzenlemeler üzerine konuşuldu. Teknik eğitimlere devam edilmesi, pratik anlamda eksiklikler konuşuldu ve tüm eksikliklerin giderilmesi konusunda mutabık kalındı. 3. sprintte de mutabık kalınan konu üzerinden devam ederek, uygulamanın bütünü için kullanıcı deneyimi ve tasarım iyileştirme kararı verildi. App-Core-Common-UI yaklaşımı benimsendi.
+**Alınan kararlar**: Bu sprintte uygulamanın BLOG, SHELTER, PET, USER gibi EPIC yapıldı. 
+Blog ve shelter sayfaları büyük ölçüde tamamlandı ama geliştirmeler yapılabilir. 
+Uygulama kullanıcı gözüyle incelendiğinde UX deneyimi ve UI'da yapılacak değişiklikler/düzenlemeler üzerine konuşuldu.
 
-**Sprint Review katılımcıları:** Ardahan Gökhan, Elif Vişne, Betül Ateş, Aleyna Toprak, İsmail Furkan Saygın
+**Sprint Review katılımcıları:** İsmail Furkan Saygın, Ardahan Gökhan, Elif Vişne, Betül Ateş, Aleyna Toprak
 </details>
 
 <details align="left"> 
@@ -336,7 +341,8 @@ Agile Yönetim Sisteminin bu esneklik ve hedefe yönelik avantajlarını ekip ol
 - Takımdaki bir çok arkadaşımızın mücbir sebeplerden dolayı zaman zaman toplantılara katılamadı ve görevlerini mecburen aksattığı durumlar oldu. 
 Ama olabilecek gecikmeleri önceden konuştuk ve bunlara uygun planlamamızı yaptık.
 - İlk Sprint’teki tecrübelerimize dayanarak takım arkadaşlarımızın müsaitlik durumlarına göre görev ve sorumluluklarda değişikliğe gitmeye karar verdik.
-- FrontEnd ve BackEnd konusunda kodların bir araya getirilmden önce temel konuların netleştirilmiş olması gerektiğini farkettik. Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğimiz bazı sürelerin telafisini daha fazla çalışarak ve öğrenerek kapatmaya gayret ettik.
+- FrontEnd ve BackEnd konusunda kodların bir araya getirilmden önce temel konuların netleştirilmiş olması gerektiğini farkettik. 
+Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğimiz bazı sürelerin telafisini daha fazla çalışarak ve öğrenerek kapatmaya gayret ettik.
 </details>
 
 <details align="left"> 
@@ -359,23 +365,42 @@ Ama olabilecek gecikmeleri önceden konuştuk ve bunlara uygun planlamamızı ya
 <details align=""> 
 <summary><h3>Ürün Durumu: Ekran görüntüleri</h3></summary>
 
+<details align=""> <summary>Intro</summary>
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/d1915680-a320-49b3-a0fe-63573fdd677f" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/3f8c8e7f-47a5-4e4d-8aa0-a5cd8c534e6b" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/65c25ed1-0dac-49f3-b3ea-b798aa97234a" alt="UserProfileEditPage" style="height: 400px;">
+        
+</details>
+
+<details align=""> <summary>Blog</summary>
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+</details>
+
+<details align=""> <summary>User</summary>
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/020dac20-0fd9-4177-8472-1f710672f4cf" alt="UserProfileEditPage" style="height: 400px;">
+</details>
+
+<details align=""> <summary>Shelter</summary>
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+</details>
+
+<details align=""> <summary>Pet</summary>
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/a9a19aba-39e4-45b7-83b2-e357ca796429" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/67994764-d6c2-4c6c-b3b3-3e754031bd01" alt="UserProfileEditPage" style="height: 400px;">
+    
+</details>
+
 <div style="display: flex; justify-content: center;">
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/684d82b7-fc3f-4128-979e-83d692f65384" alt="SplashScreen" style="height: 400px;">
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/349cee9e-8617-4fea-994a-9999e0c2dcdc" alt="IntroductionScreen-1" style="height: 400px;">
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/b1d30000-4c26-4797-a85b-c830fc077bbb" alt="IntroductionScreen-2" style="height: 400px;">
 </div>
 
-<div style="display: flex; justify-content: center;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e9cb4d19-66b5-4788-8638-79cb909da155" alt="LoginView" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/3df4a0d6-9cdb-4b28-b529-f9865b0a98e2" alt="RegisterView" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/1fbd5e85-5861-4e6a-97a4-06015bcaec3d" alt="AnonymousLogin" style="height: 400px;">
-</div>
-
-<div style="display: flex; justify-content: center;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/3e320d6d-8bab-4f7b-81cc-ee24a4444d58" alt="Blog" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/cf6399c8-da14-4f70-8553-091228b95e87" alt="UserProfilePage" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/0024c8d5-7e08-4ac1-80d3-740ac6ef989b" alt="ChooseLocation" style="height: 400px;">
-</div>
 
 </details>
 
