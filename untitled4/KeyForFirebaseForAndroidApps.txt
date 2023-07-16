@@ -1,0 +1,99 @@
+PS F:\CompEngProjects\FlutterProjects\examples\ouabootcamp-f23-flutter-project\untitled4> cd android
+PS F:\CompEngProjects\FlutterProjects\examples\ouabootcamp-f23-flutter-project\untitled4\android> .\gradlew signingReport
+Starting a Gradle Daemon, 3 busy and 2 incompatible Daemons could not be reused, use --status for details
+
+> Configure project :app
+Warning: Please apply google-services plugin at the bottom of the build file.
+
+> Task :app:signingReport
+Variant: debug
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+Variant: release
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+Variant: profile
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+
+> Task :cloud_firestore:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+
+> Task :firebase_auth:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+
+> Task :firebase_core:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+
+> Task :flutter_keyboard_visibility:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
+
+> Task :google_sign_in_android:signingReport
+Variant: debugAndroidTest
+Config: debug
+Store: C:\Users\ismai\.android\debug.keystore
+Alias: AndroidDebugKey
+MD5: BD:61:EB:C5:D2:3A:24:05:FA:99:D8:8C:13:5A:F2:15
+SHA1: 87:73:77:F9:0B:57:EA:F3:A9:EC:67:2D:68:C3:D6:43:30:05:B3:F4
+SHA-256: 8E:CD:D6:2F:7A:52:A6:87:13:F6:B4:05:ED:72:29:32:13:8B:D6:3E:E9:71:A3:34:65:23:3E:F5:1B:7F:EB:46
+Valid until: 10 Aral?k 2052 Sal?
+----------
