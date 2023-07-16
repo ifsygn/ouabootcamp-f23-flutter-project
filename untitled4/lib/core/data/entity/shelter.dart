@@ -35,9 +35,9 @@ class Shelter extends Owner {
     phoneNumber: phoneNumber ?? "",
     fullAddress: fullAddress ?? "",
     about: about ?? "",
-    photoURL: photoURL ?? ["https://loremflickr.com/320/240/shelter,cat,dog/all",
-      "https://loremflickr.com/320/240/shelter,cat,dog/all",
-      "https://loremflickr.com/320/240/shelter,cat,dog/all",
+    photoURL: photoURL ?? ["https://loremflickr.com/320/240/shelter/all",
+      "https://loremflickr.com/320/240/shelter,dog/all",
+      "https://loremflickr.com/320/240/shelter,cat/all",
       "https://loremflickr.com/320/240/shelter,cat,dog/all"],
     petIDs: petIDs ?? ["1","2","3","4","5"],
   );

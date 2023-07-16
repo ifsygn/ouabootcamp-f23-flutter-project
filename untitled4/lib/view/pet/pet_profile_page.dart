@@ -1,26 +1,24 @@
 // ignore_for_file: prefer_const_declarations
 
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(
     const MaterialApp(
-      home: PetProfileDetailPage(),
+      home: PetProfilePage(),
     ),
   );
 }
 
-class PetProfileDetailPage extends StatefulWidget {
-  const PetProfileDetailPage({Key? key}) : super(key: key);
+class PetProfilePage extends StatefulWidget {
+  const PetProfilePage({Key? key}) : super(key: key);
 
   @override
-  _PetProfileDetailPageState createState() => _PetProfileDetailPageState();
+  _PetProfilePageState createState() => _PetProfilePageState();
 }
 
-class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
+class _PetProfilePageState extends State<PetProfilePage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _birthDateController = TextEditingController();
 
@@ -29,7 +27,6 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
   int? animalAge;
   double? animalWeight;
   DateTime? animalBirthdate;
-  File? selectedImage;
 
   @override
   void initState() {
@@ -54,7 +51,6 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
       animalAge = 2;
       animalWeight = 4.0;
       animalBirthdate = DateTime(2021, 1, 1);
-      selectedImage = null;
 
       _birthDateController.text = animalBirthdate != null
           ? '${animalBirthdate!.day}/${animalBirthdate!.month}/${animalBirthdate!.year}'
@@ -70,80 +66,12 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
       saveDataToDatabase();
 
       // Print the values to the console
-      print('İSİM: $animalName');
+      /* print('İSİM: $animalName');
       print('CİNS: $animalStrain');
       print('YAŞ: $animalAge');
       print('KİLO: $animalWeight');
       print('DOĞUM GÜNÜ: $animalBirthdate');
-      print('RESİM URL: ${selectedImage?.path}');
-    }
-  }
-
-  Future<void> _selectImageFromGallery() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? pickedImage =
-    await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        selectedImage = File(pickedImage.path);
-      });
-    }
-  }
-
-  Widget _buildProfileImage() {
-    final defaultImageURL =
-        "https://images.dog.ceo/breeds/finnish-lapphund/mochilamvan.jpg";
-
-    if (selectedImage != null && selectedImage!.existsSync()) {
-      return Container(
-        width: 130,
-        height: 130,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 4,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 2,
-              blurRadius: 10,
-              color: Colors.black.withOpacity(0.1),
-              offset: const Offset(0, 10),
-            )
-          ],
-          color: Colors.grey.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(30.0),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: FileImage(selectedImage!),
-          ),
-        ),
-      );
-    } else {
-      return Container(
-        width: 130,
-        height: 130,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 4,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 2,
-              blurRadius: 10,
-              color: Colors.black.withOpacity(0.1),
-              offset: const Offset(0, 10),
-            )
-          ],
-          color: Colors.grey.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(30.0),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: NetworkImage(defaultImageURL),
-          ),
-        ),
-      );
+      */
     }
   }
 
@@ -154,7 +82,10 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: iconbackbutton(),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.purple,
+          ),
           onPressed: () {},
         ),
         actions: [
@@ -165,7 +96,14 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
             ),
             child: TextButton(
               onPressed: kaydetButtonPressed,
-              child: textkaydet(),
+              child: const Text(
+                'KAYDET',
+                style: TextStyle(
+                  fontSize: 18,
+                  letterSpacing: 3.3,
+                  color: Colors.purple,
+                ),
+              ),
             ),
           ),
         ],
@@ -188,7 +126,31 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
                 Center(
                   child: Stack(
                     children: [
-                      _buildProfileImage(),
+                      Container(
+                        width: 130,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              spreadRadius: 2,
+                              blurRadius: 10,
+                              color: Colors.black.withOpacity(0.1),
+                              offset: const Offset(0, 10),
+                            )
+                          ],
+                          color: Colors.grey.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(30.0),
+                          image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_1280.jpg"),
+                          ),
+                        ),
+                      ),
                       Positioned(
                         bottom: 0,
                         right: 0,
@@ -203,8 +165,11 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
                             color: Colors.purple,
                           ),
                           child: IconButton(
-                            icon: cameraicon(),
-                            onPressed: _selectImageFromGallery,
+                            icon: const Icon(
+                              Icons.photo_camera,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {},
                           ),
                         ),
                       ),
@@ -219,44 +184,50 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
                     color: Colors.transparent,
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 20, left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.10),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        texthayvanprofili(),
-                        const Divider(),
-                        const SizedBox(height: 10.0),
-                        _buildDetailRow('İSİM', animalName, TextInputType.text),
-                        const SizedBox(height: 25.0),
-                        _buildDetailRow(
-                            'CİNS', animalStrain, TextInputType.text),
-                        const SizedBox(height: 25.0),
-                        _buildDetailRow(
-                            'YAŞ',
-                            animalAge != null ? animalAge.toString() : '',
-                            TextInputType.number),
-                        const SizedBox(height: 25.0),
-                        _buildDetailRow(
-                            'KİLO',
-                            animalWeight != null ? animalWeight.toString() : '',
-                            const TextInputType.numberWithOptions(
-                                decimal: true)),
-                        const SizedBox(height: 25.0),
-                        _buildDetailRow(
-                            'DOĞUM GÜNÜ',
-                            animalBirthdate != null
-                                ? animalBirthdate!.toString().substring(0, 10)
-                                : '',
-                            TextInputType.datetime),
-                      ],
-                    ),
+                Container(
+                  margin: const EdgeInsets.only(right: 20, left: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.10),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'HAYVAN PROFİLİ',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      const Divider(),
+                      const SizedBox(height: 10.0),
+                      _buildDetailRow('İSİM', animalName, TextInputType.text),
+                      const SizedBox(height: 25.0),
+                      _buildDetailRow(
+                          'CİNS', animalStrain, TextInputType.text),
+                      const SizedBox(height: 25.0),
+                      _buildDetailRow(
+                          'YAŞ',
+                          animalAge != null ? animalAge.toString() : '',
+                          TextInputType.number),
+                      const SizedBox(height: 25.0),
+                      _buildDetailRow(
+                          'KİLO',
+                          animalWeight != null ? animalWeight.toString() : '',
+                          const TextInputType.numberWithOptions(
+                              decimal: true)),
+                      const SizedBox(height: 25.0),
+                      _buildDetailRow(
+                          'DOĞUM GÜNÜ',
+                          animalBirthdate != null
+                              ? animalBirthdate!.toString().substring(0, 10)
+                              : '',
+                          TextInputType.datetime),
+                    ],
                   ),
                 ),
               ],
@@ -379,67 +350,3 @@ class _PetProfileDetailPageState extends State<PetProfileDetailPage> {
   }
 }
 
-class texthayvanprofili extends StatelessWidget {
-  const texthayvanprofili({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'HAYVAN PROFİLİ',
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      ),
-      textAlign: TextAlign.left,
-    );
-  }
-}
-
-class cameraicon extends StatelessWidget {
-  const cameraicon({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(
-      Icons.photo_camera,
-      color: Colors.white,
-    );
-  }
-}
-
-class textkaydet extends StatelessWidget {
-  const textkaydet({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'KAYDET',
-      style: TextStyle(
-        fontSize: 18,
-        letterSpacing: 3.3,
-        color: Colors.purple,
-      ),
-    );
-  }
-}
-
-class iconbackbutton extends StatelessWidget {
-  const iconbackbutton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(
-      Icons.arrow_back,
-      color: Colors.purple,
-    );
-  }
-}

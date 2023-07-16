@@ -19,6 +19,7 @@ class IntroductionScreenWidget extends StatelessWidget {
           title: "Sayfa 1",
           body: "Patili dostlarımız hakkında her şey...",
           image: Center(child: Lottie.network('https://assets5.lottiefiles.com/packages/lf20_il43ezyd.json', height: 250.0)),
+
         ),
         PageViewModel(
           title: "Sayfa 2",

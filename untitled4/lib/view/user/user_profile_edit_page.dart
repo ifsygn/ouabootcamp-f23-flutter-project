@@ -1,36 +1,32 @@
 // ignore_for_file: prefer_const_declarations
-
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
 
 void main() {
   runApp(
     const MaterialApp(
-      home: UserProfileDetailPage(),
+      home: UserProfileEditPage(),
     ),
   );
 }
 
-class UserProfileDetailPage extends StatefulWidget {
-  const UserProfileDetailPage({Key? key}) : super(key: key);
+class UserProfileEditPage extends StatefulWidget {
+  const UserProfileEditPage({Key? key}) : super(key: key);
 
   @override
-  _UserProfileDetailPageState createState() => _UserProfileDetailPageState();
+  _UserProfileEditPageState createState() => _UserProfileEditPageState();
 }
 
-class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
+class _UserProfileEditPageState extends State<UserProfileEditPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _birthDateController = TextEditingController();
 
   String name = '';
-  String cantact = '';
+  String contact = ''; // Corrected the variable name
   late String email;
   String summary = '';
   String city = '';
   DateTime? birthdate;
-  File? selectedImage;
 
   @override
   void initState() {
@@ -51,12 +47,11 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
     // Simulating data retrieval from a database
     setState(() {
       name = 'Aleyna Toprak';
-      cantact = '+905551112233';
+      contact = '+905551112233';
       email = 'aleyna.toprak@gmail.com';
       summary = 'Bu alana özet bilgi gelecektir.';
       city = 'Ankara';
       birthdate = DateTime(2021, 1, 1);
-      selectedImage = null;
 
       _birthDateController.text = birthdate != null
           ? '${birthdate!.day}/${birthdate!.month}/${birthdate!.year}'
@@ -73,80 +68,11 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
 
       // Print the values to the console
       print('Ad Soyad: $name');
-      print('iletişim: $cantact');
+      print('İletişim: $contact');
       print('E Posta: $email');
       print('Özet: $summary');
       print('Şehir: $city');
-      print('DOĞUM GÜNÜ: $birthdate');
-      print('RESİM URL: ${selectedImage?.path}');
-    }
-  }
-
-  Future<void> _selectImageFromGallery() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? pickedImage =
-    await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        selectedImage = File(pickedImage.path);
-      });
-    }
-  }
-
-  Widget _buildProfileImage() {
-    final defaultImageURL =
-        "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250";
-
-    if (selectedImage != null && selectedImage!.existsSync()) {
-      return Container(
-        width: 130,
-        height: 130,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 4,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 2,
-              blurRadius: 10,
-              color: Colors.black.withOpacity(0.1),
-              offset: const Offset(0, 10),
-            )
-          ],
-          color: Colors.grey.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(30.0),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: FileImage(selectedImage!),
-          ),
-        ),
-      );
-    } else {
-      return Container(
-        width: 130,
-        height: 130,
-        decoration: BoxDecoration(
-          border: Border.all(
-            width: 4,
-            color: Theme.of(context).scaffoldBackgroundColor,
-          ),
-          boxShadow: [
-            BoxShadow(
-              spreadRadius: 2,
-              blurRadius: 10,
-              color: Colors.black.withOpacity(0.1),
-              offset: const Offset(0, 10),
-            )
-          ],
-          color: Colors.grey.withOpacity(0.3),
-          borderRadius: BorderRadius.circular(30.0),
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: NetworkImage(defaultImageURL),
-          ),
-        ),
-      );
+      print('Doğum Günü: $birthdate');
     }
   }
 
@@ -156,7 +82,13 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: iconbackbutton(),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.purple,
+          ),
+          onPressed: () {},
+        ),
         actions: [
           Container(
             padding: const EdgeInsets.only(top: 10.0, right: 10.0),
@@ -165,7 +97,14 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
             ),
             child: TextButton(
               onPressed: kaydetButtonPressed,
-              child: textkaydet(),
+              child: const Text(
+                'KAYDET',
+                style: TextStyle(
+                  fontSize: 18,
+                  letterSpacing: 3.3,
+                  color: Colors.purple,
+                ),
+              ),
             ),
           ),
         ],
@@ -188,7 +127,32 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
                 Center(
                   child: Stack(
                     children: [
-                      _buildProfileImage(),
+                      Container(
+                        width: 130,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              spreadRadius: 2,
+                              blurRadius: 10,
+                              color: Colors.black.withOpacity(0.1),
+                              offset: const Offset(0, 10),
+                            )
+                          ],
+                          color: Colors.grey.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(30.0),
+                          image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250",
+                            ),
+                          ),
+                        ),
+                      ),
                       Positioned(
                         bottom: 0,
                         right: 0,
@@ -203,8 +167,11 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
                             color: Colors.purple,
                           ),
                           child: IconButton(
-                            icon: cameraicon(),
-                            onPressed: _selectImageFromGallery,
+                            icon: const Icon(
+                              Icons.photo_camera,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {},
                           ),
                         ),
                       ),
@@ -219,41 +186,42 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
                     color: Colors.transparent,
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(right: 20, left: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.10),
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        profiltext(),
-                        const Divider(),
-                        const SizedBox(height: 10.0),
-                        _buildDetailRow('Ad Soyad', name, TextInputType.text),
-                        const SizedBox(height: 15.0),
-                        _buildDetailRow(
-                            'İletişim', cantact, TextInputType.text),
-                        const SizedBox(height: 15.0),
-                        _buildDetailRow('E Posta', email, TextInputType.text),
-                        const Divider(),
-                        const SizedBox(height: 15.0),
-                        _buildDetailRow('Özet', summary, TextInputType.text),
-                        const Divider(),
-                        const SizedBox(height: 15.0),
-                        _buildDetailRow('Şehir', city, TextInputType.text),
-                        const SizedBox(height: 15.0),
-                        _buildDetailRow(
-                            'Doğum Günü',
-                            birthdate != null
-                                ? birthdate!.toString().substring(0, 10)
-                                : '',
-                            TextInputType.datetime),
-                      ],
-                    ),
+                Container(
+                  margin: const EdgeInsets.only(right: 20, left: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.10),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'PROFİL',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      const Divider(),
+                      const SizedBox(height: 10.0),
+                      _buildEditRow('Ad Soyad', name, TextInputType.text),
+                      const SizedBox(height: 15.0),
+                      _buildEditRow('İletişim', contact, TextInputType.text),
+                      const SizedBox(height: 15.0),
+                      _buildEditRow('E Posta', email, TextInputType.text),
+                      const Divider(),
+                      const SizedBox(height: 15.0),
+                      _buildEditRow('Özet', summary, TextInputType.text),
+                      const Divider(),
+                      const SizedBox(height: 15.0),
+                      _buildEditRow('Şehir', city, TextInputType.text),
+                      const SizedBox(height: 15.0),
+                      _buildEditRow('Doğum Günü', _birthDateController.text,
+                          TextInputType.datetime),
+                    ],
                   ),
                 ),
               ],
@@ -264,7 +232,7 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
     );
   }
 
-  Widget _buildDetailRow(String label, String value, TextInputType? inputType) {
+  Widget _buildEditRow(String label, String value, TextInputType? inputType) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -338,7 +306,9 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
               counterText:
               '', // Özet alanı için karakter sayısı görüntülenmemesi için
             ),
-            initialValue: value,
+            initialValue: label == 'Doğum Günü'
+                ? _birthDateController.text
+                : value,
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.normal,
@@ -349,7 +319,7 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
                 if (label == 'Ad Soyad') {
                   name = newValue;
                 } else if (label == 'İletişim') {
-                  cantact = newValue;
+                  contact = newValue;
                 } else if (label == 'E Posta') {
                   email = newValue;
                 } else if (label == 'Özet') {
@@ -372,9 +342,7 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
                   RegExp(r'^\d*\.?\d*$'))
             ]
                 : null,
-            maxLines: label == 'Özet'
-                ? 3
-                : 1, // Özet alanı için maksimum 3 satır
+            maxLines: label == 'Özet' ? 3 : 1, // Özet alanı için maksimum 3 satır
             maxLength: (label == 'Özet' ||
                 label == 'Ad Soyad' ||
                 label == 'Şehir' ||
@@ -406,77 +374,9 @@ class _UserProfileDetailPageState extends State<UserProfileDetailPage> {
 
   void saveDataToDatabase() {
     // Simulating saving data to a database
-    // You can replace this with your actual implementation
+    // Replace this with your actual database implementation
     name = name.trim();
-    cantact = cantact.trim();
+    contact = contact.trim();
     // Save the data...
-  }
-}
-
-class profiltext extends StatelessWidget {
-  const profiltext({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'PROFİL',
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-      ),
-      textAlign: TextAlign.left,
-    );
-  }
-}
-
-class cameraicon extends StatelessWidget {
-  const cameraicon({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Icon(
-      Icons.photo_camera,
-      color: Colors.white,
-    );
-  }
-}
-
-class textkaydet extends StatelessWidget {
-  const textkaydet({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'KAYDET',
-      style: TextStyle(
-        fontSize: 18,
-        letterSpacing: 3.3,
-        color: Colors.purple,
-      ),
-    );
-  }
-}
-
-class iconbackbutton extends StatelessWidget {
-  const iconbackbutton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.arrow_back,
-        color: Colors.purple,
-      ),
-      onPressed: () {},
-    );
   }
 }

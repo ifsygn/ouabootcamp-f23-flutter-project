@@ -10,7 +10,8 @@ class AnimatedSplashScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen( //https://pub.dev/packages/animated_splash_screen
-      splash: Lottie.network('https://assets5.lottiefiles.com/packages/lf20_il43ezyd.json'),
+      // splash: Lottie.network('https://assets5.lottiefiles.com/packages/lf20_il43ezyd.json'),
+      splash:Image.asset("assets/paw_image.png"),
       //Lottie.file(File('assets/gif/astronaut-cat.gif')),
       
       /*Column(
@@ -28,7 +29,7 @@ class AnimatedSplashScreenWidget extends StatelessWidget {
 
       splashIconSize: 400,
       duration: 2000,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.deepPurple.shade200,
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.topToBottom,
       animationDuration: const Duration(seconds: 2),

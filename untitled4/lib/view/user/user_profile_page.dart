@@ -77,14 +77,26 @@ class _UserProfilePageState extends State<UserProfilePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: iconbackbutton(),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.purple,
+          ),
+          onPressed: () {},
+        ),
         actions: [
           Container(
             padding: const EdgeInsets.only(top: 10.0, right: 10.0),
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
-            child: iconeditbutton(),
+            child: IconButton(
+              icon: const Icon(
+                Icons.edit,
+                color: Colors.purple,
+              ),
+              onPressed: () {},
+            ),
           ),
         ],
       ),
@@ -102,9 +114,45 @@ class _UserProfilePageState extends State<UserProfilePage> {
               children: [
                 const SizedBox(height: 20.0),
                 Center(
-                  child: backgroundcolor(profileImage: profileImage),
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 130,
+                        height: 130,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              spreadRadius: 2,
+                              blurRadius: 10,
+                              color: Colors.black.withOpacity(0.1),
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                          color: Colors.grey.withOpacity(0.3),
+                          borderRadius: BorderRadius.circular(30.0),
+                          image: DecorationImage(
+                            image: NetworkImage(profileImage),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                profilname(name: name),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16.0),
+                  child: Text(
+                    '$name',
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: 50.0,
                   child: Divider(
@@ -136,17 +184,35 @@ class _UserProfilePageState extends State<UserProfilePage> {
                       const SizedBox(height: 16),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: sehir(city: city),
+                        child: Text(
+                          'Yaşadığı Şehir: $city',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 5),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: iletisimbilgisi(contact: contact),
+                        child: Text(
+                          'İletişim: $contact',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 5),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: eposta(email: email),
+                        child: Text(
+                          'E-Posta: $email',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       const Divider(),
                       Row(
@@ -154,9 +220,18 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         children: [
                           const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16),
-                            child: baslik(),
+                            child: Text(
+                              'Benim Hayvanlarım',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                          addiconbutton(),
+                          IconButton(
+                            icon: const Icon(Icons.add),
+                            onPressed: () {},
+                          ),
                         ],
                       ),
                       const SizedBox(height: 5),
@@ -168,9 +243,59 @@ class _UserProfilePageState extends State<UserProfilePage> {
 
                           return Row(
                             children: [
-                              AnimalCard(animalImages: animalImages, startIndex: startIndex, animalNames: animalNames),
+                              Expanded(
+                                child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius:
+                                        BorderRadius.circular(20.0),
+                                        child: Image.network(
+                                          animalImages[startIndex],
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Text(
+                                        animalNames[startIndex],
+                                        style: const TextStyle(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                               if (endIndex < animalNames.length)
-                                AnimalCard(animalImages: animalImages, startIndex: startIndex, animalNames: animalNames),
+                                Expanded(
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                          BorderRadius.circular(20.0),
+                                          child: Image.network(
+                                            animalImages[endIndex],
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Text(
+                                          animalNames[endIndex],
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                             ],
                           );
                         }),
@@ -184,270 +309,6 @@ class _UserProfilePageState extends State<UserProfilePage> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class backgroundcolor extends StatelessWidget {
-  const backgroundcolor({
-    super.key,
-    required this.profileImage,
-  });
-
-  final String profileImage;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: 130,
-          height: 130,
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 4,
-              color: Theme.of(context).scaffoldBackgroundColor,
-            ),
-            boxShadow: [
-              BoxShadow(
-                spreadRadius: 2,
-                blurRadius: 10,
-                color: Colors.black.withOpacity(0.1),
-                offset: const Offset(0, 10),
-              ),
-            ],
-            color: Colors.grey.withOpacity(0.3),
-            borderRadius: BorderRadius.circular(30.0),
-            image: DecorationImage(
-              image: NetworkImage(profileImage),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class AnimalCard extends StatelessWidget {
-  const AnimalCard({
-    super.key,
-    required this.animalImages,
-    required this.startIndex,
-    required this.animalNames,
-  });
-
-  final List<String> animalImages;
-  final int startIndex;
-  final List<String> animalNames;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20.0),
-        ),
-        child: Column(
-          children: [
-            animalimage(animalImages: animalImages, startIndex: startIndex),
-            AnimalName(animalNames: animalNames, startIndex: startIndex),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class AnimalName extends StatelessWidget {
-  const AnimalName({
-    super.key,
-    required this.animalNames,
-    required this.startIndex,
-  });
-
-  final List<String> animalNames;
-  final int startIndex;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      animalNames[startIndex],
-      style: const TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class animalimage extends StatelessWidget {
-  const animalimage({
-    super.key,
-    required this.animalImages,
-    required this.startIndex,
-  });
-
-  final List<String> animalImages;
-  final int startIndex;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius:
-      BorderRadius.circular(20.0),
-      child: Image.network(
-        animalImages[startIndex],
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-}
-
-class baslik extends StatelessWidget {
-  const baslik({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Benim Hayvanlarım',
-      style: TextStyle(
-        fontSize: 16,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class addiconbutton extends StatelessWidget {
-  const addiconbutton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(Icons.add),
-      onPressed: () {},
-    );
-  }
-}
-
-class eposta extends StatelessWidget {
-  const eposta({
-    super.key,
-    required this.email,
-  });
-
-  final String email;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'E-Posta: $email',
-      style: const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class iletisimbilgisi extends StatelessWidget {
-  const iletisimbilgisi({
-    super.key,
-    required this.contact,
-  });
-
-  final String contact;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'İletişim: $contact',
-      style: const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class sehir extends StatelessWidget {
-  const sehir({
-    super.key,
-    required this.city,
-  });
-
-  final String city;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Yaşadığı Şehir: $city',
-      style: const TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
-      ),
-    );
-  }
-}
-
-class profilname extends StatelessWidget {
-  const profilname({
-    super.key,
-    required this.name,
-  });
-
-  final String name;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 16.0),
-      child: Text(
-        '$name',
-        style: const TextStyle(
-          fontSize: 26,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-}
-
-class iconeditbutton extends StatelessWidget {
-  const iconeditbutton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.edit,
-        color: Colors.purple,
-      ),
-      onPressed: () {},
-    );
-  }
-}
-
-class iconbackbutton extends StatelessWidget {
-  const iconbackbutton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: const Icon(
-        Icons.arrow_back,
-        color: Colors.purple,
-      ),
-      onPressed: () {},
     );
   }
 }

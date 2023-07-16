@@ -15,10 +15,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: const appBarWidget(
+    return const Scaffold(
+        appBar: appBarWidget(
           title: 'Ana Sayfa',),
-          body: const Center(
+          body: Center(
             child: Center(child: Text("Ana Sayfa"))
         ),
         drawer: NavDrawer()
@@ -27,6 +27,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class NavDrawer extends StatelessWidget {
+  const NavDrawer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return const Drawer(

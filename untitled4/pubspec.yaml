@@ -13,15 +13,14 @@ dependencies:
 
   #UI
   cupertino_icons: ^1.0.2
-  image_picker: ^0.8.4+4
   file_picker: ^5.3.1
-
 
   #FIREBASE
   cloud_firestore: ^4.8.2
   firebase_auth: ^4.6.3
   firebase_core: ^2.14.0
   google_sign_in: ^5.4.2
+  firebase_storage: ^11.2.5
   #  firebase_database: ^10.2.3
   #  firebase_storage: ^11.2.4
 
@@ -45,9 +44,7 @@ dependencies:
   geolocator: ^9.0.2
   google_nav_bar: ^5.0.2
   url_launcher: ^6.0.3
-  firebase_storage: ^11.2.5
-
-
+  intl: ^0.18.1
 
   #####################
 
@@ -56,7 +53,6 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^2.0.0
-
 
 flutter:
   uses-material-design: true
