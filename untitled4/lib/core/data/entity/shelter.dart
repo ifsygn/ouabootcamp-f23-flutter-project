@@ -3,14 +3,14 @@ import 'owner.dart';
 
 //Data Model
 class Shelter extends Owner {
-  List<String>? type;
+  String? type;
   String? responsibleName;
   String? iBAN;
 
   Shelter({
     required String id,
     required String? name,
-    this.type,
+    this.type = "",
     String? state,
     required String city,
     String? country,
@@ -18,22 +18,23 @@ class Shelter extends Owner {
     String? areaCode,
     String? phoneNumber,
     String? fullAddress,
-    this.responsibleName,
-    this.iBAN,
+    this.responsibleName = "",
+    this.iBAN = "",
     String? about,
     List<String>? photoURL,
     List<String>? petIDs,
   }) : super(
     id: id,
     name: name ?? "Örnek Barınak",
-    state: state,
-    city: city,
-    country: country,
-    coordinates: coordinates,
-    areaCode: areaCode,
-    phoneNumber: phoneNumber,
-    fullAddress: fullAddress,
-    about: about,
+    // type: type ?? "Barınak",
+    state: state ?? "",
+    city: city ?? "Sivas",
+    country: country ?? "",
+    coordinates: coordinates = const GeoPoint(0.0, 0.0),
+    areaCode: areaCode ?? "",
+    phoneNumber: phoneNumber ?? "",
+    fullAddress: fullAddress ?? "",
+    about: about ?? "",
     photoURL: photoURL ?? ["https://loremflickr.com/320/240/shelter,cat,dog/all",
       "https://loremflickr.com/320/240/shelter,cat,dog/all",
       "https://loremflickr.com/320/240/shelter,cat,dog/all",
@@ -45,7 +46,7 @@ class Shelter extends Owner {
       : this(
     id: json['id']! as String,
     name: json['name']! as String,
-    type: json['type'] as List<String>,
+    type: json['type'] as String,
     state: json['state'] as String,
     city: json['city']! as String,
     country: json['country'] as String,
@@ -93,7 +94,7 @@ class Shelter extends Owner {
 
     String id = snapshot.id;
     String name = data['name'] as String;
-    List<String> type = (data['type'] as List<dynamic>?)?.cast<String>() ?? [];
+    String type = data['type'] as String;
     String? state = data['state'] as String;
     String? city = data['city'] as String;
     String? country = data['country'] as String;

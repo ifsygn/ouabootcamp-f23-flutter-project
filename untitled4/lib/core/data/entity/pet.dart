@@ -5,7 +5,7 @@ class Pet {
   final String petID;
   String? ownerID; //Köpeğin sahip olunduğu yer.
   String? name;
-  List<String>? species;
+  String? species;
   String? folk;
   int? age;
   String? photoURL;
@@ -29,7 +29,7 @@ class Pet {
     petID: json['petID']! as String,
     ownerID: json['ownerID'] as String,
     name: json['name']! as String,
-    species: json['species'] as List<String>,
+    species: json['species'] as String,
     folk: json['folk'] as String,
     age: json['age'] as int,
     photoURL: json['photoURL'] as String,
@@ -63,7 +63,7 @@ class Pet {
     String petID = snapshot.id;
     String ownerID = data['ownerID'] as String;
     String name = data['name'] as String;
-    List<String> species = (data['species'] as List<dynamic>?)?.cast<String>() ?? [];
+    String species = data['species'] as String;
     String folk = data['folk'] as String;
     int age = data['age'] as int;
     String photoURL = data['photoURL'] as String;

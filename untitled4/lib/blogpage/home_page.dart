@@ -2,11 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled4/common/widget/appbarwidget.dart';
 import 'package:untitled4/common/widget/nav_drawer.dart';
+import 'package:untitled4/core/data/entity/random/random_data_api.dart';
+import 'package:untitled4/core/data/repository/shelter_repository.dart';
 import 'package:untitled4/core/data/repository/user_repository.dart';
 import '../common/helper/route/route_constant.dart';
 import '../core/service/firebase_auth_service.dart';
 
 UserRepository userRepository = UserRepository();
+ShelterRepository shelterRepository = ShelterRepository();
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super (key: key);
@@ -54,17 +57,18 @@ class HomePage extends StatelessWidget {
             _userUid(),
             ElevatedButton(
                 onPressed:() async {
-                  userRepository.addRandomUser();
+                  // userRepository.addRandomData();
+                  RandomDataApi.getRandomUser();
                 },
                 child: const Text("Add Random User")),
             ElevatedButton(
                 onPressed:() async {
-
+                  RandomDataApi.getRandomShelter();
                 },
                 child: const Text("Add Random Shelter")),
             ElevatedButton(
                 onPressed:() async {
-
+                  RandomDataApi.getRandomPet();
                 },
                 child: const Text("Add Random Pet")),
             ElevatedButton(

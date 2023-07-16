@@ -1,4 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled4/core/data/repository/user_repository.dart';
+
+import '../../core/data/entity/users.dart';
+
+UserRepository userRepository = UserRepository();
+final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+User? get currentUser => _firebaseAuth.currentUser;
+
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +39,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  var userID = currentUser?.uid;
+
   String userPhotoURL = "";
   String userEmail = "";
   bool isDarkMode = false;
@@ -41,13 +53,24 @@ class _MyHomePageState extends State<MyHomePage> {
     fetchUserDataFromDatabase();
   }
 
-  void fetchUserDataFromDatabase() {
+  void fetchUserDataFromDatabase() async{
     // Veri tabanından kullanıcı bilgilerini çekme işlemleri burada gerçekleştirilir.
     // Bu örnekte sabit değerler kullanarak simüle ediyoruz.
+
+      Users? user = await userRepository.getUserSnapshotByID(userID!);
+
+
     setState(() {
+
+      userPhotoURL = user!.photoURL![0];
+      userEmail = user.email;
+
+      //silinecek
+      /*
       userPhotoURL =
       "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250";
       userEmail = "aleyna.toprak5461@gmail.com";
+      */
     });
   }
 

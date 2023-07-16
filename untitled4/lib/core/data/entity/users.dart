@@ -12,18 +12,18 @@ class Users extends Owner {
     required String id,
     required this.email,
     required this.password,
-    String? name,
-    String? surName,
-    String? userName,
+    String? name = "",
+    String? surName = "",
+    String? userName = "",
     DateTime? birthDate,
-    String? city,
-    String? state,
-    String? country,
-    GeoPoint? coordinates,
-    String? areaCode,
-    String? phoneNumber,
-    String? fullAddress,
-    String? about,
+    String? city = "",
+    String? state = "",
+    String? country = "",
+    GeoPoint? coordinates = const GeoPoint(0.0, 0.0),
+    String? areaCode = "",
+    String? phoneNumber = "",
+    String? fullAddress = "",
+    String? about = "",
     List<String>? photoURL,
     List<String>? petIDs,
   }) : super(
@@ -38,8 +38,11 @@ class Users extends Owner {
     fullAddress: fullAddress,
     about: about,
     photoURL: photoURL ?? ["https://loremflickr.com/320/240/human,face/all"],
-    petIDs: petIDs ?? ["1",],
-  );
+    petIDs: petIDs ?? ["1"],
+  ) {
+    // Set the default birthdate value at runtime if it's not provided
+    this.birthDate = birthDate ?? DateTime(2023, 7, 18, 12, 00);
+  }
 
   Users.fromJson(Map<String, Object?> json)
       : this(
@@ -54,8 +57,8 @@ class Users extends Owner {
     areaCode: json['areaCode'] as String?,
     phoneNumber: json['phoneNumber'] as String?,
     fullAddress: json['fullAddress'] as String?,
-    surName: json['surName']! as String?,
-    userName: json['userName']! as String?,
+    surName: json['surName'] as String?,
+    userName: json['userName'] as String?,
     birthDate: DateTime.parse(json['birthDate']! as String),
     about: json['about']! as String?,
     photoURL: (json['photoURL'] as List<dynamic>?)?.cast<String>(),
@@ -66,7 +69,7 @@ class Users extends Owner {
     return {
       'id': id,
       'email': email,
-      'password' : password,
+      'password': password,
       'name': name,
       'state': state,
       'city': city,
@@ -77,7 +80,7 @@ class Users extends Owner {
       'fullAddress': fullAddress,
       'surName': surName,
       'userName': userName,
-      'birthDate': birthDate,
+      'birthDate': birthDate?.toIso8601String(), // Convert to ISO8601 format
       'about': about,
       'photoURL': photoURL,
       'petIDs': petIDs,
@@ -101,7 +104,7 @@ class Users extends Owner {
       fullAddress: data['fullAddress'] as String?,
       surName: data['surName'] as String?,
       userName: data['userName'] as String?,
-      birthDate: DateTime.parse(data['birthDate'] as String),
+      birthDate: data['birthDate'] != null ? DateTime.parse(data['birthDate'] as String) : null,
       about: data['about'] as String?,
       photoURL: (data['photoURL'] as List<dynamic>?)?.cast<String>(),
       petIDs: (data['petIDs'] as List<dynamic>?)?.cast<String>(),

@@ -35,6 +35,15 @@ class PetRepository {
     toFirestore: (pet, _) => pet.toJson(),
   );
 
+  Future<void> addPetWithConverter(String petID, Pet pet) async {
+    // Pet bilgileri, 'pets' koleksiyonuna kaydedilir.
+    _shelterCollection.doc(petID)
+        .withConverter<Pet>(fromFirestore: (snapshot, _) => Pet.fromJson(snapshot.data()!),
+        toFirestore: (pet, _) => pet.toJson())
+        .set(pet)
+        .onError((e, _) => print("Error writing document: $e"));
+  }
+
   /// Evcil hayvan belgesini ekleyen fonksiyon
   Future<void> addPetByNameAndUpdateShelter(String petName, String species, DocumentReference shelterRef) async {
 
@@ -76,11 +85,9 @@ class PetRepository {
         // Evcil hayvan bilgilerini alın
         Map<String, dynamic> petData = doc.data() as Map<String, dynamic>;
 
-        print(petData['name']);
         // Diğer evcil hayvan bilgileri üzerinde işlemler yapabilirsiniz
       }
     } catch (e) {
-      print('Evcil hayvanları sorgularken bir hata oluştu: $e');
     }
   }
 
@@ -109,7 +116,6 @@ class PetRepository {
         return null; // OwnerID bulunamadıysa null döndür
       }
     } catch (e) {
-      print('Hata: $e');
       return null; // Hata durumunda null döndür
     }
   }
@@ -138,7 +144,6 @@ class PetRepository {
         return null; // OwnerID bulunamadıysa null döndür
       }
     } catch (e) {
-      print('Hata: $e');
       return null; // Hata durumunda null döndür
     }
   }
@@ -161,7 +166,6 @@ class PetRepository {
         return null; // OwnerID bulunamadıysa null döndür
       }
     } catch (e) {
-      print('Hata: $e');
       return null; // Hata durumunda null döndür
     }
   }
@@ -184,7 +188,6 @@ class PetRepository {
         return null; // OwnerID bulunamadıysa null döndür
       }
     } catch (e) {
-      print('Hata: $e');
       return null; // Hata durumunda null döndür
     }
   }

@@ -2,9 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:geolocator/geolocator.dart';
 
 import '../entity/pet.dart';
-import '../entity/random/random_user.dart';
-import '../entity/random/random_user_ninja.dart';
-import '../entity/shelter.dart';
 import '../entity/users.dart';
 
 class UserRepository {
@@ -68,6 +65,25 @@ class UserRepository {
     return await Geolocator.getCurrentPosition();
   }
 
+  Future<Users?> getUserSnapshotByID(String userID) async {
+    try {
+      DocumentSnapshot snapshot = await _usersCollection
+          .doc(userID)
+          .get();
+
+      if (snapshot.exists) {
+        return Users.fromSnapshot(snapshot);
+      }
+      else {
+        print('User with ID $userID not found.');
+        return null;
+      }
+    } catch (e) {
+      print('Error fetching user with ID $userID: $e');
+      throw Exception('Failed to fetch user with ID $userID: $e');
+    }
+  }
+
   Future<void> addUserToFirestore(Users user) async {
     try {
       await _usersCollection.doc(user.id).set(user.toJson());
@@ -99,10 +115,20 @@ class UserRepository {
         .onError((e, _) => print("Error writing document: $e"));
   }
 
+  Future<void> addUserWithConverter(String userID, Users users) async {
+    // Kullanıcının bilgileri, 'users' koleksiyonuna kaydedilir.
+    _usersCollection.doc(userID)
+        .withConverter<Users>(fromFirestore: (snapshot, _) => Users.fromJson(snapshot.data()!),
+        toFirestore: (users, _) => users.toJson())
+        .set(users)
+        .onError((e, _) => print("Error writing document: $e"));
+  }
+
+/*
   Future<void> addRandomUser() async {
 
       // Create a RandomUser object.
-      var user = await RandomUser.getRandomUser();
+      var user = await RandomDataApi.getRandomUser();
 
       // Create a Users object from the RandomUser object.
       var users = Users(
@@ -126,5 +152,30 @@ class UserRepository {
         toFirestore: (users, _) => users.toJson())
         .set(users)
         .onError((e, _) => print("Error writing document: $e"));
-  }
+  }*/
+
+/*Future<void> addRandomData() async {
+
+      // Create a RandomUser object.
+      var user = await RandomDataApi.getRandomUser();
+
+      // Create a Users object from the RandomUser object.
+      var users = Users(
+        id: user.id,
+        password: user.password,
+        email: user.email,
+        name: user.name,
+        surName: user.surname,
+        phoneNumber: user.phoneNumber,
+        photoURL: user.photoURL
+      );
+
+      // Get a JSON representation of the Users object.
+      // var json = users.toJson();
+
+      // Print the JSON representation of the Users object.
+      // print(json);
+
+      addUserWithConverter(user.id, users);
+  }*/
 }

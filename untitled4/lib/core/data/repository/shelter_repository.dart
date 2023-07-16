@@ -67,6 +67,15 @@ class ShelterRepository {
   }
 */
 
+  Future<void> addShelterWithConverter(String shelterID, Shelter shelter) async {
+    // Shelter bilgileri, 'shelter' koleksiyonuna kaydedilir.
+    _shelterCollection.doc(shelterID)
+        .withConverter<Shelter>(fromFirestore: (snapshot, _) => Shelter.fromJson(snapshot.data()!),
+        toFirestore: (shelter, _) => shelter.toJson())
+        .set(shelter)
+        .onError((e, _) => print("Error writing document: $e"));
+  }
+
   Future<void> addSheltersFromTextFile(String filePath) async {
     String fileData = await rootBundle.loadString(filePath);
     List<String> lines = fileData.split('\n');
@@ -281,6 +290,7 @@ class ShelterRepository {
         .snapshots();
   }
    */
+
 }
 /*
 
