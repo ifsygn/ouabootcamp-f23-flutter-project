@@ -32,7 +32,7 @@ class DonateWidget extends StatelessWidget {
             iban,
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 8,
+              fontSize: 7,
             ),
           ),
         ),

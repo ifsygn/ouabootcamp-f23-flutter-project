@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled4/core/data/repository/user_repository.dart';
-
 import '../../core/data/entity/users.dart';
 
 UserRepository userRepository = UserRepository();
 final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 User? get currentUser => _firebaseAuth.currentUser;
-
 
 void main() {
   runApp(const MyApp());
@@ -58,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
     // Bu örnekte sabit değerler kullanarak simüle ediyoruz.
 
       Users? user = await userRepository.getUserSnapshotByID(userID!);
-
 
     setState(() {
 
