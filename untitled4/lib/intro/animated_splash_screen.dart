@@ -13,7 +13,7 @@ class AnimatedSplashScreenWidget extends StatelessWidget {
       // splash: Lottie.network('https://assets5.lottiefiles.com/packages/lf20_il43ezyd.json'),
       splash:Image.asset("assets/paw_image.png"),
       //Lottie.file(File('assets/gif/astronaut-cat.gif')),
-      
+
       /*Column(
           children: [
             Image.asset('assets/splash_screen/paw_icon.png'),
@@ -27,9 +27,9 @@ class AnimatedSplashScreenWidget extends StatelessWidget {
           ]
       ),*/
 
-      splashIconSize: 400,
+      splashIconSize: 125,
       duration: 2000,
-      backgroundColor: Colors.deepPurple.shade200,
+      backgroundColor: Colors.purple.shade200,
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.topToBottom,
       animationDuration: const Duration(seconds: 2),
@@ -37,32 +37,3 @@ class AnimatedSplashScreenWidget extends StatelessWidget {
     );
   }
 }
-//icon image splash screen
-/*
-AnimatedSplashScreen( //https://pub.dev/packages/animated_splash_screen
-      splash: Column(
-        children: [
-          Image.asset('assets/splash_screen/paw_icon.png'),
-          const Text('Sokakta Bir Arkadaş: SOBA app',
-              style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          )
-        ]
-      ),
-      splashIconSize: 250,
-      duration: 2000,
-      backgroundColor: Colors.purpleAccent,
-      splashTransition: SplashTransition.slideTransition,
-      pageTransitionType: PageTransitionType.topToBottom,
-      animationDuration: const Duration(seconds: 1),
-      nextScreen: const WidgetTree(),
-    );
- */
-
-//animation image splash screen
-/*
-
- */

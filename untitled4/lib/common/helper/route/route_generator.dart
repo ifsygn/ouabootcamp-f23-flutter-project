@@ -12,7 +12,7 @@ class RouterGenerator {
     switch (settings.name) {
 
       case RouteConstant.introductionScreenRoute:
-        return MaterialPageRoute(builder: (_) => IntroductionScreenWidget());
+        return MaterialPageRoute(builder: (_) => IntroductionScreenWidget(title: "",));
 
       case RouteConstant.loginScreenRoute:
         return MaterialPageRoute(builder: (_) => const LoginView());
