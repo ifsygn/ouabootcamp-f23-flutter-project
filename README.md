@@ -353,21 +353,18 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
 - Assign / Status / Priority    
 - EPIC / User Story / User Story Point
 
-![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/91098187-b2a2-47f7-92e4-bf6c9003d4b5)
-
-![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/c3a6346b-639f-4ebb-9938-9da1c6829dae)
-
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e15cd263-7141-4a10-bdcc-2fbd7b6ea43d" alt="User Story-All Responsible" style="height: 400px;">
 
 <details align=""> <summary>by Responsible</summary>
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e15cd263-7141-4a10-bdcc-2fbd7b6ea43d" alt="User Story-All Responsible" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e46aede7-5010-4a37-8220-bcd738133cfa" alt="Aleyna" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/53942401-bcd3-4c30-b43a-b1ad0401dd3d" alt="Ardahan-1" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/13877e9c-6765-4d34-8a43-2d4655edc0b1" alt="Ardahan-2" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/26f011b4-4361-4ff2-ae18-c8d3a8bea811" alt="Betül" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/c0ffb506-d078-4e2f-9544-4cf58f0a9c94" alt="Elif" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/35a3244b-8232-4aff-ac81-3f5664f826c0" alt="İsmail-1" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9df8e845-4568-4d1c-bb88-78af89b4ca84" alt="İsmail-2" style="height: 400px;">
-    
+
+![Aleyna](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e46aede7-5010-4a37-8220-bcd738133cfa)
+![Ardahan-1](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/53942401-bcd3-4c30-b43a-b1ad0401dd3d)
+![Ardahan-2](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/13877e9c-6765-4d34-8a43-2d4655edc0b1)
+![Betül](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/26f011b4-4361-4ff2-ae18-c8d3a8bea811)
+![Elif](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/c0ffb506-d078-4e2f-9544-4cf58f0a9c94)
+![İsmail-1](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/35a3244b-8232-4aff-ac81-3f5664f826c0)
+![İsmail-2](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9df8e845-4568-4d1c-bb88-78af89b4ca84)
+
 </details>
 
 </details>
