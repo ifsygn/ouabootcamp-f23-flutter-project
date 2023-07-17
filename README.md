@@ -353,8 +353,7 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
 - Assign / Status / Priority    
 - EPIC / User Story / User Story Point
 
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e15cd263-7141-4a10-bdcc-2fbd7b6ea43d" alt="User Story-All Responsible" style="height: 400px;">
-
+![User Story-All Responsible](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e15cd263-7141-4a10-bdcc-2fbd7b6ea43d)
 <details align=""> <summary>by Responsible</summary>
 
 ![Aleyna](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e46aede7-5010-4a37-8220-bcd738133cfa)
@@ -410,10 +409,6 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
     
 </details>
 
-<div style="display: flex; justify-content: center;">
-    
-    <img src="" alt="IntroductionScreen-2" style="height: 400px;">
-</div>
 </details>
 
 ### Çevik Proje Yönetimimize Aşağıdan Ulaşabilirsiniz
