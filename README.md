@@ -307,7 +307,7 @@ GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databas
 
 - Agile Yönetim Sisteminin bu esneklik ve hedefe yönelik avantajlarını ekip olarak özümsedik.
 
-**Sprint içinde tamamlanması tahmin edilen puan**: 250 puan
+**Sprint içinde tamamlanması tahmin edilen puan**: 196 puan
 
 **Backlog düzeni ve Story seçimleri**:
 
@@ -316,7 +316,7 @@ GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databas
 3. User Story’ler gerektiğinde daha rahat çalışmak amacıyla Task’lara bölünmüştür.
 
 **Puan tamamlama mantığı**:
-    - Her bir User Story Point Fibonacci sayıları ile 1, 2, 3, 5, 8 ve en büyük 10 olacak şekilde değerlendirilmiştir. Daha büyük Puana sahip Story’ler Sub Story’lere bölünmüştür. 2. Sprint boyunca tamamlanması gereken puan, iş yükü önceliğine göre hesaplanmış ve 133 olarak kararlaştırılmıştır.
+    - Her bir User Story Point Fibonacci sayıları ile 1, 2, 3, 5, 8 ve en büyük 10 olacak şekilde değerlendirilmiştir. Daha büyük Puana sahip Story’ler Sub Story’lere bölünmüştür. 2. Sprint boyunca tamamlanması gereken puan, iş yükü önceliğine göre hesaplanmış ve 196 olarak kararlaştırılmıştır.
 
 **Daily Scrum**: Daily Scrum toplantıları WhatsApp’ta planlanıp, Discord’da yapılmıştır.
 
@@ -356,23 +356,19 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
 ![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/91098187-b2a2-47f7-92e4-bf6c9003d4b5)
 
 ![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/c3a6346b-639f-4ebb-9938-9da1c6829dae)
-![image]()
-
 
 
 <details align=""> <summary>by Responsible</summary>
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e15cd263-7141-4a10-bdcc-2fbd7b6ea43d" alt="User Story-All Responsible" style="height: 400px;">
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e46aede7-5010-4a37-8220-bcd738133cfa" alt="Aleyna" style="height: 400px;">
-<img src="" alt="Blog-Detail-Page" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f082038d-e491-4f5f-8dbf-8e03e099eb30" alt="Blog-Detail-Page" style="height: 400px;">
-<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f082038d-e491-4f5f-8dbf-8e03e099eb30" alt="Blog-Detail-Page" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/53942401-bcd3-4c30-b43a-b1ad0401dd3d" alt="Ardahan-1" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/13877e9c-6765-4d34-8a43-2d4655edc0b1" alt="Ardahan-2" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/26f011b4-4361-4ff2-ae18-c8d3a8bea811" alt="Betül" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/c0ffb506-d078-4e2f-9544-4cf58f0a9c94" alt="Elif" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/35a3244b-8232-4aff-ac81-3f5664f826c0" alt="İsmail-1" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9df8e845-4568-4d1c-bb88-78af89b4ca84" alt="İsmail-2" style="height: 400px;">
     
 </details>
-
-![image]()
-
-
-
 
 </details>
 <details align="left"> 
@@ -397,7 +393,7 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
 
 <details align=""> <summary>Blog</summary>
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/6ded3529-1a11-47f3-a8a9-81c2b45b0cee" alt="Blog-Home-Page" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f082038d-e491-4f5f-8dbf-8e03e099eb30" alt="Blog-Detail-Page" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/363e3bee-55d1-42d4-8220-6c55ca1d499e" alt="Blog-Detail-Page" style="height: 400px;">
 </details>
 
 <details align=""> <summary>User</summary>
