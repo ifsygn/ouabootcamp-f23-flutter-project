@@ -346,19 +346,41 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
 </details>
 
 <details align="left"> 
-<summary><h2>Product Backlog & Sprint Board Update</h2></summary>
+<summary><h3>Product Backlog & Sprint Board Update</h3></summary>
 <!-- H2 Yazıları burada -->
     
 - Planned Time / Actual Time    
 - Assign / Status / Priority    
 - EPIC / User Story / User Story Point
+
 ![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/91098187-b2a2-47f7-92e4-bf6c9003d4b5)
+
+![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/c3a6346b-639f-4ebb-9938-9da1c6829dae)
+![image]()
+
+
+
+<details align=""> <summary>by Responsible</summary>
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e15cd263-7141-4a10-bdcc-2fbd7b6ea43d" alt="User Story-All Responsible" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/e46aede7-5010-4a37-8220-bcd738133cfa" alt="Aleyna" style="height: 400px;">
+<img src="" alt="Blog-Detail-Page" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f082038d-e491-4f5f-8dbf-8e03e099eb30" alt="Blog-Detail-Page" style="height: 400px;">
+<img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f082038d-e491-4f5f-8dbf-8e03e099eb30" alt="Blog-Detail-Page" style="height: 400px;">
+    
+</details>
+
+![image]()
+
+
+
+
 </details>
 <details align="left"> 
-<summary><h3>Burndown Chart</h3></summary>
+<summary><h3>Burndown Chart & Graph</h3></summary>
     
-![Burndown Chart](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/afb8cccb-5d88-4b20-9e3d-6906d85fc104)
-![Burndown Graph](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/d42210eb-6eb1-4fef-9921-b751efdd34c7)
+![Burndown Chart](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/3a3a93c5-4939-4beb-af02-d113aa6ea639)
+    
+![Burndown Graph](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/5ebf415b-f52c-419e-95c2-c8ae6ffc588c)
 
 </details>
 
@@ -366,16 +388,16 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
 <summary><h3>Ürün Durumu: Ekran görüntüleri</h3></summary>
 
 <details align=""> <summary>Intro</summary>
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/d1915680-a320-49b3-a0fe-63573fdd677f" alt="UserProfileEditPage" style="height: 400px;">
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/3f8c8e7f-47a5-4e4d-8aa0-a5cd8c534e6b" alt="UserProfileEditPage" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/65c25ed1-0dac-49f3-b3ea-b798aa97234a" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/3c047354-6cae-46c3-af46-ccc6a5e818e2" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/aa508b4c-6162-4f35-86c9-2366cf5dffad" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/2c31b0c0-7648-4dc9-95c2-db582723ee92" alt="UserProfileEditPage" style="height: 400px;">
         
 </details>
 
 <details align=""> <summary>Blog</summary>
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/6ded3529-1a11-47f3-a8a9-81c2b45b0cee" alt="Blog-Home-Page" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f082038d-e491-4f5f-8dbf-8e03e099eb30" alt="Blog-Detail-Page" style="height: 400px;">
 </details>
 
 <details align=""> <summary>User</summary>
@@ -384,24 +406,21 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
 </details>
 
 <details align=""> <summary>Shelter</summary>
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/9fe1044f-a552-4472-94fd-5835e080c463" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f73d67d4-a1b1-400a-b036-8f9f030e8d84" alt="Shelter-Search-Page" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/65c25ed1-0dac-49f3-b3ea-b798aa97234a" alt="Shelter-Profile-Page" style="height: 400px;">
+
 </details>
 
 <details align=""> <summary>Pet</summary>
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/a9a19aba-39e4-45b7-83b2-e357ca796429" alt="UserProfileEditPage" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/67994764-d6c2-4c6c-b3b3-3e754031bd01" alt="UserProfileEditPage" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/a9a19aba-39e4-45b7-83b2-e357ca796429" alt="Pet-Profile-Page" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/67994764-d6c2-4c6c-b3b3-3e754031bd01" alt="Pet-Edit-Page" style="height: 400px;">
     
 </details>
 
 <div style="display: flex; justify-content: center;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/684d82b7-fc3f-4128-979e-83d692f65384" alt="SplashScreen" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/349cee9e-8617-4fea-994a-9999e0c2dcdc" alt="IntroductionScreen-1" style="height: 400px;">
-    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/b1d30000-4c26-4797-a85b-c830fc077bbb" alt="IntroductionScreen-2" style="height: 400px;">
+    
+    <img src="" alt="IntroductionScreen-2" style="height: 400px;">
 </div>
-
-
 </details>
 
 ### Çevik Proje Yönetimimize Aşağıdan Ulaşabilirsiniz
