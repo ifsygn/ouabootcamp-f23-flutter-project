@@ -387,13 +387,6 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
         
 </details>
 
-![image]()
-
-![image]()
-
-![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/7c2838ba-b47b-40be-86fc-f89c0e015be9)
-
-
 <details align=""> <summary>Admin</summary>
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/67176691-d102-4e8b-9d0f-413867c246ad" alt="Admin Add Blog" style="height: 400px;">
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f2629ba1-5b1f-4df0-b0ca-f8659154e5a8" alt="Resim Seçme" style="height: 400px;">
