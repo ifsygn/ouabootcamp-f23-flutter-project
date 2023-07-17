@@ -316,7 +316,7 @@ GÜNCEL: [Sprint | EPIC | User Story | Tasks](https://ifsygn.notion.site/Databas
 3. User Story’ler gerektiğinde daha rahat çalışmak amacıyla Task’lara bölünmüştür.
 
 **Puan tamamlama mantığı**:
-    - Her bir User Story Point Fibonacci sayıları ile 1, 2, 3, 5, 8 ve en büyük 10 olacak şekilde değerlendirilmiştir. Daha büyük Puana sahip Story’ler Sub Story’lere bölünmüştür. 2. Sprint boyunca tamamlanması gereken puan, iş yükü önceliğine göre hesaplanmış ve 196 olarak kararlaştırılmıştır.
+    - Her bir User Story Point Fibonacci sayıları ile 1, 2, 3, 5, 8 ve en büyük 10 olacak şekilde değerlendirilmiştir. Daha büyük Puana sahip Story’ler Sub Story’lere bölünmüştür. 3. Sprint boyunca tamamlanması gereken puan, iş yükü önceliğine göre hesaplanmış ve 196 olarak kararlaştırılmıştır.
 
 **Daily Scrum**: Daily Scrum toplantıları WhatsApp’ta planlanıp, Discord’da yapılmıştır.
 
@@ -341,7 +341,7 @@ Uygulama kullanıcı gözüyle incelendiğinde UX deneyimi ve UI'da yapılacak d
 - Takımdaki bir çok arkadaşımızın mücbir sebeplerden dolayı zaman zaman toplantılara katılamadı ve görevlerini mecburen aksattığı durumlar oldu. 
 Ama olabilecek gecikmeleri önceden konuştuk ve bunlara uygun planlamamızı yaptık.
 - İlk Sprint’teki tecrübelerimize dayanarak takım arkadaşlarımızın müsaitlik durumlarına göre görev ve sorumluluklarda değişikliğe gitmeye karar verdik.
-- FrontEnd ve BackEnd konusunda kodların bir araya getirilmden önce temel konuların netleştirilmiş olması gerektiğini farkettik. 
+- FrontEnd ve BackEnd konusunda kodların bir araya getirilmeden önce temel konuların netleştirilmiş olması gerektiğini farkettik. 
 Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğimiz bazı sürelerin telafisini daha fazla çalışarak ve öğrenerek kapatmaya gayret ettik.
 </details>
 
