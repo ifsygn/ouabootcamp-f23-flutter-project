@@ -387,6 +387,20 @@ Yarışma ile birlikte ilk tecrübelerimizi de kazandığımız için kaybettiğ
         
 </details>
 
+![image]()
+
+![image]()
+
+![image](https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/7c2838ba-b47b-40be-86fc-f89c0e015be9)
+
+
+<details align=""> <summary>Admin</summary>
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/67176691-d102-4e8b-9d0f-413867c246ad" alt="Admin Add Blog" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/f2629ba1-5b1f-4df0-b0ca-f8659154e5a8" alt="Resim Seçme" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/da006486-1e92-4dbd-a9d9-ad39908f7ec6" alt="Blog-Oluşturma" style="height: 400px;">
+    <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/7c2838ba-b47b-40be-86fc-f89c0e015be9" alt="Blog-Database" style="height: 400px;">
+</details>
+
 <details align=""> <summary>Blog</summary>
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/6ded3529-1a11-47f3-a8a9-81c2b45b0cee" alt="Blog-Home-Page" style="height: 400px;">
     <img src="https://github.com/ifsygn/ouabootcamp-f23-flutter-project/assets/49685601/363e3bee-55d1-42d4-8220-6c55ca1d499e" alt="Blog-Detail-Page" style="height: 400px;">
