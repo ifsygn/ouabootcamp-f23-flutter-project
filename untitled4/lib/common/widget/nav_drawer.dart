@@ -16,7 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        appBar: appBarWidget(
+        appBar: AppBarWidget(
           title: 'Ana Sayfa',),
           body: Center(
             child: Center(child: Text("Ana Sayfa"))
@@ -266,7 +266,7 @@ class Hayvanlar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const appBarWidget(
+        appBar: const AppBarWidget(
           title: 'Hayvanlar',
         ),
         drawer: NavDrawer(),
@@ -280,7 +280,7 @@ class Hayvanlarim extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const appBarWidget(
+        appBar: const AppBarWidget(
         title: 'Hayvanlarım',),
         drawer: NavDrawer(),
         body: const Center(child: Text("This is Hayvanlarım page")));
@@ -292,7 +292,7 @@ class Kaydedilenler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const appBarWidget(
+        appBar: const AppBarWidget(
           title: 'Kaydedilenler',
         ),
         drawer: NavDrawer(),

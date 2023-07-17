@@ -1,11 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled4/common/widget/appbarwidget.dart';
-import 'package:untitled4/common/widget/nav_drawer.dart';
 import 'package:untitled4/core/data/entity/blog.dart';
 import 'package:untitled4/core/data/repository/blog_repository.dart';
 import 'package:untitled4/core/service/firebase_auth_service.dart';
 import 'package:untitled4/view/blog/blog_detail_page.dart';
+import '../../common/widget/drawer/my_navigation_drawer.dart';
+
+final User? user = Auth().currentUser;
 
 void main() {
   runApp(const MyApp());
@@ -29,17 +31,17 @@ class BlogAnaSayfa extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const appBarWidget(
+      appBar: const AppBarWidget(
         title: 'Blog',
       ),
-      drawer: NavDrawer(),
+      drawer: const MyNavigationDrawer(),
       body: arkaplan(),
     );
   }
 }
 bool userCheck = false;
 class arkaplan extends StatelessWidget {
-  final User? user = Auth().currentUser;
+
   arkaplan({Key? key}) : super(key: key);
 
   @override

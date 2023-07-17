@@ -1,103 +1,75 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:untitled4/common/helper/route/route_constant.dart';
+import '../../../core/data/entity/users.dart';
+import '../../../core/data/repository/user_repository.dart';
+import '../../../core/service/firebase_auth_service.dart';
+import '../../../view/blog/home_page.dart';
+import '../../../view/shelter/shelter_route_page.dart';
 
-void main() {
-  runApp(
-    ChangeNotifierProvider<ThemeNotifier>(
-      create: (_) => ThemeNotifier(ThemeData
-          .light()), // Varsayılan tema ayarını burada ayarlayabilirsiniz
-      child: const MyApp(),
-    ),
-  );
-}
+UserRepository userRepository = UserRepository();
+User? currentUser = Auth().currentUser;
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyNavigationDrawer extends StatefulWidget {
 
-  @override
-  Widget build(BuildContext context) {
-    final themeNotifier = Provider.of<ThemeNotifier>(context);
-    return MaterialApp(
-      title: 'Flutter',
-      theme: themeNotifier.getTheme(),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyNavigationDrawer({super.key});
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyNavigationDrawer> createState() => _MyNavigationDrawerState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  String currentAccountPicture = "";
-  String accountEmail = "";
-  bool isDarkMode = false;
+class _MyNavigationDrawerState extends State<MyNavigationDrawer> {
+
+  late String userName = "";
+  late String userProfilePhotoURL = "";
+  late String userEmail = "";
+  late bool isDarkMode = false;
+  // late ValueChanged<bool> onDarkModeToggle;
 
   @override
   void initState() {
     super.initState();
+    // Veri tabanından currentAccountPicture, accountName ve accountEmail bilgilerini çekme işlemleri burada yapılabilir.
+    // Örnek bir veri tabanı sorgusu:
+    currentUser = Auth().currentUser;
     fetchUserDataFromDatabase();
   }
 
-  void fetchUserDataFromDatabase() {
+  void fetchUserDataFromDatabase() async {
+    final String? userID = currentUser?.uid;
+    Users? user = await userRepository.getUserSnapshotByID(userID!);
+
+    if (user != null) {
+      setState(() {
+        userName = user.name!;
+        userEmail = user.email;
+        userProfilePhotoURL = user.profilPhotoURL!;
+      });
+    } else {
+      // Handle the case when the user is not found or the query returns null.
+      // For example, you can set default values or show an error message.
+      setState(() {
+        userName = "User Not Found";
+        userEmail = "user@example.com";
+        userProfilePhotoURL =
+        "https://example.com/default-profile-image.jpg";
+      });
+    }
+  }
+
+
+  void toggleDarkMode(bool isDarkMode) {
     setState(() {
-      currentAccountPicture =
-      "https://images.pexels.com/photos/3307758/pexels-photo-3307758.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=250";
-      accountEmail = "aleyna.toprak5461@gmail.com";
+      this.isDarkMode = isDarkMode;
+      // Add your dark mode logic here, e.g., change theme, save preference, etc.
     });
   }
-
-  void toggleDarkMode(bool value, ThemeNotifier themeNotifier) {
-    setState(() {
-      isDarkMode = value;
-      ThemeData theme = isDarkMode ? ThemeData.dark() : ThemeData.light();
-      theme = theme.copyWith(primaryColor: Colors.purple);
-      themeNotifier.setTheme(theme);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.transparent),
-      body: const SingleChildScrollView(
-        child: Center(child: Text("Ana Sayfa")),
-      ),
-      drawer: Consumer<ThemeNotifier>(
-        builder: (context, themeNotifier, _) => NavDrawer(
-          currentAccountPicture: currentAccountPicture,
-          accountEmail: accountEmail,
-          isDarkMode: themeNotifier.getTheme().brightness == Brightness.dark,
-          onDarkModeToggle: (value) => toggleDarkMode(value, themeNotifier),
-        ),
-      ),
-    );
-  }
-}
-
-class NavDrawer extends StatelessWidget {
-  final String currentAccountPicture;
-  final String accountEmail;
-  final bool isDarkMode;
-  final ValueChanged<bool> onDarkModeToggle;
-
-  const NavDrawer({
-    required this.currentAccountPicture,
-    required this.accountEmail,
-    required this.isDarkMode,
-    required this.onDarkModeToggle,
-    Key? key,
-  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Colors.white, // Arka planı beyaz yapar
         child: Column(
           children: [
             Expanded(
@@ -106,13 +78,15 @@ class NavDrawer extends StatelessWidget {
                   children: [
                     UserAccountsDrawerHeader(
                       decoration: const BoxDecoration(
-                        color: Colors.transparent,
+                        color: Colors.white,
                       ),
                       currentAccountPicture: CircleAvatar(
-                        backgroundImage: NetworkImage(currentAccountPicture),
+                        backgroundImage: userProfilePhotoURL.isEmpty
+                            ? const AssetImage('assets/profil-placeholder.png') // Replace with your placeholder image
+                            : Image.network(userProfilePhotoURL).image,
                       ),
                       accountEmail: Text(
-                        accountEmail,
+                        userEmail,
                         style:
                         const TextStyle(fontSize: 12, color: Colors.black),
                       ),
@@ -130,11 +104,9 @@ class NavDrawer extends StatelessWidget {
                       const Icon(Icons.home, color: Colors.grey, size: 20),
                       onTap: () {
                         Navigator.of(context).pop();
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                            const MyHomePage(),
-                          ),
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) =>const HomePage(),
+                        ),
                         );
                       },
                     ),
@@ -150,30 +122,9 @@ class NavDrawer extends StatelessWidget {
                           color: Colors.grey, size: 20),
                       onTap: () {
                         Navigator.of(context).pop();
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                            const Barinaklar(),
-                          ),
-                        );
-                      },
-                    ),
-                    ListTile(
-                      title: const Text(
-                        "Blog",
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (BuildContext context) =>const ShelterRoutePage(),
                         ),
-                      ),
-                      leading: const Icon(Icons.menu_book,
-                          color: Colors.grey, size: 20),
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => const Blog(),
-                          ),
                         );
                       },
                     ),
@@ -192,7 +143,7 @@ class NavDrawer extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const Hayvanlar(),
+                            const FavoritedPets(),
                           ),
                         );
                       },
@@ -212,7 +163,7 @@ class NavDrawer extends StatelessWidget {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (BuildContext context) =>
-                            const Hayvanlarim(),
+                            const MyPet(),
                           ),
                         );
                       },
@@ -257,6 +208,45 @@ class NavDrawer extends StatelessWidget {
                         );
                       },
                     ),
+                    ListTile(
+                      title: const Text(
+                        "Mağaza",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                        ),
+                      ),
+                      leading:
+                      const Icon(Icons.store, color: Colors.grey, size: 20),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => const Magaza(),
+                          ),
+                        );
+                      },
+                    ),
+                    ListTile(
+                      title: const Text(
+                        "Kaydedilenler",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                        ),
+                      ),
+                      leading: const Icon(Icons.folder,
+                          color: Colors.grey, size: 20),
+                      onTap: () {
+                        Navigator.of(context).pop();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                            const Kaydedilenler(),
+                          ),
+                        );
+                      },
+                    ),
                     SwitchListTile(
                       title: const Text(
                         "Dark Mode",
@@ -268,7 +258,7 @@ class NavDrawer extends StatelessWidget {
                       secondary: const Icon(Icons.dark_mode,
                           color: Colors.grey, size: 20),
                       value: isDarkMode,
-                      onChanged: onDarkModeToggle,
+                      onChanged: toggleDarkMode,
                     ),
                   ],
                 ),
@@ -289,11 +279,10 @@ class NavDrawer extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.of(context).pop();
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) => const Logout(),
-                  ),
-                );
+
+                Navigator.pushNamed(context, RouteConstant.loginScreenRoute);
+
+                Auth().signOut();
               },
             ),
           ],
@@ -301,11 +290,12 @@ class NavDrawer extends StatelessWidget {
       ),
     );
   }
+
+
 }
 
 class Barinaklar extends StatelessWidget {
-  const Barinaklar({Key? key}) : super(key: key);
-
+  const Barinaklar({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -317,23 +307,8 @@ class Barinaklar extends StatelessWidget {
   }
 }
 
-class Blog extends StatelessWidget {
-  const Blog({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Blog"),
-      ),
-      body: const Center(child: Text("This is Blog page")),
-    );
-  }
-}
-
-class Hayvanlar extends StatelessWidget {
-  const Hayvanlar({Key? key}) : super(key: key);
-
+class FavoritedPets extends StatelessWidget {
+  const FavoritedPets({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -345,9 +320,8 @@ class Hayvanlar extends StatelessWidget {
   }
 }
 
-class Hayvanlarim extends StatelessWidget {
-  const Hayvanlarim({Key? key}) : super(key: key);
-
+class MyPet extends StatelessWidget {
+  const MyPet({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -377,8 +351,10 @@ class Veteriner extends StatelessWidget {
           Center(
             child: Image.asset(
               "images/dog.gif",
-              width: screenSize.width * 0.8,
-              height: screenSize.width * 0.8,
+              width: screenSize.width *
+                  0.8, // Ekran genişliğinin %80'i kadar genişlik
+              height: screenSize.width *
+                  0.8, // Ekran genişliğinin %80'i kadar yükseklik
               fit: BoxFit.cover,
               frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                 if (wasSynchronouslyLoaded) return child;
@@ -390,8 +366,10 @@ class Veteriner extends StatelessWidget {
                 );
               },
               filterQuality: FilterQuality.high,
-              cacheWidth: (screenSize.width * 0.8).toInt(),
-              cacheHeight: (screenSize.width * 0.8).toInt(),
+              cacheWidth: (screenSize.width * 0.8)
+                  .toInt(), // Önbelleğe alınacak genişlik değeri
+              cacheHeight: (screenSize.width * 0.8)
+                  .toInt(), // Önbelleğe alınacak yükseklik değeri
             ),
           ),
           Align(
@@ -410,6 +388,7 @@ class Veteriner extends StatelessWidget {
           ),
         ],
       ),
+      drawer: const MyNavigationDrawer(),
     );
   }
 }
@@ -432,8 +411,10 @@ class Bakimevleri extends StatelessWidget {
           Center(
             child: Image.asset(
               "images/pet_loading.gif",
-              width: screenSize.width * 0.8,
-              height: screenSize.width * 0.8,
+              width: screenSize.width *
+                  0.8, // Ekran genişliğinin %80'i kadar genişlik
+              height: screenSize.width *
+                  0.8, // Ekran genişliğinin %80'i kadar yükseklik
               fit: BoxFit.cover,
               frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                 if (wasSynchronouslyLoaded) return child;
@@ -445,8 +426,10 @@ class Bakimevleri extends StatelessWidget {
                 );
               },
               filterQuality: FilterQuality.high,
-              cacheWidth: (screenSize.width * 0.8).toInt(),
-              cacheHeight: (screenSize.width * 0.8).toInt(),
+              cacheWidth: (screenSize.width * 0.8)
+                  .toInt(), // Önbelleğe alınacak genişlik değeri
+              cacheHeight: (screenSize.width * 0.8)
+                  .toInt(), // Önbelleğe alınacak yükseklik değeri
             ),
           ),
           Align(
@@ -487,8 +470,10 @@ class Magaza extends StatelessWidget {
           Center(
             child: Image.asset(
               "images/cute_dog.gif",
-              width: screenSize.width * 0.8,
-              height: screenSize.width * 0.8,
+              width: screenSize.width *
+                  0.8, // Ekran genişliğinin %80'i kadar genişlik
+              height: screenSize.width *
+                  0.8, // Ekran genişliğinin %80'i kadar yükseklik
               fit: BoxFit.cover,
               frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                 if (wasSynchronouslyLoaded) return child;
@@ -500,8 +485,10 @@ class Magaza extends StatelessWidget {
                 );
               },
               filterQuality: FilterQuality.high,
-              cacheWidth: (screenSize.width * 0.8).toInt(),
-              cacheHeight: (screenSize.width * 0.8).toInt(),
+              cacheWidth: (screenSize.width * 0.8)
+                  .toInt(), // Önbelleğe alınacak genişlik değeri
+              cacheHeight: (screenSize.width * 0.8)
+                  .toInt(), // Önbelleğe alınacak yükseklik değeri
             ),
           ),
           Align(
@@ -524,9 +511,10 @@ class Magaza extends StatelessWidget {
   }
 }
 
-class Kaydedilenler extends StatelessWidget {
-  const Kaydedilenler({Key? key}) : super(key: key);
+//https://miro.medium.com/v2/resize:fit:640/1*zzTEyTwyy7jXibtqVWg84Q.gif
 
+class Kaydedilenler extends StatelessWidget {
+  const Kaydedilenler({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -539,8 +527,7 @@ class Kaydedilenler extends StatelessWidget {
 }
 
 class Logout extends StatelessWidget {
-  const Logout({Key? key}) : super(key: key);
-
+  const Logout({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -549,18 +536,5 @@ class Logout extends StatelessWidget {
       ),
       body: const Center(child: Text("This is Logout page")),
     );
-  }
-}
-
-class ThemeNotifier with ChangeNotifier {
-  ThemeData _themeData;
-
-  ThemeNotifier(this._themeData);
-
-  ThemeData getTheme() => _themeData;
-
-  void setTheme(ThemeData themeData) {
-    _themeData = themeData;
-    notifyListeners();
   }
 }

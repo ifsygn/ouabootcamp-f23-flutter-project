@@ -4,9 +4,6 @@ import 'package:untitled4/core/service/firebase_auth_service.dart';
 import 'package:untitled4/view/blog/admin_page.dart';
 import 'package:untitled4/view/blog/blog_first_page.dart';
 
-
-
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super (key: key);
 

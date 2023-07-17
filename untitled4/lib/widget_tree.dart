@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:untitled4/core/service/firebase_auth_service.dart';
 import 'package:untitled4/view/blog/home_page.dart';
-import 'intro/introduction_screen.dart';
-
+import 'package:untitled4/view/intro/introduction_screen.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({Key? key}) : super (key: key);
@@ -20,7 +19,7 @@ class _WidgetTreeState extends State<WidgetTree> {
         if (snapshot.hasData) {
           return const HomePage();
         } else {
-          return IntroductionScreenWidget(title: "",);
+          return const IntroductionScreenWidget(title: "",);
         }
       },
     );

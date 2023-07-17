@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../view/authentication/login_view.dart';
+import '../authentication/login_view.dart';
 import 'introscreen2.dart';
 import 'introscreen1.dart';
 import 'introscreen3.dart';
@@ -56,7 +55,7 @@ class _IntroPage1 extends State<IntroductionScreenWidget> {
                 onLastPage= (index==2);
               });
             },
-            children: [
+            children: const [
               IntroScreen1(title: ""),
               IntroScreen2(title: ""),
               IntroScreen3(title: ""),

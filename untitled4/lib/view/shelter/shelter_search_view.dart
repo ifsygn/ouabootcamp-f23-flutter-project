@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:untitled4/common/widget/drawer/my_navigation_drawer.dart';
 import 'package:untitled4/core/data/repository/shelter_repository.dart';
 import '../../common/widget/appbarwidget.dart';
 import '../../common/widget/logowidget.dart';
-import '../../common/widget/nav_drawer.dart';
 import '../../core/data/entity/shelter.dart';
 import '../items/shelter_item.dart';
 
@@ -24,12 +24,12 @@ class ShelterSearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const appBarWidget(
+    return const Scaffold(
+      appBar: AppBarWidget(
         title: 'Barınaklar',
       ),
-      drawer: NavDrawer(),
-      body: const ShelterSearchView(),
+      drawer: MyNavigationDrawer(),
+      body: ShelterSearchView(),
     );
   }
 }
@@ -56,7 +56,7 @@ class ShelterSearchView extends StatelessWidget {
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(8.0),
             ),
-            child:  Row(
+            child:  const Row(
               children: [
                 SizedBox(width: 8.0),
                 Icon(Icons.search),
@@ -74,11 +74,66 @@ class ShelterSearchView extends StatelessWidget {
           ),
         ),
         const  Expanded(
-          child: ShelterList(),
+          child: MyShelterList(),
         ),
       ],
     );
   }
+}
+
+class MyShelterList extends StatefulWidget {
+  const MyShelterList({super.key});
+
+  @override
+  State<MyShelterList> createState() => _MyShelterListState();
+}
+
+class _MyShelterListState extends State<MyShelterList> {
+  late Future<List<Shelter>> _future;
+  String searchText = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _future = getShelters();
+  }
+
+  List<Shelter> filterBySearchText(List<Shelter> myModels, String searchText) {
+    if (searchText.isEmpty) {
+      return myModels;
+    } else {
+      return myModels
+          .where((myModel) => myModel.name!.toLowerCase().contains(searchText.toLowerCase()))
+          .toList();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Shelter>>(
+      // Veritabanından barınakları çeken asenkron fonksiyon
+      future: _future,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return Center(child: Text('Hata: ${snapshot.error}'));
+        } else {
+          final myModels = snapshot.data!;
+          final List<Shelter> filteredMyModels = filterBySearchText(myModels, searchText);
+          return ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              final shelterItem = filteredMyModels[index];
+              return ShelterItem(shelter: shelterItem);
+            },
+          );
+        }
+      },
+    );
+  }
+
 }
 
 class ShelterList extends StatelessWidget {

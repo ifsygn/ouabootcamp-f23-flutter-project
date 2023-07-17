@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:untitled4/common/widget/nav_drawer.dart';
 import 'package:untitled4/core/data/repository/pet_repository.dart';
+import '../../common/widget/appbarwidget.dart';
 import '../../common/widget/back_button_widget.dart';
 import '../../common/widget/background_image_widget.dart';
 import '../../common/widget/donate_widget.dart';
@@ -22,7 +22,6 @@ class ShelterProfilePage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-
   @override
   _ShelterProfilePageState createState() => _ShelterProfilePageState(shelter);
 }
@@ -41,29 +40,29 @@ class _ShelterProfilePageState extends State<ShelterProfilePage> {
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavDrawer(),
+      resizeToAvoidBottomInset: false,
+      appBar: const AppBarWidget(title: '',),
       body: BackgroundImageWidget(
         child: Column(
           children: [
             const BackButtonWidget(),
             Text(
               shelter.name ?? '',
-              style: const TextStyle(fontSize: 24),
+              style: const TextStyle(fontSize: 20),
             ),
             CarouselSlider(
               options: CarouselOptions(
-                height: 250,
+                height: 200,
                 enableInfiniteScroll: false,
                 viewportFraction: 1.0,
                 enlargeCenterPage: true,
-                onPageChanged: (index, _) {/*
+                onPageChanged: (index, _) {
                   setState(() {
                     currentPageIndex = index;
-                  });*/
+                  });
                 },
               ),
               items: (shelter.photoURL ?? []).map((image) {
@@ -71,7 +70,7 @@ class _ShelterProfilePageState extends State<ShelterProfilePage> {
                   builder: (BuildContext context) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.symmetric(horizontal: 30.0),
+                      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10),
                       child: Image.network(image, fit: BoxFit.cover),
                     );
                   },
@@ -108,7 +107,7 @@ class _ShelterProfilePageState extends State<ShelterProfilePage> {
                           'Barınak Bilgisi',
                           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                         ),
-                        const SizedBox(height: 20),
+                        // const SizedBox(height: 10),
                         Text(
                           shelter.about ?? '',
                           style: const TextStyle(fontSize: 16),
@@ -132,9 +131,9 @@ TR33 0000 0000 0000 0000 0000 00''',
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            // const SizedBox(height: 10),
             ShelterAddressWidget(),
-            const SizedBox(height: 20),
+            // const SizedBox(height: 10),
             Container(
               padding: const EdgeInsets.all(16),
               child: const Text(
@@ -157,7 +156,7 @@ TR33 0000 0000 0000 0000 0000 00''',
                   ),
                   child: const Text('Kedi'),
                 ),
-                const SizedBox(width: 16),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     // Köpek butonuna basıldığında yapılacak işlemler

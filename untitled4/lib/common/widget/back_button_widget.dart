@@ -14,12 +14,6 @@ class BackButtonWidget extends StatelessWidget {
             shape: BoxShape.circle,
             color: Color(0xFFD59CF9),
           ),
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              // Geri gelme iconuna basıldığında yapılacak işlemler
-            },
-          ),
         ),
       ),
     );

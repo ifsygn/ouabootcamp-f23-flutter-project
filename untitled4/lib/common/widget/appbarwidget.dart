@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class appBarWidget extends StatelessWidget implements PreferredSizeWidget{
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget{
   final String title;
-  const appBarWidget({super.key, required this.title});
+  const AppBarWidget({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

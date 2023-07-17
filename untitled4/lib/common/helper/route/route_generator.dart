@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:untitled4/common/helper/route/route_constant.dart';
 import 'package:untitled4/view/blog/home_page.dart';
 import 'package:untitled4/view/shelter/shelter_search_view.dart';
-import '../../../intro/introduction_screen.dart';
 import '../../../view/authentication/login_view.dart';
+import '../../../view/intro/introduction_screen.dart';
 
 class RouterGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

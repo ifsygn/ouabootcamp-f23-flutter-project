@@ -7,6 +7,7 @@ class Users extends Owner {
   String? surName;
   String? userName;
   DateTime? birthDate;
+  String? profilPhotoURL;
 
   Users({
     required String id,
@@ -24,8 +25,8 @@ class Users extends Owner {
     String? phoneNumber = "",
     String? fullAddress = "",
     String? about = "",
-
     List<String>? photoURL,
+    String? profilPhotoURL,
     List<String>? petIDs,
   }) : super(
     id: id,
@@ -43,6 +44,7 @@ class Users extends Owner {
   ) {
     // Set the default birthdate value at runtime if it's not provided
     this.birthDate = birthDate ?? DateTime(2023, 7, 18, 12, 00);
+    this.profilPhotoURL = profilPhotoURL ?? "https://loremflickr.com/320/240/human,face/all";
   }
 
   Users.fromJson(Map<String, Object?> json)
@@ -63,6 +65,7 @@ class Users extends Owner {
     birthDate: DateTime.parse(json['birthDate']! as String),
     about: json['about']! as String?,
     photoURL: (json['photoURL'] as List<dynamic>?)?.cast<String>(),
+    profilPhotoURL: json['photoURL'] as String?,
     petIDs: (json['petIDs'] as List<dynamic>?)?.cast<String>(),
   );
 
@@ -84,6 +87,7 @@ class Users extends Owner {
       'birthDate': birthDate?.toIso8601String(), // Convert to ISO8601 format
       'about': about,
       'photoURL': photoURL,
+      'profilPhotoURL': profilPhotoURL,
       'petIDs': petIDs,
     };
   }
@@ -108,6 +112,7 @@ class Users extends Owner {
       birthDate: data['birthDate'] != null ? DateTime.parse(data['birthDate'] as String) : null,
       about: data['about'] as String?,
       photoURL: (data['photoURL'] as List<dynamic>?)?.cast<String>(),
+      profilPhotoURL: data['profilPhotoURL'] as String?,
       petIDs: (data['petIDs'] as List<dynamic>?)?.cast<String>(),
     );
   }
